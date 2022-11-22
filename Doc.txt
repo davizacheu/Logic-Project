@@ -1,0 +1,8 @@
+g
+d
+w
+r
+'aphrodite' 'ares' 'hermes' 'zeus'
+'love' 'poetry' 'thunder' 'war'
+'tuesday' 'wednesday' 'thursday' 'friday'
+'mars' 'mercury' 'jupiter' 'venus'

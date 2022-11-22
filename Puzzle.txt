@@ -1,0 +1,1463 @@
+Schemes: 
+
+HC(A,B)
+HN(A,B)
+HD(A,B)
+HS(A,B)
+HP(A,B)
+CN(A,B)
+CD(A,B)
+CS(A,B)
+CP(A,B)
+ND(A,B)
+NS(A,B)
+NP(A,B)
+DS(A,B)
+DP(A,B)
+SP(A,B)
+
+nHC(A,B)
+nHN(A,B)
+nHD(A,B)
+nHS(A,B)
+nHP(A,B)
+nCN(A,B)
+nCD(A,B)
+nCS(A,B)
+nCP(A,B)
+nND(A,B)
+nNS(A,B)
+nNP(A,B)
+nDS(A,B)
+nDP(A,B)
+nSP(A,B)
+
+
+AllColors(B,G,I,R,Y)
+AllNumbers(A,B,C,D,E)
+AllNats(E,J,N,S,U)
+AllDrinks(A,B,C,D,E)
+AllSmokes(A,B,C,D,E)
+AllPets(A,B,C,D,E)
+# Contradiction(A,B)
+
+Facts:
+
+CN('Red','English').
+NP('Spaniard','Dog').
+CD('Green', 'Coffee').
+ND('Ukranian', 'Tea').
+nHC('5','Ivory').
+nHC('1','Green').
+SP('Old Gold','Snail').
+CS('Yellow','Kools').
+HD('3','Milk'). 
+HN('1','Norwegian').
+DS('Orange Juice', 'Lucky Strike').
+NS('Japanese','Parliament'). 
+nCN('Blue','Norwegian'). 
+nSP('Chesterfield','Fox').
+nSP('Kools','Horse').
+nHC('4','Red').
+HC('3','Red').
+
+AllColors('Blue','Green', 'Ivory', 'Red','Yellow').
+AllNumbers('1','2','3','4','5').
+AllNats('English','Japanese','Norwegian','Spaniard','Ukranian').
+AllDrinks('Coffee','Milk','Orange Juice','Tea','Water').
+AllSmokes('Chesterfield','Kools','Lucky Strike', 'Old Gold','Parliament').
+AllPets('Dog','Fox','Horse','Snail','Zebra').
+
+Rules:
+
+#| Contradiction(A,B) :- HC(A,B), nHC(A,B).
+Contradiction(A,B) :- HN(A,B), nHN(A,B).
+Contradiction(A,B) :- HD(A,B), nHD(A,B).
+Contradiction(A,B) :- HS(A,B), nHS(A,B).
+Contradiction(A,B) :- HP(A,B), nHP(A,B).
+Contradiction(A,B) :- CN(A,B), nCN(A,B).
+Contradiction(A,B) :- CD(A,B), nCD(A,B).
+Contradiction(A,B) :- CS(A,B), nCS(A,B).
+Contradiction(A,B) :- CP(A,B), nCP(A,B).
+Contradiction(A,B) :- ND(A,B), nND(A,B).
+Contradiction(A,B) :- NS(A,B), nNS(A,B).
+Contradiction(A,B) :- NP(A,B), nNP(A,B).
+Contradiction(A,B) :- DS(A,B), nDS(A,B).
+Contradiction(A,B) :- DP(A,B), nDP(A,B).
+Contradiction(A,B) :- SP(A,B), nSP(A,B). |#
+
+# This first section of rules is for the particular problem
+
+HC(b, B) :- HC('1',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+HC(c, B) :- HC('2',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+HC(d, B) :- HC('3',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+HC(e, B) :- HC('4',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(b, B) :- nHC('1',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(c, B) :- nHC('2',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(d, B) :- nHC('3',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(e, B) :- nHC('4',C), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+HC(a,C) :- HC('2', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+HC(b,C) :- HC('3', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+HC(c,C) :- HC('4', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+HC(d,C) :- HC('5', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(a,C) :- nHC('2', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(b,C) :- nHC('3', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(c,C) :- nHC('4', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(d,C) :- nHC('5', B), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(c,B) :- HS(a,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(d,B) :- HS(a,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,B) :- HS(a,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(d,B) :- HS(b,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,B) :- HS(b,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(a,B) :- HS(c,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,B) :- HS(c,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(a,B) :- HS(d,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(b,B) :- HS(d,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(c,B) :- HS(e,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(b,B) :- HS(e,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(a,B) :- HS(e,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(a,B) :- nHS(b,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(b,B) :- nHS(a,'Chesterfield'), nHS(c,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(c,B) :- nHS(b,'Chesterfield'), nHS(d,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(d,B) :- nHS(c,'Chesterfield'), nHS(e,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,B) :- nHS(d,'Chesterfield'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(c,A) :- HP(a,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(d,A) :- HP(a,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,A) :- HP(a,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(d,A) :- HP(b,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,A) :- HP(b,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(a,A) :- HP(c,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,A) :- HP(c,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(a,A) :- HP(d,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(b,A) :- HP(d,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(c,A) :- HP(e,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(b,A) :- HP(e,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(a,A) :- HP(e,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(a,A) :- nHP(b,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(b,A) :- nHP(a,'Fox'), nHP(c,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(c,A) :- nHP(b,'Fox'), nHP(d,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(d,A) :- nHP(c,'Fox'), nHP(e,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,A) :- nHP(d,'Fox'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+
+nHP(c,C) :- HS(a,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(d,C) :- HS(a,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,C) :- HS(a,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(d,C) :- HS(b,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,C) :- HS(b,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(a,C) :- HS(c,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,C) :- HS(c,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(a,C) :- HS(d,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(b,C) :- HS(d,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(c,C) :- HS(e,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(b,C) :- HS(e,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(a,C) :- HS(e,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHP(a,C) :- nHS(b,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(b,C) :- nHS(a,'Kools'), nHS(c,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(c,C) :- nHS(b,'Kools'), nHS(d,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(d,C) :- nHS(c,'Kools'), nHS(e,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHP(e,C) :- nHS(d,'Kools'), AllPets(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(c,B) :- HP(a,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(d,B) :- HP(a,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,B) :- HP(a,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(d,B) :- HP(b,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,B) :- HP(b,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(a,B) :- HP(c,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,B) :- HP(c,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(a,B) :- HP(d,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(b,B) :- HP(d,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(c,B) :- HP(e,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(b,B) :- HP(e,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(a,B) :- HP(e,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHS(a,B) :- nHP(b,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(b,B) :- nHP(a,'Horse'), nHP(c,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(c,B) :- nHP(b,'Horse'), nHP(d,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(d,B) :- nHP(c,'Horse'), nHP(e,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHS(e,B) :- nHP(d,'Horse'), AllSmokes(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+
+nHN(c,C) :- HC(a,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(d,C) :- HC(a,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(e,C) :- HC(a,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHN(d,C) :- HC(b,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(e,C) :- HC(b,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHN(a,C) :- HC(c,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(e,C) :- HC(c,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHN(a,C) :- HC(d,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(b,C) :- HC(d,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHN(c,C) :- HC(e,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(b,C) :- HC(e,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(a,C) :- HC(e,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHN(a,C) :- nHC(b,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(b,C) :- nHC(a,'Blue'), nHC(c,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(c,C) :- nHC(b,'Blue'), nHC(d,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(d,C) :- nHC(c,'Blue'), nHC(e,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHN(e,C) :- nHC(d,'Blue'), AllNats(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(c,A) :- HN(a,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(d,A) :- HN(a,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(e,A) :- HN(a,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(d,A) :- HN(b,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(e,A) :- HN(b,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(a,A) :- HN(c,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(e,A) :- HN(c,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(a,A) :- HN(d,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(b,A) :- HN(d,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(c,A) :- HN(e,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(b,A) :- HN(e,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(a,A) :- HN(e,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+nHC(a,A) :- nHN(b,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(b,A) :- nHN(a,'Norwegian'), nHN(c,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(c,A) :- nHN(b,'Norwegian'), nHN(d,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(d,A) :- nHN(c,'Norwegian'), nHN(e,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+nHC(e,A) :- nHN(d,'Norwegian'), AllColors(A,B,C,D,E), AllNumbers(a,b,c,d,e).
+
+
+#////////////////////////////////////////////////////////
+# Bellow are fundamental logic principles (do not change)
+#////////////////////////////////////////////////////////
+
+HC(A,C) :- HN(A,B), CN(C,B).
+HC(A,C) :- HD(A,B), CD(C,B).
+HC(A,C) :- HS(A,B), CS(C,B).
+HC(A,C) :- HP(A,B), CP(C,B).
+
+nHC(A,C) :- nHN(A,B), CN(C,B).
+nHC(A,C) :- nHD(A,B), CD(C,B).
+nHC(A,C) :- nHS(A,B), CS(C,B).
+nHC(A,C) :- nHP(A,B), CP(C,B).
+
+nHC(A,C) :- HN(A,B), nCN(C,B).
+nHC(A,C) :- HD(A,B), nCD(C,B).
+nHC(A,C) :- HS(A,B), nCS(C,B).
+nHC(A,C) :- HP(A,B), nCP(C,B).
+
+HN(A,C) :- HC(A,B), CN(B,C).
+HN(A,C) :- HD(A,B), ND(C,B).
+HN(A,C) :- HS(A,B), NS(C,B).
+HN(A,C) :- HP(A,B), NP(C,B).
+
+nHN(A,C) :- nHC(A,B), CN(B,C).
+nHN(A,C) :- nHD(A,B), ND(C,B).
+nHN(A,C) :- nHS(A,B), NS(C,B).
+nHN(A,C) :- nHP(A,B), NP(C,B).
+
+nHN(A,C) :- HC(A,B), nCN(B,C).
+nHN(A,C) :- HD(A,B), nND(C,B).
+nHN(A,C) :- HS(A,B), nNS(C,B).
+nHN(A,C) :- HP(A,B), nNP(C,B).
+
+HD(A,C) :- HC(A,B), CD(B,C).
+HD(A,C) :- HN(A,B), ND(B,C).
+HD(A,C) :- HS(A,B), DS(C,B).
+HD(A,C) :- HP(A,B), DP(C,B).
+
+nHD(A,C) :- nHC(A,B), CD(B,C).
+nHD(A,C) :- nHN(A,B), ND(B,C).
+nHD(A,C) :- nHS(A,B), DS(C,B).
+nHD(A,C) :- nHP(A,B), DP(C,B).
+
+nHD(A,C) :- HC(A,B), nCD(B,C).
+nHD(A,C) :- HN(A,B), nND(B,C).
+nHD(A,C) :- HS(A,B), nDS(C,B).
+nHD(A,C) :- HP(A,B), nDP(C,B).
+
+HS(A,C) :- HC(A,B), CS(B,C).
+HS(A,C) :- HN(A,B), NS(B,C).
+HS(A,C) :- HD(A,B), DS(B,C).
+HS(A,C) :- HP(A,B), SP(C,B).
+
+nHS(A,C) :- nHC(A,B), CS(B,C).
+nHS(A,C) :- nHN(A,B), NS(B,C).
+nHS(A,C) :- nHD(A,B), DS(B,C).
+nHS(A,C) :- nHP(A,B), SP(C,B).
+
+nHS(A,C) :- HC(A,B), nCS(B,C).
+nHS(A,C) :- HN(A,B), nNS(B,C).
+nHS(A,C) :- HD(A,B), nDS(B,C).
+nHS(A,C) :- HP(A,B), nSP(C,B).
+
+HP(A,C) :- HC(A,B), CP(B,C).
+HP(A,C) :- HN(A,B), NP(B,C).
+HP(A,C) :- HD(A,B), DP(B,C).
+HP(A,C) :- HS(A,B), SP(B,C).
+
+nHP(A,C) :- nHC(A,B), CP(B,C).
+nHP(A,C) :- nHN(A,B), NP(B,C).
+nHP(A,C) :- nHD(A,B), DP(B,C).
+nHP(A,C) :- nHS(A,B), SP(B,C).
+
+nHP(A,C) :- HC(A,B), nCP(B,C).
+nHP(A,C) :- HN(A,B), nNP(B,C).
+nHP(A,C) :- HD(A,B), nDP(B,C).
+nHP(A,C) :- HS(A,B), nSP(B,C).
+
+CN(A,C) :- HC(B,A), HN(B,C).
+CN(A,C) :- CD(A,B), ND(C,B).
+CN(A,C) :- CS(A,B), NS(C,B).
+CN(A,C) :- CP(A,B), NP(C,B).
+
+nCN(A,C) :- nHC(B,A), HN(B,C).
+nCN(A,C) :- nCD(A,B), ND(C,B).
+nCN(A,C) :- nCS(A,B), NS(C,B).
+nCN(A,C) :- nCP(A,B), NP(C,B).
+
+nCN(A,C) :- HC(B,A), nHN(B,C).
+nCN(A,C) :- CD(A,B), nND(C,B).
+nCN(A,C) :- CS(A,B), nNS(C,B).
+nCN(A,C) :- CP(A,B), nNP(C,B).
+
+CD(A,C) :- HC(B,A), HD(B,C).
+CD(A,C) :- CN(A,B), ND(B,C).
+CD(A,C) :- CS(A,B), DS(C,B).
+CD(A,C) :- CP(A,B), DP(C,B).
+
+nCD(A,C) :- nHC(B,A), HD(B,C).
+nCD(A,C) :- nCN(A,B), ND(B,C).
+nCD(A,C) :- nCS(A,B), DS(C,B).
+nCD(A,C) :- nCP(A,B), DP(C,B).
+
+nCD(A,C) :- HC(B,A), nHD(B,C).
+nCD(A,C) :- CN(A,B), nND(B,C).
+nCD(A,C) :- CS(A,B), nDS(C,B).
+nCD(A,C) :- CP(A,B), nDP(C,B).
+
+CS(A,C) :- HC(B,A), HS(B,C).
+CS(A,C) :- CN(A,B), NS(B,C).
+CS(A,C) :- CD(A,B), DS(B,C).
+CS(A,C) :- CP(A,B), SP(C,B).
+
+nCS(A,C) :- nHC(B,A), HS(B,C).
+nCS(A,C) :- nCN(A,B), NS(B,C).
+nCS(A,C) :- nCD(A,B), DS(B,C).
+nCS(A,C) :- nCP(A,B), SP(C,B).
+
+nCS(A,C) :- HC(B,A), nHS(B,C).
+nCS(A,C) :- CN(A,B), nNS(B,C).
+nCS(A,C) :- CD(A,B), nDS(B,C).
+nCS(A,C) :- CP(A,B), nSP(C,B).
+
+CP(A,C) :- HC(B,A), HP(B,C).
+CP(A,C) :- CN(A,B), NP(B,C).
+CP(A,C) :- CD(A,B), DP(B,C).
+CP(A,C) :- CP(A,B), SP(B,C).
+
+nCP(A,C) :- nHC(B,A), HP(B,C).
+nCP(A,C) :- nCN(A,B), NP(B,C).
+nCP(A,C) :- nCD(A,B), DP(B,C).
+nCP(A,C) :- nCP(A,B), SP(B,C).
+
+nCP(A,C) :- HC(B,A), nHP(B,C).
+nCP(A,C) :- CN(A,B), nNP(B,C).
+nCP(A,C) :- CD(A,B), nDP(B,C).
+nCP(A,C) :- CP(A,B), nSP(B,C).
+
+ND(A,C) :- HN(B,A), HD(B,C).
+ND(A,C) :- CN(B,A), CD(B,C).
+ND(A,C) :- NS(A,B), DS(C,B).
+ND(A,C) :- NP(A,B), DP(C,B).
+
+nND(A,C) :- nHN(B,A), HD(B,C).
+nND(A,C) :- nCN(B,A), CD(B,C).
+nND(A,C) :- nNS(A,B), DS(C,B).
+nND(A,C) :- nNP(A,B), DP(C,B).
+
+nND(A,C) :- HN(B,A), nHD(B,C).
+nND(A,C) :- CN(B,A), nCD(B,C).
+nND(A,C) :- NS(A,B), nDS(C,B).
+nND(A,C) :- NP(A,B), nDP(C,B).
+
+NS(A,C) :- HN(B,A), HS(B,C).
+NS(A,C) :- CN(B,A), CS(B,C).
+NS(A,C) :- ND(A,B), DS(B,C).
+NS(A,C) :- NP(A,B), SP(C,B).
+
+nNS(A,C) :- nHN(B,A), HS(B,C).
+nNS(A,C) :- nCN(B,A), CS(B,C).
+nNS(A,C) :- nND(A,B), DS(B,C).
+nNS(A,C) :- nNP(A,B), SP(C,B).
+
+nNS(A,C) :- HN(B,A), nHS(B,C).
+nNS(A,C) :- CN(B,A), nCS(B,C).
+nNS(A,C) :- ND(A,B), nDS(B,C).
+nNS(A,C) :- NP(A,B), nSP(C,B).
+
+NP(A,C) :- HN(B,A), HP(B,C).
+NP(A,C) :- CN(B,A), CP(B,C).
+NP(A,C) :- ND(A,B), DP(B,C).
+NP(A,C) :- NS(A,B), SP(B,C).
+
+nNP(A,C) :- nHN(B,A), HP(B,C).
+nNP(A,C) :- nCN(B,A), CP(B,C).
+nNP(A,C) :- nND(A,B), DP(B,C).
+nNP(A,C) :- nNS(A,B), SP(B,C).
+
+nNP(A,C) :- HN(B,A), nHP(B,C).
+nNP(A,C) :- CN(B,A), nCP(B,C).
+nNP(A,C) :- ND(A,B), nDP(B,C).
+nNP(A,C) :- NS(A,B), nSP(B,C).
+
+DS(A,C) :- HD(B,A), HS(B,C).
+DS(A,C) :- CD(B,A), CS(B,C).
+DS(A,C) :- ND(B,A), NS(B,C).
+DS(A,C) :- DP(A,B), SP(C,B).
+
+nDS(A,C) :- nHD(B,A), HS(B,C).
+nDS(A,C) :- nCD(B,A), CS(B,C).
+nDS(A,C) :- nND(B,A), NS(B,C).
+nDS(A,C) :- nDP(A,B), SP(C,B).
+
+nDS(A,C) :- HD(B,A), nHS(B,C).
+nDS(A,C) :- CD(B,A), nCS(B,C).
+nDS(A,C) :- ND(B,A), nNS(B,C).
+nDS(A,C) :- DP(A,B), nSP(C,B).
+
+DP(A,C) :- HD(B,A), HP(B,C).
+DP(A,C) :- CD(B,A), CP(B,C).
+DP(A,C) :- ND(B,A), NP(B,C).
+DP(A,C) :- DS(A,B), SP(B,C).
+
+nDP(A,C) :- nHD(B,A), HP(B,C).
+nDP(A,C) :- nCD(B,A), CP(B,C).
+nDP(A,C) :- nND(B,A), NP(B,C).
+nDP(A,C) :- nDS(A,B), SP(B,C).
+
+nDP(A,C) :- HD(B,A), nHP(B,C).
+nDP(A,C) :- CD(B,A), nCP(B,C).
+nDP(A,C) :- ND(B,A), nNP(B,C).
+nDP(A,C) :- DS(A,B), nSP(B,C).
+
+SP(A,C) :- HS(B,A), HP(B,C).
+SP(A,C) :- CS(B,A), CP(B,C).
+SP(A,C) :- NS(B,A), NP(B,C).
+SP(A,C) :- DS(B,A), DP(B,C).
+
+nSP(A,C) :- nHS(B,A), HP(B,C).
+nSP(A,C) :- nCS(B,A), CP(B,C).
+nSP(A,C) :- nNS(B,A), NP(B,C).
+nSP(A,C) :- nDS(B,A), DP(B,C).
+
+nSP(A,C) :- HS(B,A), nHP(B,C).
+nSP(A,C) :- CS(B,A), nCP(B,C).
+nSP(A,C) :- NS(B,A), nNP(B,C).
+nSP(A,C) :- DS(B,A), nDP(B,C).
+
+nHC(A, G) :- HC (A,B), AllColors(B,G,I,R,Y).
+nHC(A, I) :- HC (A,B), AllColors(B,G,I,R,Y).
+nHC(A, R) :- HC (A,B), AllColors(B,G,I,R,Y).
+nHC(A, Y) :- HC (A,B), AllColors(B,G,I,R,Y).
+
+nHC(A, B) :- HC (A,G), AllColors(B,G,I,R,Y).
+nHC(A, I) :- HC (A,G), AllColors(B,G,I,R,Y).
+nHC(A, R) :- HC (A,G), AllColors(B,G,I,R,Y).
+nHC(A, Y) :- HC (A,G), AllColors(B,G,I,R,Y).
+
+nHC(A, G) :- HC (A,I), AllColors(B,G,I,R,Y).
+nHC(A, B) :- HC (A,I), AllColors(B,G,I,R,Y).
+nHC(A, R) :- HC (A,I), AllColors(B,G,I,R,Y).
+nHC(A, Y) :- HC (A,I), AllColors(B,G,I,R,Y).
+
+nHC(A,B) :- HC (A,R), AllColors(B,G,I,R,Y).
+nHC(A,G) :- HC (A,R), AllColors(B,G,I,R,Y).
+nHC(A,I) :- HC (A,R), AllColors(B,G,I,R,Y).
+nHC(A,Y) :- HC (A,R), AllColors(B,G,I,R,Y).
+
+nHC(A,B) :- HC (A,Y), AllColors(B,G,I,R,Y).
+nHC(A,G) :- HC (A,Y), AllColors(B,G,I,R,Y).
+nHC(A,R) :- HC (A,Y), AllColors(B,G,I,R,Y).
+nHC(A,I) :- HC (A,Y), AllColors(B,G,I,R,Y).
+
+nHC(B,F) :- HC('1', F), AllNumbers(A,B,C,D,E).
+nHC(C,F) :- HC('1', F), AllNumbers(A,B,C,D,E).
+nHC(D,F) :- HC('1', F), AllNumbers(A,B,C,D,E).
+nHC(E,F) :- HC('1', F), AllNumbers(A,B,C,D,E).
+
+nHC(A,F) :- HC('2', F), AllNumbers(A,B,C,D,E).
+nHC(C,F) :- HC('2', F), AllNumbers(A,B,C,D,E).
+nHC(D,F) :- HC('2', F), AllNumbers(A,B,C,D,E).
+nHC(E,F) :- HC('2', F), AllNumbers(A,B,C,D,E).
+
+nHC(B,F) :- HC('3', F), AllNumbers(A,B,C,D,E).
+nHC(A,F) :- HC('3', F), AllNumbers(A,B,C,D,E).
+nHC(D,F) :- HC('3', F), AllNumbers(A,B,C,D,E).
+nHC(E,F) :- HC('3', F), AllNumbers(A,B,C,D,E).
+
+nHC(B,F) :- HC('4', F), AllNumbers(A,B,C,D,E).
+nHC(C,F) :- HC('4', F), AllNumbers(A,B,C,D,E).
+nHC(A,F) :- HC('4', F), AllNumbers(A,B,C,D,E).
+nHC(E,F) :- HC('4', F), AllNumbers(A,B,C,D,E).
+
+nHC(B,F) :- HC('5', F), AllNumbers(A,B,C,D,E).
+nHC(C,F) :- HC('5', F), AllNumbers(A,B,C,D,E).
+nHC(D,F) :- HC('5', F), AllNumbers(A,B,C,D,E).
+nHC(A,F) :- HC('5', F), AllNumbers(A,B,C,D,E).
+
+HC(A,B) :- nHC(A,G), nHC(A,I), nHC(A,R), nHC(A,Y), AllColors(B,G,I,R,Y).
+HC(A,G) :- nHC(A,B), nHC(A,I), nHC(A,R), nHC(A,Y), AllColors(B,G,I,R,Y).
+HC(A,I) :- nHC(A,G), nHC(A,B), nHC(A,R), nHC(A,Y), AllColors(B,G,I,R,Y).
+HC(A,R) :- nHC(A,G), nHC(A,I), nHC(A,B), nHC(A,Y), AllColors(B,G,I,R,Y).
+HC(A,Y) :- nHC(A,G), nHC(A,I), nHC(A,R), nHC(A,B), AllColors(B,G,I,R,Y).
+
+HC(A,F) :- nHC(B,F), nHC(C,F), nHC(D,F), nHC(E,F), AllNumbers(A,B,C,D,E).
+HC(B,F) :- nHC(A,F), nHC(C,F), nHC(D,F), nHC(E,F), AllNumbers(A,B,C,D,E).
+HC(C,F) :- nHC(B,F), nHC(A,F), nHC(D,F), nHC(E,F), AllNumbers(A,B,C,D,E).
+HC(D,F) :- nHC(B,F), nHC(C,F), nHC(A,F), nHC(E,F), AllNumbers(A,B,C,D,E).
+HC(E,F) :- nHC(B,F), nHC(C,F), nHC(D,F), nHC(A,F), AllNumbers(A,B,C,D,E).
+
+
+nHN(A,J):- HN(A,E), AllNats(E,J,N,S,U).
+nHN(A,N):- HN(A,E), AllNats(E,J,N,S,U).
+nHN(A,S):- HN(A,E), AllNats(E,J,N,S,U).
+nHN(A,U):- HN(A,E), AllNats(E,J,N,S,U).
+
+nHN(A,E):- HN(A,J), AllNats(E,J,N,S,U).
+nHN(A,N):- HN(A,J), AllNats(E,J,N,S,U).
+nHN(A,S):- HN(A,J), AllNats(E,J,N,S,U).
+nHN(A,U):- HN(A,J), AllNats(E,J,N,S,U).
+
+nHN(A,J):- HN(A, N), AllNats(E,J,N,S,U).
+nHN(A,E):- HN(A,N), AllNats(E,J,N,S,U).
+nHN(A,S):- HN(A,N), AllNats(E,J,N,S,U).
+nHN(A,U):- HN(A,N), AllNats(E,J,N,S,U).
+
+nHN(A,J):- HN(A,S), AllNats(E,J,N,S,U).
+nHN(A,E):- HN(A,S), AllNats(E,J,N,S,U).
+nHN(A,N):- HN(A,S), AllNats(E,J,N,S,U).
+nHN(A,U):- HN(A,S), AllNats(E,J,N,S,U).
+
+nHN(A,J):- HN(A,U), AllNats(E,J,N,S,U).
+nHN(A,E):- HN(A,U), AllNats(E,J,N,S,U).
+nHN(A,S):- HN(A,U), AllNats(E,J,N,S,U).
+nHN(A,N):- HN(A,U), AllNats(E,J,N,S,U).
+
+nHN(B,F) :- HN(A,F), AllNumbers(A,B,C,D,E).
+nHN(C,F) :- HN(A,F), AllNumbers(A,B,C,D,E).
+nHN(D,F) :- HN(A,F), AllNumbers(A,B,C,D,E).
+nHN(E,F) :- HN(A,F), AllNumbers(A,B,C,D,E).
+
+nHN(A,F) :- HN(B,F), AllNumbers(A,B,C,D,E).
+nHN(C,F) :- HN(B,F), AllNumbers(A,B,C,D,E).
+nHN(D,F) :- HN(B,F), AllNumbers(A,B,C,D,E).
+nHN(E,F) :- HN(B,F), AllNumbers(A,B,C,D,E).
+
+nHN(A,F) :- HN(C,F), AllNumbers(A,B,C,D,E).
+nHN(B,F) :- HN(C,F), AllNumbers(A,B,C,D,E).
+nHN(D,F) :- HN(C,F), AllNumbers(A,B,C,D,E).
+nHN(E,F) :- HN(C,F), AllNumbers(A,B,C,D,E).
+
+nHN(A,F) :- HN(D,F), AllNumbers(A,B,C,D,E).
+nHN(C,F) :- HN(D,F), AllNumbers(A,B,C,D,E).
+nHN(B,F) :- HN(D,F), AllNumbers(A,B,C,D,E).
+nHN(E,F) :- HN(D,F), AllNumbers(A,B,C,D,E).
+
+nHN(A,F) :- HN(E,F), AllNumbers(A,B,C,D,E).
+nHN(C,F) :- HN(E,F), AllNumbers(A,B,C,D,E).
+nHN(D,F) :- HN(E,F), AllNumbers(A,B,C,D,E).
+nHN(B,F) :- HN(E,F), AllNumbers(A,B,C,D,E).
+
+HN(A,E) :- nHN(A,J), nHN(A,N), nHN(A,S), nHN(A,U), AllNats(E,J,N,S,U).
+HN(A,J) :- nHN(A,E), nHN(A,N), nHN(A,S), nHN(A,U), AllNats(E,J,N,S,U).
+HN(A,N) :- nHN(A,J), nHN(A,E), nHN(A,S), nHN(A,U), AllNats(E,J,N,S,U).
+HN(A,S) :- nHN(A,J), nHN(A,N), nHN(A,E), nHN(A,U), AllNats(E,J,N,S,U).
+HN(A,U) :- nHN(A,J), nHN(A,N), nHN(A,S), nHN(A,E), AllNats(E,J,N,S,U).
+
+HN(A,F) :- nHN(B,F), nHN(C,F), nHN(D,F), nHN(E,F), AllNumbers(A,B,C,D,E).
+HN(B,F) :- nHN(A,F), nHN(C,F), nHN(D,F), nHN(E,F), AllNumbers(A,B,C,D,E).
+HN(C,F) :- nHN(B,F), nHN(A,F), nHN(D,F), nHN(E,F), AllNumbers(A,B,C,D,E).
+HN(D,F) :- nHN(B,F), nHN(C,F), nHN(A,F), nHN(E,F), AllNumbers(A,B,C,D,E).
+HN(E,F) :- nHN(B,F), nHN(C,F), nHN(D,F), nHN(A,F), AllNumbers(A,B,C,D,E).
+
+
+nHD(B,F) :- HD(A,F), AllNumbers(A,B,C,D,E).
+nHD(C,F) :- HD(A,F), AllNumbers(A,B,C,D,E).
+nHD(D,F) :- HD(A,F), AllNumbers(A,B,C,D,E).
+nHD(E,F) :- HD(A,F), AllNumbers(A,B,C,D,E).
+
+nHD(A,F) :- HD(B,F), AllNumbers(A,B,C,D,E).
+nHD(C,F) :- HD(B,F), AllNumbers(A,B,C,D,E).
+nHD(D,F) :- HD(B,F), AllNumbers(A,B,C,D,E).
+nHD(E,F) :- HD(B,F), AllNumbers(A,B,C,D,E).
+
+nHD(A,F) :- HD(C,F), AllNumbers(A,B,C,D,E).
+nHD(B,F) :- HD(C,F), AllNumbers(A,B,C,D,E).
+nHD(D,F) :- HD(C,F), AllNumbers(A,B,C,D,E).
+nHD(E,F) :- HD(C,F), AllNumbers(A,B,C,D,E).
+
+nHD(A,F) :- HD(D,F), AllNumbers(A,B,C,D,E).
+nHD(C,F) :- HD(D,F), AllNumbers(A,B,C,D,E).
+nHD(B,F) :- HD(D,F), AllNumbers(A,B,C,D,E).
+nHD(E,F) :- HD(D,F), AllNumbers(A,B,C,D,E).
+
+nHD(A,F) :- HD(E,F), AllNumbers(A,B,C,D,E).
+nHD(C,F) :- HD(E,F), AllNumbers(A,B,C,D,E).
+nHD(D,F) :- HD(E,F), AllNumbers(A,B,C,D,E).
+nHD(B,F) :- HD(E,F), AllNumbers(A,B,C,D,E).
+
+nHD(F,B) :- HD(F,A), AllDrinks(A,B,C,D,E).
+nHD(F,C) :- HD(F,A), AllDrinks(A,B,C,D,E).
+nHD(F,D) :- HD(F,A), AllDrinks(A,B,C,D,E).
+nHD(F,E) :- HD(F,A), AllDrinks(A,B,C,D,E).
+
+nHD(F,A) :- HD(F,B), AllDrinks(A,B,C,D,E).
+nHD(F,C) :- HD(F,B), AllDrinks(A,B,C,D,E).
+nHD(F,D) :- HD(F,B), AllDrinks(A,B,C,D,E).
+nHD(F,E) :- HD(F,B), AllDrinks(A,B,C,D,E).
+
+nHD(F,A) :- HD(F,C), AllDrinks(A,B,C,D,E).
+nHD(F,B) :- HD(F,C), AllDrinks(A,B,C,D,E).
+nHD(F,D) :- HD(F,C), AllDrinks(A,B,C,D,E).
+nHD(F,E) :- HD(F,C), AllDrinks(A,B,C,D,E).
+
+nHD(F,A) :- HD(F,D), AllDrinks(A,B,C,D,E).
+nHD(F,B) :- HD(F,D), AllDrinks(A,B,C,D,E).
+nHD(F,C) :- HD(F,D), AllDrinks(A,B,C,D,E).
+nHD(F,E) :- HD(F,D), AllDrinks(A,B,C,D,E).
+
+nHD(F,A) :- HD(F,E), AllDrinks(A,B,C,D,E).
+nHD(F,B) :- HD(F,E), AllDrinks(A,B,C,D,E).
+nHD(F,C) :- HD(F,E), AllDrinks(A,B,C,D,E).
+nHD(F,D) :- HD(F,E), AllDrinks(A,B,C,D,E).
+
+HD(A,F) :- nHD(B,F), nHD(C,F), nHD(D,F), nHD(E,F), AllNumbers(A,B,C,D,E).
+HD(B,F) :- nHD(A,F), nHD(C,F), nHD(D,F), nHD(E,F), AllNumbers(A,B,C,D,E).
+HD(C,F) :- nHD(B,F), nHD(A,F), nHD(D,F), nHD(E,F), AllNumbers(A,B,C,D,E).
+HD(D,F) :- nHD(B,F), nHD(C,F), nHD(A,F), nHD(E,F), AllNumbers(A,B,C,D,E).
+HD(E,F) :- nHD(B,F), nHD(C,F), nHD(D,F), nHD(A,F), AllNumbers(A,B,C,D,E).
+
+HD(F,A) :- nHD(F,B), nHD(F,C), nHD(F,D), nHD(F,E), AllDrinks(A,B,C,D,E).
+HD(F,B) :- nHD(F,A), nHD(F,C), nHD(F,D), nHD(F,E), AllDrinks(A,B,C,D,E).
+HD(F,C) :- nHD(F,A), nHD(F,B), nHD(F,D), nHD(F,E), AllDrinks(A,B,C,D,E).
+HD(F,D) :- nHD(F,A), nHD(F,B), nHD(F,C), nHD(F,E), AllDrinks(A,B,C,D,E).
+HD(F,E) :- nHD(F,A), nHD(F,B), nHD(F,C), nHD(F,D), AllDrinks(A,B,C,D,E). 
+
+
+nHS(B,F) :- HS(A,F), AllNumbers(A,B,C,D,E).
+nHS(C,F) :- HS(A,F), AllNumbers(A,B,C,D,E).
+nHS(D,F) :- HS(A,F), AllNumbers(A,B,C,D,E).
+nHS(E,F) :- HS(A,F), AllNumbers(A,B,C,D,E).
+
+nHS(A,F) :- HS(B,F), AllNumbers(A,B,C,D,E).
+nHS(C,F) :- HS(B,F), AllNumbers(A,B,C,D,E).
+nHS(D,F) :- HS(B,F), AllNumbers(A,B,C,D,E).
+nHS(E,F) :- HS(B,F), AllNumbers(A,B,C,D,E).
+
+nHS(A,F) :- HS(C,F), AllNumbers(A,B,C,D,E).
+nHS(B,F) :- HS(C,F), AllNumbers(A,B,C,D,E).
+nHS(D,F) :- HS(C,F), AllNumbers(A,B,C,D,E).
+nHS(E,F) :- HS(C,F), AllNumbers(A,B,C,D,E).
+
+nHS(A,F) :- HS(D,F), AllNumbers(A,B,C,D,E).
+nHS(C,F) :- HS(D,F), AllNumbers(A,B,C,D,E).
+nHS(B,F) :- HS(D,F), AllNumbers(A,B,C,D,E).
+nHS(E,F) :- HS(D,F), AllNumbers(A,B,C,D,E).
+
+nHS(A,F) :- HS(E,F), AllNumbers(A,B,C,D,E).
+nHS(C,F) :- HS(E,F), AllNumbers(A,B,C,D,E).
+nHS(D,F) :- HS(E,F), AllNumbers(A,B,C,D,E).
+nHS(B,F) :- HS(E,F), AllNumbers(A,B,C,D,E).
+
+nHS(F,B) :- HS(F,A), AllSmokes(A,B,C,D,E).
+nHS(F,C) :- HS(F,A), AllSmokes(A,B,C,D,E).
+nHS(F,D) :- HS(F,A), AllSmokes(A,B,C,D,E).
+nHS(F,E) :- HS(F,A), AllSmokes(A,B,C,D,E).
+
+nHS(F,A) :- HS(F,B), AllSmokes(A,B,C,D,E).
+nHS(F,C) :- HS(F,B), AllSmokes(A,B,C,D,E).
+nHS(F,D) :- HS(F,B), AllSmokes(A,B,C,D,E).
+nHS(F,E) :- HS(F,B), AllSmokes(A,B,C,D,E).
+
+nHS(F,A) :- HS(F,C), AllSmokes(A,B,C,D,E).
+nHS(F,B) :- HS(F,C), AllSmokes(A,B,C,D,E).
+nHS(F,D) :- HS(F,C), AllSmokes(A,B,C,D,E).
+nHS(F,E) :- HS(F,C), AllSmokes(A,B,C,D,E).
+
+nHS(F,A) :- HS(F,D), AllSmokes(A,B,C,D,E).
+nHS(F,B) :- HS(F,D), AllSmokes(A,B,C,D,E).
+nHS(F,C) :- HS(F,D), AllSmokes(A,B,C,D,E).
+nHS(F,E) :- HS(F,D), AllSmokes(A,B,C,D,E).
+
+nHS(F,A) :- HS(F,E), AllSmokes(A,B,C,D,E).
+nHS(F,B) :- HS(F,E), AllSmokes(A,B,C,D,E).
+nHS(F,C) :- HS(F,E), AllSmokes(A,B,C,D,E).
+nHS(F,D) :- HS(F,E), AllSmokes(A,B,C,D,E).
+
+HS(A,F) :- nHS(B,F), nHS(C,F), nHS(D,F), nHS(E,F), AllNumbers(A,B,C,D,E).
+HS(B,F) :- nHS(A,F), nHS(C,F), nHS(D,F), nHS(E,F), AllNumbers(A,B,C,D,E).
+HS(C,F) :- nHS(B,F), nHS(A,F), nHS(D,F), nHS(E,F), AllNumbers(A,B,C,D,E).
+HS(D,F) :- nHS(B,F), nHS(C,F), nHS(A,F), nHS(E,F), AllNumbers(A,B,C,D,E).
+HS(E,F) :- nHS(B,F), nHS(C,F), nHS(D,F), nHS(A,F), AllNumbers(A,B,C,D,E).
+
+HS(F,A) :- nHS(F,B), nHS(F,C), nHS(F,D), nHS(F,E), AllSmokes(A,B,C,D,E).
+HS(F,B) :- nHS(F,A), nHS(F,C), nHS(F,D), nHS(F,E), AllSmokes(A,B,C,D,E).
+HS(F,C) :- nHS(F,A), nHS(F,B), nHS(F,D), nHS(F,E), AllSmokes(A,B,C,D,E).
+HS(F,D) :- nHS(F,A), nHS(F,B), nHS(F,C), nHS(F,E), AllSmokes(A,B,C,D,E).
+HS(F,E) :- nHS(F,A), nHS(F,B), nHS(F,C), nHS(F,D), AllSmokes(A,B,C,D,E). 
+
+
+nHP(B,F) :- HP(A,F), AllNumbers(A,B,C,D,E).
+nHP(C,F) :- HP(A,F), AllNumbers(A,B,C,D,E).
+nHP(D,F) :- HP(A,F), AllNumbers(A,B,C,D,E).
+nHP(E,F) :- HP(A,F), AllNumbers(A,B,C,D,E).
+
+nHP(A,F) :- HP(B,F), AllNumbers(A,B,C,D,E).
+nHP(C,F) :- HP(B,F), AllNumbers(A,B,C,D,E).
+nHP(D,F) :- HP(B,F), AllNumbers(A,B,C,D,E).
+nHP(E,F) :- HP(B,F), AllNumbers(A,B,C,D,E).
+
+nHP(A,F) :- HP(C,F), AllNumbers(A,B,C,D,E).
+nHP(B,F) :- HP(C,F), AllNumbers(A,B,C,D,E).
+nHP(D,F) :- HP(C,F), AllNumbers(A,B,C,D,E).
+nHP(E,F)  :- HP(C,F), AllNumbers(A,B,C,D,E).
+
+nHP(A,F) :- HP(D,F), AllNumbers(A,B,C,D,E).
+nHP(C,F) :- HP(D,F), AllNumbers(A,B,C,D,E).
+nHP(B,F) :- HP(D,F), AllNumbers(A,B,C,D,E).
+nHP(E,F)  :- HP(D,F), AllNumbers(A,B,C,D,E).
+
+nHP(A,F) :- HP(E,F), AllNumbers(A,B,C,D,E).
+nHP(C,F) :- HP(E,F), AllNumbers(A,B,C,D,E).
+nHP(D,F) :- HP(E,F), AllNumbers(A,B,C,D,E).
+nHP(B,F) :- HP(E,F), AllNumbers(A,B,C,D,E).
+
+nHP(F,B) :- HP(F,A), AllPets(A,B,C,D,E).
+nHP(F,C) :- HP(F,A), AllPets(A,B,C,D,E).
+nHP(F,D) :- HP(F,A), AllPets(A,B,C,D,E).
+nHP(F,E) :- HP(F,A), AllPets(A,B,C,D,E).
+
+nHP(F,A) :- HP(F,B), AllPets(A,B,C,D,E).
+nHP(F,C) :- HP(F,B), AllPets(A,B,C,D,E).
+nHP(F,D) :- HP(F,B), AllPets(A,B,C,D,E).
+nHP(F,E) :- HP(F,B), AllPets(A,B,C,D,E).
+
+nHP(F,A) :- HP(F,C), AllPets(A,B,C,D,E).
+nHP(F,B) :- HP(F,C), AllPets(A,B,C,D,E).
+nHP(F,D) :- HP(F,C), AllPets(A,B,C,D,E).
+nHP(F,E) :- HP(F,C), AllPets(A,B,C,D,E).
+
+nHP(F,A) :- HP(F,D), AllPets(A,B,C,D,E).
+nHP(F,B) :- HP(F,D), AllPets(A,B,C,D,E).
+nHP(F,C) :- HP(F,D), AllPets(A,B,C,D,E).
+nHP(F,E) :- HP(F,D), AllPets(A,B,C,D,E).
+
+nHP(F,A) :- HP(F,E), AllPets(A,B,C,D,E).
+nHP(F,B) :- HP(F,E), AllPets(A,B,C,D,E).
+nHP(F,C) :- HP(F,E), AllPets(A,B,C,D,E).
+nHP(F,D) :- HP(F,E), AllPets(A,B,C,D,E).
+
+HP(A,F) :- nHP(B,F), nHP(C,F), nHP(D,F), nHP(E,F), AllNumbers(A,B,C,D,E).
+HP(B,F) :- nHP(A,F), nHP(C,F), nHP(D,F), nHP(E,F), AllNumbers(A,B,C,D,E).
+HP(C,F) :- nHP(B,F), nHP(A,F), nHP(D,F), nHP(E,F), AllNumbers(A,B,C,D,E).
+HP(D,F) :- nHP(B,F), nHP(C,F), nHP(A,F), nHP(E,F), AllNumbers(A,B,C,D,E).
+HP(E,F) :- nHP(B,F), nHP(C,F), nHP(D,F), nHP(A,F), AllNumbers(A,B,C,D,E).
+
+HP(F,A) :- nHP(F,B), nHP(F,C), nHP(F,D), nHP(F,E), AllPets(A,B,C,D,E).
+HP(F,B) :- nHP(F,A), nHP(F,C), nHP(F,D), nHP(F,E), AllPets(A,B,C,D,E).
+HP(F,C) :- nHP(F,A), nHP(F,B), nHP(F,D), nHP(F,E), AllPets(A,B,C,D,E).
+HP(F,D) :- nHP(F,A), nHP(F,B), nHP(F,C), nHP(F,E), AllPets(A,B,C,D,E).
+HP(F,E) :- nHP(F,A), nHP(F,B), nHP(F,C), nHP(F,D), AllPets(A,B,C,D,E). 
+
+nCN(B,F) :- CN (A,F), AllColors(A,B,C,D,E).
+nCN (C,F) :- CN (A,F), AllColors(A,B,C,D,E).
+nCN (D,F) :- CN (A,F), AllColors(A,B,C,D,E).
+nCN (E,F) :- CN (A,F), AllColors(A,B,C,D,E).
+
+nCN (A,F) :- CN (B,F), AllColors(A,B,C,D,E).
+nCN (C,F) :- CN (B,F), AllColors(A,B,C,D,E).
+nCN (D,F) :- CN (B,F), AllColors(A,B,C,D,E).
+nCN (E,F) :- CN (B,F), AllColors(A,B,C,D,E).
+
+nCN (A,F) :- CN(C,F), AllColors(A,B,C,D,E).
+nCN (B,F) :- CN(C,F), AllColors(A,B,C,D,E).
+nCN (D,F) :- CN (C,F), AllColors(A,B,C,D,E).
+nCN (E,F)  :- CN (C,F), AllColors(A,B,C,D,E).
+
+nCN (A,F) :- CN (D,F), AllColors(A,B,C,D,E).
+nCN (C,F) :- CN (D,F), AllColors(A,B,C,D,E).
+nCN (B,F) :- CN (D,F), AllColors(A,B,C,D,E).
+nCN (E,F)  :- CN (D,F), AllColors(A,B,C,D,E).
+
+nCN (A,F) :- CN (E,F), AllColors(A,B,C,D,E).
+nCN (C,F) :- CN (E,F), AllColors(A,B,C,D,E).
+nCN (D,F) :- CN (E,F), AllColors(A,B,C,D,E).
+nCN (B,F) :- CN (E,F), AllColors(A,B,C,D,E).
+
+
+
+
+
+nCN (F,B) :- CN (F,A), AllNats(A,B,C,D,E).
+nCN (F,C) :- CN (F,A), AllNats (A,B,C,D,E).
+nCN (F,D) :- CN (F,A), AllNats (A,B,C,D,E).
+nCN (F,E) :- CN (F,A), AllNats (A,B,C,D,E).
+
+nCN (F,A) :- CN (F,B), AllNats (A,B,C,D,E).
+nCN (F,C) :- CN (F,B), AllNats (A,B,C,D,E).
+nCN (F,D) :- CN (F,B), AllNats (A,B,C,D,E).
+nCN (F,E) :- CN (F,B), AllNats (A,B,C,D,E).
+
+nCN (F,A) :- CN (F,C), AllNats (A,B,C,D,E).
+nCN (F,B) :- CN (F,C), AllNats (A,B,C,D,E).
+nCN (F,D) :- CN (F,C), AllNats (A,B,C,D,E).
+nCN (F,E) :- CN (F,C), AllNats (A,B,C,D,E).
+
+nCN (F,A) :- CN (F,D), AllNats (A,B,C,D,E).
+nCN (F,B) :- CN (F,D), AllNats (A,B,C,D,E).
+nCN (F,C) :- CN (F,D), AllNats (A,B,C,D,E).
+nCN (F,E) :- CN (F,D), AllNats (A,B,C,D,E).
+
+nCN (F,A) :- CN (F,E), AllNats (A,B,C,D,E).
+nCN (F,B) :- CN (F,E), AllNats (A,B,C,D,E).
+nCN (F,C) :- CN (F,E), AllNats (A,B,C,D,E).
+nCN (F,D) :- CN (F,E), AllNats (A,B,C,D,E).
+
+CN (A,F) :- nCN (B,F), nCN (C,F), nCN (D,F), nCN (E,F), AllColors(A,B,C,D,E).
+CN (B,F) :- nCN (A,F), nCN (C,F), nCN (D,F), nCN (E,F), AllColors (A,B,C,D,E).
+CN (C,F) :- nCN (B,F), nCN (A,F), nCN (D,F), nCN (E,F), AllColors (A,B,C,D,E).
+CN (D,F) :- nCN (B,F), nCN (C,F), nCN (A,F), nCN (E,F), AllColors (A,B,C,D,E).
+CN (E,F) :- nCN (B,F), nCN (C,F), nCN (D,F), nCN (A,F), AllColors (A,B,C,D,E).
+
+CN (F,A) :- nCN (F,B), nCN (F,C), nCN (F,D), nCN (F,E), AllNats(A,B,C,D,E).
+CN (F,B) :- nCN (F,A), nCN (F,C), nCN (F,D), nCN (F,E), AllNats (A,B,C,D,E).
+CN (F,C) :- nCN (F,A), nCN (F,B), nCN (F,D), nCN (F,E), AllNats (A,B,C,D,E).
+CN (F,D) :- nCN (F,A), nCN (F,B), nCN (F,C), nCN (F,E), AllNats (A,B,C,D,E).
+CN (F,E) :- nCN (F,A), nCN (F,B), nCN (F,C), nCN (F,D), AllNats (A,B,C,D,E). 
+
+
+nCD(B,F) :- CD (A,F), AllColors(A,B,C,D,E).
+nCD (C,F) :- CD (A,F), AllColors(A,B,C,D,E).
+nCD (D,F) :- CD (A,F), AllColors(A,B,C,D,E).
+nCD (E,F) :- CD(A,F), AllColors(A,B,C,D,E).
+
+nCD (A,F) :- CD (B,F), AllColors(A,B,C,D,E).
+nCD (C,F) :- CD (B,F), AllColors(A,B,C,D,E).
+nCD (D,F) :- CD (B,F), AllColors(A,B,C,D,E).
+nCD (E,F) :- CD(B,F), AllColors(A,B,C,D,E).
+
+nCD (A,F) :- CD(C,F), AllColors(A,B,C,D,E).
+nCD (B,F) :- CD(C,F), AllColors(A,B,C,D,E).
+nCD (D,F) :- CD (C,F), AllColors(A,B,C,D,E).
+nCD (E,F)  :- CD (C,F), AllColors(A,B,C,D,E).
+
+nCD (A,F) :- CD (D,F), AllColors(A,B,C,D,E).
+nCD (C,F) :- CD (D,F), AllColors(A,B,C,D,E).
+nCD (B,F) :- CD (D,F), AllColors(A,B,C,D,E).
+nCD (E,F)  :- CD (D,F), AllColors(A,B,C,D,E).
+
+nCD (A,F) :- CD (E,F), AllColors(A,B,C,D,E).
+nCD (C,F) :- CD (E,F), AllColors(A,B,C,D,E).
+nCD (D,F) :- CD (E,F), AllColors(A,B,C,D,E).
+nCD (B,F) :- CD (E,F), AllColors(A,B,C,D,E).
+
+nCD (F,B) :- CD (F,A), AllDrinks(A,B,C,D,E).
+nCD (F,C) :- CD (F,A), AllDrinks (A,B,C,D,E).
+nCD (F,D) :- CD (F,A), AllDrinks (A,B,C,D,E).
+nCD (F,E) :- CD(F,A), AllDrinks (A,B,C,D,E).
+
+nCD (F,A) :- CD (F,B), AllDrinks (A,B,C,D,E).
+nCD (F,C) :- CD (F,B), AllDrinks (A,B,C,D,E).
+nCD (F,D) :- CD (F,B), AllDrinks (A,B,C,D,E).
+nCD (F,E) :- CD (F,B), AllDrinks (A,B,C,D,E).
+
+nCD (F,A) :- CD (F,C), AllDrinks (A,B,C,D,E).
+nCD (F,B) :- CD (F,C), AllDrinks (A,B,C,D,E).
+nCD (F,D) :- CD (F,C), AllDrinks (A,B,C,D,E).
+nCD (F,E) :- CD(F,C), AllDrinks (A,B,C,D,E).
+
+nCD (F,A) :- CD (F,D), AllDrinks (A,B,C,D,E).
+nCD (F,B) :- CD (F,D), AllDrinks (A,B,C,D,E).
+nCD (F,C) :- CD (F,D), AllDrinks (A,B,C,D,E).
+nCD (F,E) :- CD (F,D), AllDrinks (A,B,C,D,E).
+
+nCD (F,A) :- CD (F,E), AllDrinks (A,B,C,D,E).
+nCD (F,B) :- CD (F,E), AllDrinks (A,B,C,D,E).
+nCD (F,C) :- CD (F,E), AllDrinks (A,B,C,D,E).
+nCD (F,D) :- CD (F,E), AllDrinks (A,B,C,D,E).
+
+CD (A,F) :- nCD (B,F), nCD(C,F), nCD (D,F), nCD (E,F), AllColors(A,B,C,D,E).
+CD (B,F) :- nCD (A,F), nCD (C,F), nCD (D,F), nCD (E,F), AllColors (A,B,C,D,E).
+CD (C,F) :- nCD (B,F), nCD (A,F), nCD (D,F), nCD (E,F), AllColors (A,B,C,D,E).
+CD (D,F) :- nCD (B,F), nCD (C,F), nCD (A,F), nCD (E,F), AllColors (A,B,C,D,E).
+CD (E,F) :- nCD (B,F), nCD (C,F), nCD (D,F), nCD (A,F), AllColors (A,B,C,D,E).
+
+CD (F,A) :- nCD (F,B), nCD (F,C), nCD (F,D), nCD (F,E), AllDrinks (A,B,C,D,E).
+CD (F,B) :- nCD (F,A), nCD (F,C), nCD (F,D), nCD (F,E), AllDrinks (A,B,C,D,E).
+CD (F,C) :- nCD (F,A), nCD (F,B), nCD (F,D), nCD (F,E), AllDrinks (A,B,C,D,E).
+CD (F,D) :- nCD (F,A), nCD (F,B), nCD (F,C), nCD (F,E), AllDrinks (A,B,C,D,E).
+CD (F,E) :- nCD (F,A), nCD (F,B), nCD (F,C), nCD (F,D), AllDrinks (A,B,C,D,E).
+
+
+nCS (B,F) :- CS (A,F), AllColors(A,B,C,D,E).
+nCS (C,F) :- CS (A,F), AllColors(A,B,C,D,E).
+nCS (D,F) :- CS (A,F), AllColors(A,B,C,D,E).
+nCS (E,F) :- CS(A,F), AllColors(A,B,C,D,E).
+
+nCS (A,F) :- CS (B,F), AllColors(A,B,C,D,E).
+nCS (C,F) :- CS (B,F), AllColors(A,B,C,D,E).
+nCS (D,F) :- CS (B,F), AllColors(A,B,C,D,E).
+nCS (E,F) :- CS(B,F), AllColors(A,B,C,D,E).
+
+nCS (A,F) :- CS(C,F), AllColors(A,B,C,D,E).
+nCS (B,F) :- CS(C,F), AllColors(A,B,C,D,E).
+nCS (D,F) :- CS (C,F), AllColors(A,B,C,D,E).
+nCS (E,F) :- CS (C,F), AllColors(A,B,C,D,E).
+
+nCS (A,F) :- CS (D,F), AllColors(A,B,C,D,E).
+nCS (C,F) :- CS (D,F), AllColors(A,B,C,D,E).
+nCS (B,F) :- CS (D,F), AllColors(A,B,C,D,E).
+nCS (E,F) :- CS (D,F), AllColors(A,B,C,D,E).
+
+nCS (A,F) :- CS (E,F), AllColors(A,B,C,D,E).
+nCS (C,F) :- CS (E,F), AllColors(A,B,C,D,E).
+nCS (D,F) :- CS (E,F), AllColors(A,B,C,D,E).
+nCS (B,F) :- CS (E,F), AllColors(A,B,C,D,E).
+
+nCS (F,B) :- CS (F,A), AllSmokes(A,B,C,D,E).
+nCS (F,C) :- CS (F,A), AllSmokes (A,B,C,D,E).
+nCS (F,D) :- CS (F,A), AllSmokes (A,B,C,D,E).
+nCS (F,E) :- CS(F,A), AllSmokes (A,B,C,D,E).
+
+nCS (F,A) :- CS (F,B), AllSmokes (A,B,C,D,E).
+nCS (F,C) :- CS (F,B), AllSmokes (A,B,C,D,E).
+nCS (F,D) :- CS (F,B), AllSmokes (A,B,C,D,E).
+nCS (F,E) :- CS (F,B), AllSmokes (A,B,C,D,E).
+
+nCS (F,A) :- CS (F,C), AllSmokes (A,B,C,D,E).
+nCS (F,B) :- CS (F,C), AllSmokes (A,B,C,D,E).
+nCS (F,D) :- CS (F,C), AllSmokes (A,B,C,D,E).
+nCS (F,E) :- CS(F,C), AllSmokes (A,B,C,D,E).
+
+nCS (F,A) :- CS (F,D), AllSmokes (A,B,C,D,E).
+nCS (F,B) :- CS (F,D), AllSmokes (A,B,C,D,E).
+nCS (F,C) :- CS (F,D), AllSmokes (A,B,C,D,E).
+nCS (F,E) :- CS (F,D), AllSmokes (A,B,C,D,E).
+
+nCS (F,A) :- CS (F,E), AllSmokes (A,B,C,D,E).
+nCS (F,B) :- CS (F,E), AllSmokes (A,B,C,D,E).
+nCS (F,C) :- CS (F,E), AllSmokes (A,B,C,D,E).
+nCS (F,D) :- CS (F,E), AllSmokes (A,B,C,D,E).
+
+CS (A,F) :- nCS (B,F), nCS (C,F), nCS (D,F), nCS (E,F), AllColors (A,B,C,D,E).
+CS (B,F) :- nCS (A,F), nCS (C,F), nCS (D,F), nCS (E,F), AllColors (A,B,C,D,E).
+CS (C,F) :- nCS (B,F), nCS (A,F), nCS (D,F), nCS (E,F), AllColors (A,B,C,D,E).
+CS (D,F) :- nCS (B,F), nCS (C,F), nCS (A,F), nCS (E,F), AllColors (A,B,C,D,E).
+CS (E,F) :- nCS (B,F), nCS (C,F), nCS (D,F), nCS (A,F), AllColors (A,B,C,D,E).
+
+CS (F,A) :- nCS (F,B), nCS (F,C), nCS (F,D), nCS (F,E), AllSmokes (A,B,C,D,E).
+CS (F,B) :- nCS (F,A), nCS (F,C), nCS (F,D), nCS (F,E), AllSmokes (A,B,C,D,E).
+CS (F,C) :- nCS (F,A), nCS (F,B), nCS (F,D), nCS (F,E), AllSmokes (A,B,C,D,E).
+CS (F,D) :- nCS (F,A), nCS (F,B), nCS (F,C), nCS (F,E), AllSmokes (A,B,C,D,E).
+CS (F,E) :- nCS (F,A), nCS (F,B), nCS (F,C), nCS (F,D), AllSmokes (A,B,C,D,E). 
+
+
+nCP (B,F) :- CP (A,F), AllColors(A,B,C,D,E).
+nCP (C,F) :- CP (A,F), AllColors(A,B,C,D,E).
+nCP (D,F) :- CP (A,F), AllColors(A,B,C,D,E).
+nCP (E,F) :- CP(A,F), AllColors(A,B,C,D,E).
+
+nCP (A,F) :- CP (B,F), AllColors(A,B,C,D,E).
+nCP (C,F) :- CP (B,F), AllColors(A,B,C,D,E).
+nCP (D,F) :- CP (B,F), AllColors(A,B,C,D,E).
+nCP (E,F) :- CP(B,F), AllColors(A,B,C,D,E).
+
+nCP (A,F) :- CP(C,F), AllColors(A,B,C,D,E).
+nCP (B,F) :- CP(C,F), AllColors(A,B,C,D,E).
+nCP (D,F) :- CP (C,F), AllColors(A,B,C,D,E).
+nCP (E,F) :- CP (C,F), AllColors(A,B,C,D,E).
+
+nCP (A,F) :- CP (D,F), AllColors(A,B,C,D,E).
+nCP (C,F) :- CP (D,F), AllColors(A,B,C,D,E).
+nCP (B,F) :- CP (D,F), AllColors(A,B,C,D,E).
+nCP (E,F) :- CP (D,F), AllColors(A,B,C,D,E).
+
+nCP (A,F) :- CP (E,F), AllColors(A,B,C,D,E).
+nCP (C,F) :- CP (E,F), AllColors(A,B,C,D,E).
+nCP (D,F) :- CP (E,F), AllColors(A,B,C,D,E).
+nCP (B,F) :- CP (E,F), AllColors(A,B,C,D,E).
+
+nCP (F,B) :- CP (F,A), AllPets(A,B,C,D,E).
+nCP (F,C) :- CP (F,A), AllPets (A,B,C,D,E).
+nCP (F,D) :- CP (F,A), AllPets (A,B,C,D,E).
+nCP (F,E) :- CP(F,A), AllPets (A,B,C,D,E).
+
+nCP (F,A) :- CP (F,B), AllPets (A,B,C,D,E).
+nCP (F,C) :- CP (F,B), AllPets (A,B,C,D,E).
+nCP (F,D) :- CP (F,B), AllPets (A,B,C,D,E).
+nCP (F,E) :- CP (F,B), AllPets (A,B,C,D,E).
+
+nCP (F,A) :- CP (F,C), AllPets (A,B,C,D,E).
+nCP (F,B) :- CP (F,C), AllPets (A,B,C,D,E).
+nCP (F,D) :- CP (F,C), AllPets (A,B,C,D,E).
+nCP (F,E) :- CP(F,C), AllPets (A,B,C,D,E).
+
+nCP (F,A) :- CP (F,D), AllPets (A,B,C,D,E).
+nCP (F,B) :- CP (F,D), AllPets (A,B,C,D,E).
+nCP (F,C) :- CP (F,D), AllPets (A,B,C,D,E).
+nCP (F,E) :- CP (F,D), AllPets (A,B,C,D,E).
+
+nCP (F,A) :- CP (F,E), AllPets (A,B,C,D,E).
+nCP (F,B) :- CP (F,E), AllPets (A,B,C,D,E).
+nCP (F,C) :- CP (F,E), AllPets (A,B,C,D,E).
+nCP (F,D) :- CP (F,E), AllPets (A,B,C,D,E).
+
+CP (A,F) :- nCP (B,F), nCP (C,F), nCP (D,F), nCP (E,F), AllColors (A,B,C,D,E).
+CP (B,F) :- nCP (A,F), nCP (C,F), nCP (D,F), nCP (E,F), AllColors (A,B,C,D,E).
+CP (C,F) :- nCP (B,F), nCP (A,F), nCP (D,F), nCP (E,F), AllColors (A,B,C,D,E).
+CP (D,F) :- nCP (B,F), nCP (C,F), nCP (A,F), nCP (E,F), AllColors (A,B,C,D,E).
+CP (E,F) :- nCP (B,F), nCP (C,F), nCP (D,F), nCP (A,F), AllColors (A,B,C,D,E).
+
+CP (F,A) :- nCP (F,B), nCP (F,C), nCP (F,D), nCP (F,E), AllPets (A,B,C,D,E).
+CP (F,B) :- nCP (F,A), nCP (F,C), nCP (F,D), nCP (F,E), AllPets (A,B,C,D,E).
+CP (F,C) :- nCP (F,A), nCP (F,B), nCP (F,D), nCP (F,E), AllPets (A,B,C,D,E).
+CP (F,D) :- nCP (F,A), nCP (F,B), nCP (F,C), nCP (F,E), AllPets (A,B,C,D,E).
+CP (F,E) :- nCP (F,A), nCP (F,B), nCP (F,C), nCP (F,D), AllPets (A,B,C,D,E).
+
+
+nND (B,F) :- ND (A,F), AllNats(A,B,C,D,E).
+nND (C,F) :- ND (A,F), AllNats(A,B,C,D,E).
+nND (D,F) :- ND (A,F), AllNats(A,B,C,D,E).
+nND (E,F) :- ND(A,F), AllNats(A,B,C,D,E).
+
+nND (A,F) :- ND (B,F), AllNats(A,B,C,D,E).
+nND (C,F) :- ND (B,F), AllNats(A,B,C,D,E).
+nND (D,F) :- ND (B,F), AllNats(A,B,C,D,E).
+nND (E,F) :- ND (B,F), AllNats(A,B,C,D,E).
+
+nND (A,F) :- ND(C,F), AllNats(A,B,C,D,E).
+nND (B,F) :- ND(C,F), AllNats(A,B,C,D,E).
+nND (D,F) :- ND (C,F), AllNats(A,B,C,D,E).
+nND (E,F) :- ND (C,F), AllNats(A,B,C,D,E).
+
+nND (A,F) :- ND (D,F), AllNats(A,B,C,D,E).
+nND (C,F) :- ND (D,F), AllNats(A,B,C,D,E).
+nND (B,F) :- ND (D,F), AllNats(A,B,C,D,E).
+nND (E,F) :- ND (D,F), AllNats(A,B,C,D,E).
+
+nND (A,F) :- ND (E,F), AllNats(A,B,C,D,E).
+nND (C,F) :- ND (E,F), AllNats(A,B,C,D,E).
+nND (D,F) :- ND (E,F), AllNats(A,B,C,D,E).
+nND (B,F) :- ND (E,F), AllNats(A,B,C,D,E).
+
+nND (F,B) :- ND (F,A), AllDrinks(A,B,C,D,E).
+nND (F,C) :- ND (F,A), AllDrinks (A,B,C,D,E).
+nND (F,D) :- ND (F,A), AllDrinks (A,B,C,D,E).
+nND (F,E) :- ND(F,A), AllDrinks (A,B,C,D,E).
+
+nND (F,A) :- ND (F,B), AllDrinks (A,B,C,D,E).
+nND (F,C) :- ND (F,B), AllDrinks (A,B,C,D,E).
+nND (F,D) :- ND (F,B), AllDrinks (A,B,C,D,E).
+nND (F,E) :- ND (F,B), AllDrinks (A,B,C,D,E).
+
+nND (F,A) :- ND (F,C), AllDrinks (A,B,C,D,E).
+nND (F,B) :- ND (F,C), AllDrinks (A,B,C,D,E).
+nND (F,D) :- ND (F,C), AllDrinks (A,B,C,D,E).
+nND (F,E) :- ND(F,C), AllDrinks (A,B,C,D,E).
+
+nND (F,A) :- ND (F,D), AllDrinks (A,B,C,D,E).
+nND (F,B) :- ND (F,D), AllDrinks (A,B,C,D,E).
+nND (F,C) :- ND (F,D), AllDrinks (A,B,C,D,E).
+nND (F,E) :- ND (F,D), AllDrinks (A,B,C,D,E).
+
+nND (F,A) :- ND (F,E), AllDrinks (A,B,C,D,E).
+nND (F,B) :- ND (F,E), AllDrinks (A,B,C,D,E).
+nND (F,C) :- ND (F,E), AllDrinks (A,B,C,D,E).
+nND (F,D) :- ND (F,E), AllDrinks (A,B,C,D,E).
+
+ND (A,F) :- nND (B,F), nND (C,F), nND (D,F), nND (E,F), AllNats (A,B,C,D,E).
+ND (B,F) :- nND (A,F), nND (C,F), nND (D,F), nND (E,F), AllNats (A,B,C,D,E).
+ND (C,F) :- nND (B,F), nND (A,F), nND (D,F), nND (E,F), AllNats (A,B,C,D,E).
+ND (D,F) :- nND (B,F), nND (C,F), nND (A,F), nND (E,F), AllNats (A,B,C,D,E).
+ND (E,F) :- nND (B,F), nND (C,F), nND (D,F), nND (A,F), AllNats (A,B,C,D,E).
+
+ND (F,A) :- nND (F,B), nND (F,C), nND (F,D), nND (F,E), AllDrinks (A,B,C,D,E).
+ND (F,B) :- nND (F,A), nND (F,C), nND (F,D), nND (F,E), AllDrinks (A,B,C,D,E).
+ND (F,C) :- nND (F,A), nND (F,B), nND (F,D), nND (F,E), AllDrinks (A,B,C,D,E).
+ND (F,D) :- nND (F,A), nND (F,B), nND (F,C), nND (F,E), AllDrinks (A,B,C,D,E).
+ND (F,E) :- nND (F,A), nND (F,B), nND (F,C), nND (F,D), AllDrinks (A,B,C,D,E). 
+
+
+nNS (B,F) :- NS (A,F), AllNats(A,B,C,D,E).
+nNS (C,F) :- NS (A,F), AllNats(A,B,C,D,E).
+nNS (D,F) :- NS (A,F), AllNats(A,B,C,D,E).
+nNS (E,F) :- NS(A,F), AllNats(A,B,C,D,E).
+
+nNS (A,F) :- NS (B,F), AllNats(A,B,C,D,E).
+nNS (C,F) :- NS (B,F), AllNats(A,B,C,D,E).
+nNS (D,F) :- NS (B,F), AllNats(A,B,C,D,E).
+nNS (E,F) :- NS (B,F), AllNats(A,B,C,D,E).
+
+nNS (A,F) :- NS (C,F), AllNats(A,B,C,D,E).
+nNS (B,F) :- NS (C,F), AllNats(A,B,C,D,E).
+nNS (D,F) :- NS (C,F), AllNats(A,B,C,D,E).
+nNS (E,F) :- NS (C,F), AllNats(A,B,C,D,E).
+
+nNS (A,F) :- NS (D,F), AllNats(A,B,C,D,E).
+nNS (C,F) :- NS (D,F), AllNats(A,B,C,D,E).
+nNS (B,F) :- NS (D,F), AllNats(A,B,C,D,E).
+nNS (E,F) :- NS (D,F), AllNats(A,B,C,D,E).
+
+nNS (A,F) :- NS (E,F), AllNats(A,B,C,D,E).
+nNS (C,F) :- NS (E,F), AllNats(A,B,C,D,E).
+nNS (D,F) :- NS (E,F), AllNats(A,B,C,D,E).
+nNS (B,F) :- NS (E,F), AllNats(A,B,C,D,E).
+
+nNS (F,B) :- NS (F,A), AllSmokes (A,B,C,D,E).
+nNS (F,C) :- NS (F,A), AllSmokes (A,B,C,D,E).
+nNS (F,D) :- NS (F,A), AllSmokes (A,B,C,D,E).
+nNS (F,E) :- NS (F,A), AllSmokes (A,B,C,D,E).
+
+nNS (F,A) :- NS (F,B), AllSmokes (A,B,C,D,E).
+nNS (F,C) :- NS (F,B), AllSmokes (A,B,C,D,E).
+nNS (F,D) :- NS (F,B), AllSmokes (A,B,C,D,E).
+nNS (F,E) :- NS (F,B), AllSmokes (A,B,C,D,E).
+
+nNS (F,A) :- NS (F,C), AllSmokes (A,B,C,D,E).
+nNS (F,B) :- NS (F,C), AllSmokes (A,B,C,D,E).
+nNS (F,D) :- NS (F,C), AllSmokes (A,B,C,D,E).
+nNS (F,E) :- NS (F,C), AllSmokes (A,B,C,D,E).
+
+nNS (F,A) :- NS (F,D), AllSmokes (A,B,C,D,E).
+nNS (F,B) :- NS (F,D), AllSmokes (A,B,C,D,E).
+nNS (F,C) :- NS (F,D), AllSmokes (A,B,C,D,E).
+nNS (F,E) :- NS (F,D), AllSmokes (A,B,C,D,E).
+
+nNS (F,A) :- NS (F,E), AllSmokes (A,B,C,D,E).
+nNS (F,B) :- NS (F,E), AllSmokes (A,B,C,D,E).
+nNS (F,C) :- NS (F,E), AllSmokes (A,B,C,D,E).
+nNS (F,D) :- NS (F,E), AllSmokes (A,B,C,D,E).
+
+NS (A,F) :- nNS (B,F), nNS (C,F), nNS (D,F), nNS (E,F), AllNats (A,B,C,D,E).
+NS (B,F) :- nNS (A,F), nNS (C,F), nNS (D,F), nNS (E,F), AllNats (A,B,C,D,E).
+NS (C,F) :- nNS (B,F), nNS (A,F), nNS (D,F), nNS (E,F), AllNats (A,B,C,D,E).
+NS (D,F) :- nNS (B,F), nNS (C,F), nNS (A,F), nNS (E,F), AllNats (A,B,C,D,E).
+NS (E,F) :- nNS (B,F), nNS (C,F), nNS (D,F), nNS (A,F), AllNats (A,B,C,D,E).
+
+NS (F,A) :- nNS (F,B), nNS (F,C), nNS (F,D), nNS (F,E), AllSmokes (A,B,C,D,E).
+NS (F,B) :- nNS (F,A), nNS (F,C), nNS (F,D), nNS (F,E), AllSmokes (A,B,C,D,E).
+NS (F,C) :- nNS (F,A), nNS (F,B), nNS (F,D), nNS (F,E), AllSmokes (A,B,C,D,E).
+NS (F,D) :- nNS (F,A), nNS (F,B), nNS (F,C), nNS (F,E), AllSmokes (A,B,C,D,E).
+NS (F,E) :- nNS (F,A), nNS (F,B), nNS (F,C), nNS (F,D), AllSmokes (A,B,C,D,E).
+
+
+nNP (B,F) :- NP (A,F), AllNats(A,B,C,D,E).
+nNP (C,F) :- NP (A,F), AllNats(A,B,C,D,E).
+nNP (D,F) :- NP (A,F), AllNats(A,B,C,D,E).
+nNP (E,F) :- NP (A,F), AllNats(A,B,C,D,E).
+
+nNP (A,F) :- NP (B,F), AllNats(A,B,C,D,E).
+nNP (C,F) :- NP (B,F), AllNats(A,B,C,D,E).
+nNP (D,F) :- NP (B,F), AllNats(A,B,C,D,E).
+nNP (E,F) :- NP (B,F), AllNats(A,B,C,D,E).
+
+nNP (A,F) :- NP (C,F), AllNats(A,B,C,D,E).
+nNP (B,F) :- NP (C,F), AllNats(A,B,C,D,E).
+nNP (D,F) :- NP (C,F), AllNats(A,B,C,D,E).
+nNP (E,F) :- NP (C,F), AllNats(A,B,C,D,E).
+
+nNP (A,F) :- NP (D,F), AllNats(A,B,C,D,E).
+nNP (C,F) :- NP (D,F), AllNats(A,B,C,D,E).
+nNP (B,F) :- NP (D,F), AllNats(A,B,C,D,E).
+nNP (E,F) :- NP (D,F), AllNats(A,B,C,D,E).
+
+nNP (A,F) :- NP (E,F), AllNats(A,B,C,D,E).
+nNP (C,F) :- NP (E,F), AllNats(A,B,C,D,E).
+nNP (D,F) :- NP (E,F), AllNats(A,B,C,D,E).
+nNP (B,F) :- NP (E,F), AllNats(A,B,C,D,E).
+
+nNP (F,B) :- NP (F,A), AllPets (A,B,C,D,E).
+nNP (F,C) :- NP (F,A), AllPets (A,B,C,D,E).
+nNP (F,D) :- NP (F,A), AllPets (A,B,C,D,E).
+nNP (F,E) :- NP (F,A), AllPets (A,B,C,D,E).
+
+nNP (F,A) :- NP (F,B), AllPets (A,B,C,D,E).
+nNP (F,C) :- NP (F,B), AllPets (A,B,C,D,E).
+nNP (F,D) :- NP (F,B), AllPets (A,B,C,D,E).
+nNP (F,E) :- NP (F,B), AllPets (A,B,C,D,E).
+
+nNP (F,A) :- NP (F,C), AllPets (A,B,C,D,E).
+nNP (F,B) :- NP (F,C), AllPets (A,B,C,D,E).
+nNP (F,D) :- NP (F,C), AllPets (A,B,C,D,E).
+nNP (F,E) :- NP (F,C), AllPets (A,B,C,D,E).
+
+nNP (F,A) :- NP (F,D), AllPets (A,B,C,D,E).
+nNP (F,B) :- NP (F,D), AllPets (A,B,C,D,E).
+nNP (F,C) :- NP (F,D), AllPets (A,B,C,D,E).
+nNP (F,E) :- NP (F,D), AllPets (A,B,C,D,E).
+
+nNP (F,A) :- NP (F,E), AllPets (A,B,C,D,E).
+nNP (F,B) :- NP (F,E), AllPets (A,B,C,D,E).
+nNP (F,C) :- NP (F,E), AllPets (A,B,C,D,E).
+nNP (F,D) :- NP (F,E), AllPets (A,B,C,D,E).
+
+NP (A,F) :- nNP (B,F), nNP (C,F), nNP (D,F), nNP (E,F), AllNats (A,B,C,D,E).
+NP (B,F) :- nNP (A,F), nNP (C,F), nNP (D,F), nNP (E,F), AllNats (A,B,C,D,E).
+NP (C,F) :- nNP (B,F), nNP (A,F), nNP (D,F), nNP (E,F), AllNats (A,B,C,D,E).
+NP (D,F) :- nNP (B,F), nNP (C,F), nNP (A,F), nNP (E,F), AllNats (A,B,C,D,E).
+NP (E,F) :- nNP (B,F), nNP (C,F), nNP (D,F), nNP (A,F), AllNats (A,B,C,D,E).
+
+NP (F,A) :- nNP (F,B), nNP (F,C), nNP (F,D), nNP (F,E), AllPets (A,B,C,D,E).
+NP (F,B) :- nNP (F,A), nNP (F,C), nNP (F,D), nNP (F,E), AllPets (A,B,C,D,E).
+NP (F,C) :- nNP (F,A), nNP (F,B), nNP (F,D), nNP (F,E), AllPets (A,B,C,D,E).
+NP (F,D) :- nNP (F,A), nNP (F,B), nNP (F,C), nNP (F,E), AllPets (A,B,C,D,E).
+NP (F,E) :- nNP (F,A), nNP (F,B), nNP (F,C), nNP (F,D), AllPets (A,B,C,D,E). 
+
+
+nDP (B,F) :- DP (A,F), AllDrinks(A,B,C,D,E).
+nDP (C,F) :- DP (A,F), AllDrinks(A,B,C,D,E).
+nDP (D,F) :- DP (A,F), AllDrinks(A,B,C,D,E).
+nDP (E,F) :- DP (A,F), AllDrinks(A,B,C,D,E).
+
+nDP (A,F) :- DP (B,F), AllDrinks(A,B,C,D,E).
+nDP (C,F) :- DP (B,F), AllDrinks(A,B,C,D,E).
+nDP (D,F) :- DP (B,F), AllDrinks(A,B,C,D,E).
+nDP (E,F) :- DP (B,F), AllDrinks(A,B,C,D,E).
+
+nDP (A,F) :- DP (C,F), AllDrinks(A,B,C,D,E).
+nDP (B,F) :- DP (C,F), AllDrinks(A,B,C,D,E).
+nDP (D,F) :- DP (C,F), AllDrinks(A,B,C,D,E).
+nDP (E,F) :- DP (C,F), AllDrinks(A,B,C,D,E).
+
+nDP (A,F) :- DP (D,F), AllDrinks(A,B,C,D,E).
+nDP (C,F) :- DP (D,F), AllDrinks(A,B,C,D,E).
+nDP (B,F) :- DP (D,F), AllDrinks(A,B,C,D,E).
+nDP (E,F) :- DP (D,F), AllDrinks(A,B,C,D,E).
+
+nDP (A,F) :- DP (E,F), AllDrinks(A,B,C,D,E).
+nDP (C,F) :- DP (E,F), AllDrinks(A,B,C,D,E).
+nDP (D,F) :- DP (E,F), AllDrinks(A,B,C,D,E).
+nDP (B,F) :- DP (E,F), AllDrinks(A,B,C,D,E).
+
+nDP (F,B) :- DP (F,A), AllPets (A,B,C,D,E).
+nDP (F,C) :- DP (F,A), AllPets (A,B,C,D,E).
+nDP (F,D) :- DP (F,A), AllPets (A,B,C,D,E).
+nDP (F,E) :- DP (F,A), AllPets (A,B,C,D,E).
+
+nDP (F,A) :- DP (F,B), AllPets (A,B,C,D,E).
+nDP (F,C) :- DP (F,B), AllPets (A,B,C,D,E).
+nDP (F,D) :- DP (F,B), AllPets (A,B,C,D,E).
+nDP (F,E) :- DP (F,B), AllPets (A,B,C,D,E).
+
+nDP (F,A) :- DP (F,C), AllPets (A,B,C,D,E).
+nDP (F,B) :- DP (F,C), AllPets (A,B,C,D,E).
+nDP (F,D) :- DP (F,C), AllPets (A,B,C,D,E).
+nDP (F,E) :- DP (F,C), AllPets (A,B,C,D,E).
+
+nDP (F,A) :- DP (F,D), AllPets (A,B,C,D,E).
+nDP (F,B) :- DP (F,D), AllPets (A,B,C,D,E).
+nDP (F,C) :- DP (F,D), AllPets (A,B,C,D,E).
+nDP (F,E) :- DP (F,D), AllPets (A,B,C,D,E).
+
+nDP (F,A) :- DP (F,E), AllPets (A,B,C,D,E).
+nDP (F,B) :- DP (F,E), AllPets (A,B,C,D,E).
+nDP (F,C) :- DP (F,E), AllPets (A,B,C,D,E).
+nDP (F,D) :- DP (F,E), AllPets (A,B,C,D,E).
+
+DP (A,F) :- nDP (B,F), nDP (C,F), nDP (D,F), nDP (E,F), AllDrinks (A,B,C,D,E).
+DP (B,F) :- nDP (A,F), nDP (C,F), nDP (D,F), nDP (E,F), AllDrinks (A,B,C,D,E).
+DP (C,F) :- nDP (B,F), nDP (A,F), nDP (D,F), nDP (E,F), AllDrinks (A,B,C,D,E).
+DP (D,F) :- nDP (B,F), nDP (C,F), nDP (A,F), nDP (E,F), AllDrinks (A,B,C,D,E).
+DP (E,F) :- nDP (B,F), nDP (C,F), nDP (D,F), nDP (A,F), AllDrinks (A,B,C,D,E).
+
+DP (F,A) :- nDP (F,B), nDP (F,C), nDP (F,D), nDP (F,E), AllPets (A,B,C,D,E).
+DP (F,B) :- nDP (F,A), nDP (F,C), nDP (F,D), nDP (F,E), AllPets (A,B,C,D,E).
+DP (F,C) :- nDP (F,A), nDP (F,B), nDP (F,D), nDP (F,E), AllPets (A,B,C,D,E).
+DP (F,D) :- nDP (F,A), nDP (F,B), nDP (F,C), nDP (F,E), AllPets (A,B,C,D,E).
+DP (F,E) :- nDP (F,A), nDP (F,B), nDP (F,C), nDP (F,D), AllPets (A,B,C,D,E).
+
+
+nDS (B,F) :- DS (A,F), AllDrinks(A,B,C,D,E).
+nDS (C,F) :- DS (A,F), AllDrinks(A,B,C,D,E).
+nDS (D,F) :- DS (A,F), AllDrinks(A,B,C,D,E).
+nDS (E,F) :- DS (A,F), AllDrinks(A,B,C,D,E).
+
+nDS (A,F) :- DS (B,F), AllDrinks(A,B,C,D,E).
+nDS (C,F) :- DS (B,F), AllDrinks(A,B,C,D,E).
+nDS (D,F) :- DS (B,F), AllDrinks(A,B,C,D,E).
+nDS (E,F) :- DS (B,F), AllDrinks(A,B,C,D,E).
+
+nDS (A,F) :- DS (C,F), AllDrinks(A,B,C,D,E).
+nDS (B,F) :- DS (C,F), AllDrinks(A,B,C,D,E).
+nDS (D,F) :- DS (C,F), AllDrinks(A,B,C,D,E).
+nDS (E,F) :- DS (C,F), AllDrinks(A,B,C,D,E).
+
+nDS (A,F) :- DS (D,F), AllDrinks(A,B,C,D,E).
+nDS (C,F) :- DS (D,F), AllDrinks(A,B,C,D,E).
+nDS (B,F) :- DS (D,F), AllDrinks(A,B,C,D,E).
+nDS (E,F) :- DS (D,F), AllDrinks(A,B,C,D,E).
+
+nDS (A,F) :- DS (E,F), AllDrinks(A,B,C,D,E).
+nDS (C,F) :- DS (E,F), AllDrinks(A,B,C,D,E).
+nDS (D,F) :- DS (E,F), AllDrinks(A,B,C,D,E).
+nDS (B,F) :- DS (E,F), AllDrinks(A,B,C,D,E).
+
+nDS (F,B) :- DS (F,A), AllSmokes (A,B,C,D,E).
+nDS (F,C) :- DS (F,A), AllSmokes (A,B,C,D,E).
+nDS (F,D) :- DS (F,A), AllSmokes (A,B,C,D,E).
+nDS (F,E) :- DS (F,A), AllSmokes (A,B,C,D,E).
+
+nDS (F,A) :- DS (F,B), AllSmokes (A,B,C,D,E).
+nDS (F,C) :- DS (F,B), AllSmokes (A,B,C,D,E).
+nDS (F,D) :- DS (F,B), AllSmokes (A,B,C,D,E).
+nDS (F,E) :- DS (F,B), AllSmokes (A,B,C,D,E).
+
+nDS (F,A) :- DS (F,C), AllSmokes (A,B,C,D,E).
+nDS (F,B) :- DS (F,C), AllSmokes (A,B,C,D,E).
+nDS (F,D) :- DS (F,C), AllSmokes (A,B,C,D,E).
+nDS (F,E) :- DS (F,C), AllSmokes (A,B,C,D,E).
+
+nDS (F,A) :- DS (F,D), AllSmokes (A,B,C,D,E).
+nDS (F,B) :- DS (F,D), AllSmokes (A,B,C,D,E).
+nDS (F,C) :- DS (F,D), AllSmokes (A,B,C,D,E).
+nDS (F,E) :- DS (F,D), AllSmokes (A,B,C,D,E).
+
+nDS (F,A) :- DS (F,E), AllSmokes (A,B,C,D,E).
+nDS (F,B) :- DS (F,E), AllSmokes (A,B,C,D,E).
+nDS (F,C) :- DS (F,E), AllSmokes (A,B,C,D,E).
+nDS (F,D) :- DS (F,E), AllSmokes (A,B,C,D,E).
+
+DS (A,F) :- nDS (B,F), nDS (C,F), nDS (D,F), nDS (E,F), AllDrinks (A,B,C,D,E).
+DS (B,F) :- nDS (A,F), nDS (C,F), nDS (D,F), nDS (E,F), AllDrinks (A,B,C,D,E).
+DS (C,F) :- nDS (B,F), nDS (A,F), nDS (D,F), nDS (E,F), AllDrinks (A,B,C,D,E).
+DS (D,F) :- nDS (B,F), nDS (C,F), nDS (A,F), nDS (E,F), AllDrinks (A,B,C,D,E).
+DS (E,F) :- nDS (B,F), nDS (C,F), nDS (D,F), nDS (A,F), AllDrinks (A,B,C,D,E).
+
+DS (F,A) :- nDS (F,B), nDS (F,C), nDS (F,D), nDS (F,E), AllSmokes (A,B,C,D,E).
+DS (F,B) :- nDS (F,A), nDS (F,C), nDS (F,D), nDS (F,E), AllSmokes (A,B,C,D,E).
+DS (F,C) :- nDS (F,A), nDS (F,B), nDS (F,D), nDS (F,E), AllSmokes (A,B,C,D,E).
+DS (F,D) :- nDS (F,A), nDS (F,B), nDS (F,C), nDS (F,E), AllSmokes (A,B,C,D,E).
+DS (F,E) :- nDS (F,A), nDS (F,B), nDS (F,C), nDS (F,D), AllSmokes (A,B,C,D,E). 
+
+
+nSP (B,F) :- SP (A,F), AllSmokes(A,B,C,D,E).
+nSP (C,F) :- SP (A,F), AllSmokes(A,B,C,D,E).
+nSP (D,F) :- SP (A,F), AllSmokes(A,B,C,D,E).
+nSP (E,F) :- SP (A,F), AllSmokes(A,B,C,D,E).
+
+nSP (A,F) :- SP (B,F), AllSmokes(A,B,C,D,E).
+nSP (C,F) :- SP (B,F), AllSmokes(A,B,C,D,E).
+nSP (D,F) :- SP (B,F), AllSmokes(A,B,C,D,E).
+nSP (E,F) :- SP (B,F), AllSmokes(A,B,C,D,E).
+
+nSP (A,F) :- SP (C,F), AllSmokes(A,B,C,D,E).
+nSP (B,F) :- SP (C,F), AllSmokes(A,B,C,D,E).
+nSP (D,F) :- SP (C,F), AllSmokes(A,B,C,D,E).
+nSP (E,F) :- SP (C,F), AllSmokes(A,B,C,D,E).
+
+nSP (A,F) :- SP (D,F), AllSmokes(A,B,C,D,E).
+nSP (C,F) :- SP (D,F), AllSmokes(A,B,C,D,E).
+nSP (B,F) :- SP (D,F), AllSmokes(A,B,C,D,E).
+nSP (E,F) :- SP (D,F), AllSmokes(A,B,C,D,E).
+
+nSP (A,F) :- SP (E,F), AllSmokes(A,B,C,D,E).
+nSP (C,F) :- SP (E,F), AllSmokes(A,B,C,D,E).
+nSP (D,F) :- SP (E,F), AllSmokes(A,B,C,D,E).
+nSP (B,F) :- SP (E,F), AllSmokes(A,B,C,D,E).
+
+nSP (F,B) :- SP (F,A), AllPets (A,B,C,D,E).
+nSP (F,C) :- SP (F,A), AllPets (A,B,C,D,E).
+nSP (F,D) :- SP (F,A), AllPets (A,B,C,D,E).
+nSP (F,E) :- SP (F,A), AllPets (A,B,C,D,E).
+
+nSP (F,A) :- SP (F,B), AllPets (A,B,C,D,E).
+nSP (F,C) :- SP (F,B), AllPets (A,B,C,D,E).
+nSP (F,D) :- SP (F,B), AllPets (A,B,C,D,E).
+nSP (F,E) :- SP (F,B), AllPets (A,B,C,D,E).
+
+nSP (F,A) :- SP (F,C), AllPets (A,B,C,D,E).
+nSP (F,B) :- SP (F,C), AllPets (A,B,C,D,E).
+nSP (F,D) :- SP (F,C), AllPets (A,B,C,D,E).
+nSP (F,E) :- SP (F,C), AllPets (A,B,C,D,E).
+
+nSP (F,A) :- SP (F,D), AllPets (A,B,C,D,E).
+nSP (F,B) :- SP (F,D), AllPets (A,B,C,D,E).
+nSP (F,C) :- SP (F,D), AllPets (A,B,C,D,E).
+nSP (F,E) :- SP (F,D), AllPets (A,B,C,D,E).
+
+nSP (F,A) :- SP (F,E), AllPets (A,B,C,D,E).
+nSP (F,B) :- SP (F,E), AllPets (A,B,C,D,E).
+nSP (F,C) :- SP (F,E), AllPets (A,B,C,D,E).
+nSP (F,D) :- SP (F,E), AllPets (A,B,C,D,E).
+
+SP (A,F) :- nSP (B,F), nSP (C,F), nSP (D,F), nSP (E,F), AllSmokes (A,B,C,D,E).
+SP (B,F) :- nSP (A,F), nSP (C,F), nSP (D,F), nSP (E,F), AllSmokes (A,B,C,D,E).
+SP (C,F) :- nSP (B,F), nSP (A,F), nSP (D,F), nSP (E,F), AllSmokes (A,B,C,D,E).
+SP (D,F) :- nSP (B,F), nSP (C,F), nSP (A,F), nSP (E,F), AllSmokes (A,B,C,D,E).
+SP (E,F) :- nSP (B,F), nSP (C,F), nSP (D,F), nSP (A,F), AllSmokes (A,B,C,D,E).
+
+SP (F,A) :- nSP (F,B), nSP (F,C), nSP (F,D), nSP (F,E), AllPets (A,B,C,D,E).
+SP (F,B) :- nSP (F,A), nSP (F,C), nSP (F,D), nSP (F,E), AllPets (A,B,C,D,E).
+SP (F,C) :- nSP (F,A), nSP (F,B), nSP (F,D), nSP (F,E), AllPets (A,B,C,D,E).
+SP (F,D) :- nSP (F,A), nSP (F,B), nSP (F,C), nSP (F,E), AllPets (A,B,C,D,E).
+SP (F,E) :- nSP (F,A), nSP (F,B), nSP (F,C), nSP (F,D), AllPets (A,B,C,D,E). 
+
+
+Queries:
+# Contradiction(A,B)?
+
+HC(A,B)?
+HN(A,B)?
+HD(A,B)?
+HS(A,B)?
+HP(A,B)?
+CN(A,B)?
+CD(A,B)?
+CS(A,B)?
+CP(A,B)?
+ND(A,B)?
+NS(A,B)?
+NP(A,B)?
+DS(A,B)?
+DP(A,B)?
+SP(A,B)?
+
+ nHC(A,B)?
+nHN(A,B)?
+nHD(A,B)?
+nHS(A,B)?
+nHP(A,B)?
+nCN(A,B)?
+nCD(A,B)?
+nCS(A,B)?
+nCP(A,B)?
+nND(A,B)?
+nNS(A,B)?
+nNP(A,B)?
+nDS(A,B)?
+nDP(A,B)?
+nSP(A,B)? 
+

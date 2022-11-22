@@ -1,0 +1,1864 @@
+Schemes:
+
+gt(A,B)
+ngt(A,B)
+gn(A,B)
+ngn(A,B)
+gc(A,B)
+ngc(A,B)
+gs(A,B)
+ngs(A,B)
+ga(A,B)
+nga(A,B)
+gj(A,B)
+ngj(A,B)
+Allg(a,b,c,d,e)
+
+tn(A,B)
+ntn(A,B)
+tc(A,B)
+ntc(A,B)
+ts(A,B)
+nts(A,B)
+ta(A,B)
+nta(A,B)
+tj(A,B)
+ntj(A,B)
+Allt(a,b,c,d,e)
+
+nc(A,B)
+nnc(A,B)
+ns(A,B)
+nns(A,B)
+na(A,B)
+nna(A,B)
+nj(A,B)
+nnj(A,B)
+Alln(a,b,c,d,e)
+
+cs(A,B)
+ncs(A,B)
+ca(A,B)
+nca(A,B)
+cj(A,B)
+ncj(A,B)
+Allc(a,b,c,d,e)
+
+sa(A,B)
+nsa(A,B)
+sj(A,B)
+nsj(A,B)
+Alls(a,b,c,d,e)
+
+aj(A,B)
+naj(A,B)
+Alla(a,b,c,d,e)
+
+Allj(a,b,c,d,e)
+
+Facts:
+Allg('1','2','3','4','5').
+Allt('black','blue','green','red','white').
+Alln('ella','julia','lily','makayla','riley').
+Allc('aztec','chinese','egyptian','greek','roman').
+Alls('architecture','art','economy','religion','science').
+Alla('10','11','12','13','14').
+Allj('apple','cranberry','grapefruit','orange','strawberry').
+gj('4','strawberry').
+gj('5','apple').
+tj('green','apple').
+gs('4','religion').
+nga('1','12').
+nga('5','11').
+ngc('2','egyptian').
+ngc('3','egyptian').
+ngc('4','egyptian').
+ngt('1','red').
+ngt('2','red').
+ngt('1','black').
+ngs('4','science').
+ngs('5','science').
+ngt('5','black').
+ngt('5','red').
+ngt('1','white').
+cj('greek','cranberry').
+gn('3','ella').
+nsa('architecture','12').
+nsj('art','strawberry').
+nsj('art','apple').
+nnc('riley','roman').
+nts('black','science').
+nts('red','science').
+nga('4','13').
+nga('5','13').
+ngj('1','grapefruit').
+ngj('2','grapefruit').
+ngj('1','cranberry').
+ngj('5','cranberry').
+naj('13','cranberry').
+naj('13','grapefruit').
+ngs('2','science').
+ngs('3','science').
+ngs('4','science').
+ngs('2','architecture').
+ngs('3','architecture').
+ngs('4','architecture').
+nns('lily','economy').
+ngn('1','lily').
+ngs('5','economy').
+na('makayla','10').
+ngc('1','chinese').
+ngc('2','chinese').
+ngc('4','roman').
+ngc('5','roman').
+ngc('1','aztec').
+ngc('5','aztec').
+nga('2','10').
+nga('3','10').
+nga('4','10').
+gs('2','art').
+
+Rules:
+gt(A,C) :- gn(A,B), tn(C,B).
+ngt(A,C) :- ngn(A,B), tn(C,B).
+ngt(A,C) :- gn(A,B), ntn(C,B).
+gt(A,C) :- gc(A,B), tc(C,B).
+ngt(A,C) :- ngc(A,B), tc(C,B).
+ngt(A,C) :- gc(A,B), ntc(C,B).
+gt(A,C) :- gs(A,B), ts(C,B).
+ngt(A,C) :- ngs(A,B), ts(C,B).
+ngt(A,C) :- gs(A,B), nts(C,B).
+gt(A,C) :- ga(A,B), ta(C,B).
+ngt(A,C) :- nga(A,B), ta(C,B).
+ngt(A,C) :- ga(A,B), nta(C,B).
+gt(A,C) :- gj(A,B), tj(C,B).
+ngt(A,C) :- ngj(A,B), tj(C,B).
+ngt(A,C) :- gj(A,B), ntj(C,B).
+
+gn(A,C) :- gt(A,B), tn(B,C).
+ngn(A,C) :- ngt(A,B), tn(B,C).
+ngn(A,C) :- gt(A,B), ntn(B,C).
+gn(A,C) :- gc(A,B), nc(C,B).
+ngn(A,C) :- ngc(A,B), nc(C,B).
+ngn(A,C) :- gc(A,B), nnc(C,B).
+gn(A,C) :- gs(A,B), ns(C,B).
+ngn(A,C) :- ngs(A,B), ns(C,B).
+ngn(A,C) :- gs(A,B), nns(C,B).
+gn(A,C) :- ga(A,B), na(C,B).
+ngn(A,C) :- nga(A,B), na(C,B).
+ngn(A,C) :- ga(A,B), nna(C,B).
+gn(A,C) :- gj(A,B), nj(C,B).
+ngn(A,C) :- ngj(A,B), nj(C,B).
+ngn(A,C) :- gj(A,B), nnj(C,B).
+
+gc(A,C) :- gt(A,B), tc(B,C).
+ngc(A,C) :- ngt(A,B), tc(B,C).
+ngc(A,C) :- gt(A,B), ntc(B,C).
+gc(A,C) :- gn(A,B), nc(B,C).
+ngc(A,C) :- ngn(A,B), nc(B,C).
+ngc(A,C) :- gn(A,B), nnc(B,C).
+gc(A,C) :- gs(A,B), cs(C,B).
+ngc(A,C) :- ngs(A,B), cs(C,B).
+ngc(A,C) :- gs(A,B), ncs(C,B).
+gc(A,C) :- ga(A,B), ca(C,B).
+ngc(A,C) :- nga(A,B), ca(C,B).
+ngc(A,C) :- ga(A,B), nca(C,B).
+gc(A,C) :- gj(A,B), cj(C,B).
+ngc(A,C) :- ngj(A,B), cj(C,B).
+ngc(A,C) :- gj(A,B), ncj(C,B).
+
+gs(A,C) :- gt(A,B), ts(B,C).
+ngs(A,C) :- ngt(A,B), ts(B,C).
+ngs(A,C) :- gt(A,B), nts(B,C).
+gs(A,C) :- gn(A,B), ns(B,C).
+ngs(A,C) :- ngn(A,B), ns(B,C).
+ngs(A,C) :- gn(A,B), nns(B,C).
+gs(A,C) :- gc(A,B), cs(B,C).
+ngs(A,C) :- ngc(A,B), cs(B,C).
+ngs(A,C) :- gc(A,B), ncs(B,C).
+gs(A,C) :- ga(A,B), sa(C,B).
+ngs(A,C) :- nga(A,B), sa(C,B).
+ngs(A,C) :- ga(A,B), nsa(C,B).
+gs(A,C) :- gj(A,B), sj(C,B).
+ngs(A,C) :- ngj(A,B), sj(C,B).
+ngs(A,C) :- gj(A,B), nsj(C,B).
+
+ga(A,C) :- gt(A,B), ta(B,C).
+nga(A,C) :- ngt(A,B), ta(B,C).
+nga(A,C) :- gt(A,B), nta(B,C).
+ga(A,C) :- gn(A,B), na(B,C).
+nga(A,C) :- ngn(A,B), na(B,C).
+nga(A,C) :- gn(A,B), nna(B,C).
+ga(A,C) :- gc(A,B), ca(B,C).
+nga(A,C) :- ngc(A,B), ca(B,C).
+nga(A,C) :- gc(A,B), nca(B,C).
+ga(A,C) :- gs(A,B), sa(B,C).
+nga(A,C) :- ngs(A,B), sa(B,C).
+nga(A,C) :- gs(A,B), nsa(B,C).
+ga(A,C) :- gj(A,B), aj(C,B).
+nga(A,C) :- ngj(A,B), aj(C,B).
+nga(A,C) :- gj(A,B), naj(C,B).
+
+gj(A,C) :- gt(A,B), tj(B,C).
+ngj(A,C) :- ngt(A,B), tj(B,C).
+ngj(A,C) :- gt(A,B), ntj(B,C).
+gj(A,C) :- gn(A,B), nj(B,C).
+ngj(A,C) :- ngn(A,B), nj(B,C).
+ngj(A,C) :- gn(A,B), nnj(B,C).
+gj(A,C) :- gc(A,B), cj(B,C).
+ngj(A,C) :- ngc(A,B), cj(B,C).
+ngj(A,C) :- gc(A,B), ncj(B,C).
+gj(A,C) :- gs(A,B), sj(B,C).
+ngj(A,C) :- ngs(A,B), sj(B,C).
+ngj(A,C) :- gs(A,B), nsj(B,C).
+gj(A,C) :- ga(A,B), aj(B,C).
+ngj(A,C) :- nga(A,B), aj(B,C).
+ngj(A,C) :- ga(A,B), naj(B,C).
+
+tn(A,C) :- gt(B,A), gn(B,C).
+ntn(A,C) :- ngt(B,A), gn(B,C).
+ntn(A,C) :- gt(B,A), ngn(B,C).
+tn(A,C) :- tc(A,B), nc(C,B).
+ntn(A,C) :- ntc(A,B), nc(C,B).
+ntn(A,C) :- tc(A,B), nnc(C,B).
+tn(A,C) :- ts(A,B), ns(C,B).
+ntn(A,C) :- nts(A,B), ns(C,B).
+ntn(A,C) :- ts(A,B), nns(C,B).
+tn(A,C) :- ta(A,B), na(C,B).
+ntn(A,C) :- nta(A,B), na(C,B).
+ntn(A,C) :- ta(A,B), nna(C,B).
+tn(A,C) :- tj(A,B), nj(C,B).
+ntn(A,C) :- ntj(A,B), nj(C,B).
+ntn(A,C) :- tj(A,B), nnj(C,B).
+
+tc(A,C) :- gt(B,A), gc(B,C).
+ntc(A,C) :- ngt(B,A), gc(B,C).
+ntc(A,C) :- gt(B,A), ngc(B,C).
+tc(A,C) :- tn(A,B), nc(B,C).
+ntc(A,C) :- ntn(A,B), nc(B,C).
+ntc(A,C) :- tn(A,B), nnc(B,C).
+tc(A,C) :- ts(A,B), cs(C,B).
+ntc(A,C) :- nts(A,B), cs(C,B).
+ntc(A,C) :- ts(A,B), ncs(C,B).
+tc(A,C) :- ta(A,B), ca(C,B).
+ntc(A,C) :- nta(A,B), ca(C,B).
+ntc(A,C) :- ta(A,B), nca(C,B).
+tc(A,C) :- tj(A,B), cj(C,B).
+ntc(A,C) :- ntj(A,B), cj(C,B).
+ntc(A,C) :- tj(A,B), ncj(C,B).
+
+ts(A,C) :- gt(B,A), gs(B,C).
+nts(A,C) :- ngt(B,A), gs(B,C).
+nts(A,C) :- gt(B,A), ngs(B,C).
+ts(A,C) :- tn(A,B), ns(B,C).
+nts(A,C) :- ntn(A,B), ns(B,C).
+nts(A,C) :- tn(A,B), nns(B,C).
+ts(A,C) :- tc(A,B), cs(B,C).
+nts(A,C) :- ntc(A,B), cs(B,C).
+nts(A,C) :- tc(A,B), ncs(B,C).
+ts(A,C) :- ta(A,B), sa(C,B).
+nts(A,C) :- nta(A,B), sa(C,B).
+nts(A,C) :- ta(A,B), nsa(C,B).
+ts(A,C) :- tj(A,B), sj(C,B).
+nts(A,C) :- ntj(A,B), sj(C,B).
+nts(A,C) :- tj(A,B), nsj(C,B).
+
+ta(A,C) :- gt(B,A), ga(B,C).
+nta(A,C) :- ngt(B,A), ga(B,C).
+nta(A,C) :- gt(B,A), nga(B,C).
+ta(A,C) :- tn(A,B), na(B,C).
+nta(A,C) :- ntn(A,B), na(B,C).
+nta(A,C) :- tn(A,B), nna(B,C).
+ta(A,C) :- tc(A,B), ca(B,C).
+nta(A,C) :- ntc(A,B), ca(B,C).
+nta(A,C) :- tc(A,B), nca(B,C).
+ta(A,C) :- ts(A,B), sa(B,C).
+nta(A,C) :- nts(A,B), sa(B,C).
+nta(A,C) :- ts(A,B), nsa(B,C).
+ta(A,C) :- tj(A,B), aj(C,B).
+nta(A,C) :- ntj(A,B), aj(C,B).
+nta(A,C) :- tj(A,B), naj(C,B).
+
+tj(A,C) :- gt(B,A), gj(B,C).
+ntj(A,C) :- ngt(B,A), gj(B,C).
+ntj(A,C) :- gt(B,A), ngj(B,C).
+tj(A,C) :- tn(A,B), nj(B,C).
+ntj(A,C) :- ntn(A,B), nj(B,C).
+ntj(A,C) :- tn(A,B), nnj(B,C).
+tj(A,C) :- tc(A,B), cj(B,C).
+ntj(A,C) :- ntc(A,B), cj(B,C).
+ntj(A,C) :- tc(A,B), ncj(B,C).
+tj(A,C) :- ts(A,B), sj(B,C).
+ntj(A,C) :- nts(A,B), sj(B,C).
+ntj(A,C) :- ts(A,B), nsj(B,C).
+tj(A,C) :- ta(A,B), aj(B,C).
+ntj(A,C) :- nta(A,B), aj(B,C).
+ntj(A,C) :- ta(A,B), naj(B,C).
+
+nc(A,C) :- gn(B,A), gc(B,C).
+nnc(A,C) :- ngn(B,A), gc(B,C).
+nnc(A,C) :- gn(B,A), ngc(B,C).
+nc(A,C) :- tn(B,A), tc(B,C).
+nnc(A,C) :- ntn(B,A), tc(B,C).
+nnc(A,C) :- tn(B,A), ntc(B,C).
+nc(A,C) :- ns(A,B), cs(C,B).
+nnc(A,C) :- nns(A,B), cs(C,B).
+nnc(A,C) :- ns(A,B), ncs(C,B).
+nc(A,C) :- na(A,B), ca(C,B).
+nnc(A,C) :- nna(A,B), ca(C,B).
+nnc(A,C) :- na(A,B), nca(C,B).
+nc(A,C) :- nj(A,B), cj(C,B).
+nnc(A,C) :- nnj(A,B), cj(C,B).
+nnc(A,C) :- nj(A,B), ncj(C,B).
+
+ns(A,C) :- gn(B,A), gs(B,C).
+nns(A,C) :- ngn(B,A), gs(B,C).
+nns(A,C) :- gn(B,A), ngs(B,C).
+ns(A,C) :- tn(B,A), ts(B,C).
+nns(A,C) :- ntn(B,A), ts(B,C).
+nns(A,C) :- tn(B,A), nts(B,C).
+ns(A,C) :- nc(A,B), cs(B,C).
+nns(A,C) :- nnc(A,B), cs(B,C).
+nns(A,C) :- nc(A,B), ncs(B,C).
+ns(A,C) :- na(A,B), sa(C,B).
+nns(A,C) :- nna(A,B), sa(C,B).
+nns(A,C) :- na(A,B), nsa(C,B).
+ns(A,C) :- nj(A,B), sj(C,B).
+nns(A,C) :- nnj(A,B), sj(C,B).
+nns(A,C) :- nj(A,B), nsj(C,B).
+
+na(A,C) :- gn(B,A), ga(B,C).
+nna(A,C) :- ngn(B,A), ga(B,C).
+nna(A,C) :- gn(B,A), nga(B,C).
+na(A,C) :- tn(B,A), ta(B,C).
+nna(A,C) :- ntn(B,A), ta(B,C).
+nna(A,C) :- tn(B,A), nta(B,C).
+na(A,C) :- nc(A,B), ca(B,C).
+nna(A,C) :- nnc(A,B), ca(B,C).
+nna(A,C) :- nc(A,B), nca(B,C).
+na(A,C) :- ns(A,B), sa(B,C).
+nna(A,C) :- nns(A,B), sa(B,C).
+nna(A,C) :- ns(A,B), nsa(B,C).
+na(A,C) :- nj(A,B), aj(C,B).
+nna(A,C) :- nnj(A,B), aj(C,B).
+nna(A,C) :- nj(A,B), naj(C,B).
+
+nj(A,C) :- gn(B,A), gj(B,C).
+nnj(A,C) :- ngn(B,A), gj(B,C).
+nnj(A,C) :- gn(B,A), ngj(B,C).
+nj(A,C) :- tn(B,A), tj(B,C).
+nnj(A,C) :- ntn(B,A), tj(B,C).
+nnj(A,C) :- tn(B,A), ntj(B,C).
+nj(A,C) :- nc(A,B), cj(B,C).
+nnj(A,C) :- nnc(A,B), cj(B,C).
+nnj(A,C) :- nc(A,B), ncj(B,C).
+nj(A,C) :- ns(A,B), sj(B,C).
+nnj(A,C) :- nns(A,B), sj(B,C).
+nnj(A,C) :- ns(A,B), nsj(B,C).
+nj(A,C) :- na(A,B), aj(B,C).
+nnj(A,C) :- nna(A,B), aj(B,C).
+nnj(A,C) :- na(A,B), naj(B,C).
+
+cs(A,C) :- gc(B,A), gs(B,C).
+ncs(A,C) :- ngc(B,A), gs(B,C).
+ncs(A,C) :- gc(B,A), ngs(B,C).
+cs(A,C) :- tc(B,A), ts(B,C).
+ncs(A,C) :- ntc(B,A), ts(B,C).
+ncs(A,C) :- tc(B,A), nts(B,C).
+cs(A,C) :- nc(B,A), ns(B,C).
+ncs(A,C) :- nnc(B,A), ns(B,C).
+ncs(A,C) :- nc(B,A), nns(B,C).
+cs(A,C) :- ca(A,B), sa(C,B).
+ncs(A,C) :- nca(A,B), sa(C,B).
+ncs(A,C) :- ca(A,B), nsa(C,B).
+cs(A,C) :- cj(A,B), sj(C,B).
+ncs(A,C) :- ncj(A,B), sj(C,B).
+ncs(A,C) :- cj(A,B), nsj(C,B).
+
+ca(A,C) :- gc(B,A), ga(B,C).
+nca(A,C) :- ngc(B,A), ga(B,C).
+nca(A,C) :- gc(B,A), nga(B,C).
+ca(A,C) :- tc(B,A), ta(B,C).
+nca(A,C) :- ntc(B,A), ta(B,C).
+nca(A,C) :- tc(B,A), nta(B,C).
+ca(A,C) :- nc(B,A), na(B,C).
+nca(A,C) :- nnc(B,A), na(B,C).
+nca(A,C) :- nc(B,A), nna(B,C).
+ca(A,C) :- cs(A,B), sa(B,C).
+nca(A,C) :- ncs(A,B), sa(B,C).
+nca(A,C) :- cs(A,B), nsa(B,C).
+ca(A,C) :- cj(A,B), aj(C,B).
+nca(A,C) :- ncj(A,B), aj(C,B).
+nca(A,C) :- cj(A,B), naj(C,B).
+
+cj(A,C) :- gc(B,A), gj(B,C).
+ncj(A,C) :- ngc(B,A), gj(B,C).
+ncj(A,C) :- gc(B,A), ngj(B,C).
+cj(A,C) :- tc(B,A), tj(B,C).
+ncj(A,C) :- ntc(B,A), tj(B,C).
+ncj(A,C) :- tc(B,A), ntj(B,C).
+cj(A,C) :- nc(B,A), nj(B,C).
+ncj(A,C) :- nnc(B,A), nj(B,C).
+ncj(A,C) :- nc(B,A), nnj(B,C).
+cj(A,C) :- cs(A,B), sj(B,C).
+ncj(A,C) :- ncs(A,B), sj(B,C).
+ncj(A,C) :- cs(A,B), nsj(B,C).
+cj(A,C) :- ca(A,B), aj(B,C).
+ncj(A,C) :- nca(A,B), aj(B,C).
+ncj(A,C) :- ca(A,B), naj(B,C).
+
+sa(A,C) :- gs(B,A), ga(B,C).
+nsa(A,C) :- ngs(B,A), ga(B,C).
+nsa(A,C) :- gs(B,A), nga(B,C).
+sa(A,C) :- ts(B,A), ta(B,C).
+nsa(A,C) :- nts(B,A), ta(B,C).
+nsa(A,C) :- ts(B,A), nta(B,C).
+sa(A,C) :- ns(B,A), na(B,C).
+nsa(A,C) :- nns(B,A), na(B,C).
+nsa(A,C) :- ns(B,A), nna(B,C).
+sa(A,C) :- cs(B,A), ca(B,C).
+nsa(A,C) :- ncs(B,A), ca(B,C).
+nsa(A,C) :- cs(B,A), nca(B,C).
+sa(A,C) :- sj(A,B), aj(C,B).
+nsa(A,C) :- nsj(A,B), aj(C,B).
+nsa(A,C) :- sj(A,B), naj(C,B).
+
+sj(A,C) :- gs(B,A), gj(B,C).
+nsj(A,C) :- ngs(B,A), gj(B,C).
+nsj(A,C) :- gs(B,A), ngj(B,C).
+sj(A,C) :- ts(B,A), tj(B,C).
+nsj(A,C) :- nts(B,A), tj(B,C).
+nsj(A,C) :- ts(B,A), ntj(B,C).
+sj(A,C) :- ns(B,A), nj(B,C).
+nsj(A,C) :- nns(B,A), nj(B,C).
+nsj(A,C) :- ns(B,A), nnj(B,C).
+sj(A,C) :- cs(B,A), cj(B,C).
+nsj(A,C) :- ncs(B,A), cj(B,C).
+nsj(A,C) :- cs(B,A), ncj(B,C).
+sj(A,C) :- sa(A,B), aj(B,C).
+nsj(A,C) :- nsa(A,B), aj(B,C).
+nsj(A,C) :- sa(A,B), naj(B,C).
+
+aj(A,C) :- ga(B,A), gj(B,C).
+naj(A,C) :- nga(B,A), gj(B,C).
+naj(A,C) :- ga(B,A), ngj(B,C).
+aj(A,C) :- ta(B,A), tj(B,C).
+naj(A,C) :- nta(B,A), tj(B,C).
+naj(A,C) :- ta(B,A), ntj(B,C).
+aj(A,C) :- na(B,A), nj(B,C).
+naj(A,C) :- nna(B,A), nj(B,C).
+naj(A,C) :- na(B,A), nnj(B,C).
+aj(A,C) :- ca(B,A), cj(B,C).
+naj(A,C) :- nca(B,A), cj(B,C).
+naj(A,C) :- ca(B,A), ncj(B,C).
+aj(A,C) :- sa(B,A), sj(B,C).
+naj(A,C) :- nsa(B,A), sj(B,C).
+naj(A,C) :- sa(B,A), nsj(B,C).
+
+ngt(f,b) :- gt(f,a), Allt(a,b,c,d,e).
+ngt(b,f) :- gt(a,f), Allg(a,b,c,d,e).
+ngt(f,c) :- gt(f,a), Allt(a,b,c,d,e).
+ngt(c,f) :- gt(a,f), Allg(a,b,c,d,e).
+ngt(f,d) :- gt(f,a), Allt(a,b,c,d,e).
+ngt(d,f) :- gt(a,f), Allg(a,b,c,d,e).
+ngt(f,e) :- gt(f,a), Allt(a,b,c,d,e).
+ngt(e,f) :- gt(a,f), Allg(a,b,c,d,e).
+gt(f,a) :- ngt(f,b), ngt(f,c), ngt(f,d), ngt(f,e), Allt(a,b,c,d,e).
+gt(a,f) :- ngt(b,f), ngt(c,f), ngt(d,f), ngt(e,f), Allg(a,b,c,d,e).
+
+ngt(f,a) :- gt(f,b), Allt(a,b,c,d,e).
+ngt(a,f) :- gt(b,f), Allg(a,b,c,d,e).
+ngt(f,c) :- gt(f,b), Allt(a,b,c,d,e).
+ngt(c,f) :- gt(b,f), Allg(a,b,c,d,e).
+ngt(f,d) :- gt(f,b), Allt(a,b,c,d,e).
+ngt(d,f) :- gt(b,f), Allg(a,b,c,d,e).
+ngt(f,e) :- gt(f,b), Allt(a,b,c,d,e).
+ngt(e,f) :- gt(b,f), Allg(a,b,c,d,e).
+gt(f,b) :- ngt(f,a), ngt(f,c), ngt(f,d), ngt(f,e), Allt(a,b,c,d,e).
+gt(b,f) :- ngt(a,f), ngt(c,f), ngt(d,f), ngt(e,f), Allg(a,b,c,d,e).
+
+ngt(f,a) :- gt(f,c), Allt(a,b,c,d,e).
+ngt(a,f) :- gt(c,f), Allg(a,b,c,d,e).
+ngt(f,b) :- gt(f,c), Allt(a,b,c,d,e).
+ngt(b,f) :- gt(c,f), Allg(a,b,c,d,e).
+ngt(f,d) :- gt(f,c), Allt(a,b,c,d,e).
+ngt(d,f) :- gt(c,f), Allg(a,b,c,d,e).
+ngt(f,e) :- gt(f,c), Allt(a,b,c,d,e).
+ngt(e,f) :- gt(c,f), Allg(a,b,c,d,e).
+gt(f,c) :- ngt(f,a), ngt(f,b), ngt(f,d), ngt(f,e), Allt(a,b,c,d,e).
+gt(c,f) :- ngt(a,f), ngt(b,f), ngt(d,f), ngt(e,f), Allg(a,b,c,d,e).
+
+ngt(f,a) :- gt(f,d), Allt(a,b,c,d,e).
+ngt(a,f) :- gt(d,f), Allg(a,b,c,d,e).
+ngt(f,b) :- gt(f,d), Allt(a,b,c,d,e).
+ngt(b,f) :- gt(d,f), Allg(a,b,c,d,e).
+ngt(f,c) :- gt(f,d), Allt(a,b,c,d,e).
+ngt(c,f) :- gt(d,f), Allg(a,b,c,d,e).
+ngt(f,e) :- gt(f,d), Allt(a,b,c,d,e).
+ngt(e,f) :- gt(d,f), Allg(a,b,c,d,e).
+gt(f,d) :- ngt(f,a), ngt(f,b), ngt(f,c), ngt(f,e), Allt(a,b,c,d,e).
+gt(d,f) :- ngt(a,f), ngt(b,f), ngt(c,f), ngt(e,f), Allg(a,b,c,d,e).
+
+ngt(f,a) :- gt(f,e), Allt(a,b,c,d,e).
+ngt(a,f) :- gt(e,f), Allg(a,b,c,d,e).
+ngt(f,b) :- gt(f,e), Allt(a,b,c,d,e).
+ngt(b,f) :- gt(e,f), Allg(a,b,c,d,e).
+ngt(f,c) :- gt(f,e), Allt(a,b,c,d,e).
+ngt(c,f) :- gt(e,f), Allg(a,b,c,d,e).
+ngt(f,d) :- gt(f,e), Allt(a,b,c,d,e).
+ngt(d,f) :- gt(e,f), Allg(a,b,c,d,e).
+gt(f,e) :- ngt(f,a), ngt(f,b), ngt(f,c), ngt(f,d), Allt(a,b,c,d,e).
+gt(e,f) :- ngt(a,f), ngt(b,f), ngt(c,f), ngt(d,f), Allg(a,b,c,d,e).
+
+ngn(f,b) :- gn(f,a), Alln(a,b,c,d,e).
+ngn(b,f) :- gn(a,f), Allg(a,b,c,d,e).
+ngn(f,c) :- gn(f,a), Alln(a,b,c,d,e).
+ngn(c,f) :- gn(a,f), Allg(a,b,c,d,e).
+ngn(f,d) :- gn(f,a), Alln(a,b,c,d,e).
+ngn(d,f) :- gn(a,f), Allg(a,b,c,d,e).
+ngn(f,e) :- gn(f,a), Alln(a,b,c,d,e).
+ngn(e,f) :- gn(a,f), Allg(a,b,c,d,e).
+gn(f,a) :- ngn(f,b), ngn(f,c), ngn(f,d), ngn(f,e), Alln(a,b,c,d,e).
+gn(a,f) :- ngn(b,f), ngn(c,f), ngn(d,f), ngn(e,f), Allg(a,b,c,d,e).
+
+ngn(f,a) :- gn(f,b), Alln(a,b,c,d,e).
+ngn(a,f) :- gn(b,f), Allg(a,b,c,d,e).
+ngn(f,c) :- gn(f,b), Alln(a,b,c,d,e).
+ngn(c,f) :- gn(b,f), Allg(a,b,c,d,e).
+ngn(f,d) :- gn(f,b), Alln(a,b,c,d,e).
+ngn(d,f) :- gn(b,f), Allg(a,b,c,d,e).
+ngn(f,e) :- gn(f,b), Alln(a,b,c,d,e).
+ngn(e,f) :- gn(b,f), Allg(a,b,c,d,e).
+gn(f,b) :- ngn(f,a), ngn(f,c), ngn(f,d), ngn(f,e), Alln(a,b,c,d,e).
+gn(b,f) :- ngn(a,f), ngn(c,f), ngn(d,f), ngn(e,f), Allg(a,b,c,d,e).
+
+ngn(f,a) :- gn(f,c), Alln(a,b,c,d,e).
+ngn(a,f) :- gn(c,f), Allg(a,b,c,d,e).
+ngn(f,b) :- gn(f,c), Alln(a,b,c,d,e).
+ngn(b,f) :- gn(c,f), Allg(a,b,c,d,e).
+ngn(f,d) :- gn(f,c), Alln(a,b,c,d,e).
+ngn(d,f) :- gn(c,f), Allg(a,b,c,d,e).
+ngn(f,e) :- gn(f,c), Alln(a,b,c,d,e).
+ngn(e,f) :- gn(c,f), Allg(a,b,c,d,e).
+gn(f,c) :- ngn(f,a), ngn(f,b), ngn(f,d), ngn(f,e), Alln(a,b,c,d,e).
+gn(c,f) :- ngn(a,f), ngn(b,f), ngn(d,f), ngn(e,f), Allg(a,b,c,d,e).
+
+ngn(f,a) :- gn(f,d), Alln(a,b,c,d,e).
+ngn(a,f) :- gn(d,f), Allg(a,b,c,d,e).
+ngn(f,b) :- gn(f,d), Alln(a,b,c,d,e).
+ngn(b,f) :- gn(d,f), Allg(a,b,c,d,e).
+ngn(f,c) :- gn(f,d), Alln(a,b,c,d,e).
+ngn(c,f) :- gn(d,f), Allg(a,b,c,d,e).
+ngn(f,e) :- gn(f,d), Alln(a,b,c,d,e).
+ngn(e,f) :- gn(d,f), Allg(a,b,c,d,e).
+gn(f,d) :- ngn(f,a), ngn(f,b), ngn(f,c), ngn(f,e), Alln(a,b,c,d,e).
+gn(d,f) :- ngn(a,f), ngn(b,f), ngn(c,f), ngn(e,f), Allg(a,b,c,d,e).
+
+ngn(f,a) :- gn(f,e), Alln(a,b,c,d,e).
+ngn(a,f) :- gn(e,f), Allg(a,b,c,d,e).
+ngn(f,b) :- gn(f,e), Alln(a,b,c,d,e).
+ngn(b,f) :- gn(e,f), Allg(a,b,c,d,e).
+ngn(f,c) :- gn(f,e), Alln(a,b,c,d,e).
+ngn(c,f) :- gn(e,f), Allg(a,b,c,d,e).
+ngn(f,d) :- gn(f,e), Alln(a,b,c,d,e).
+ngn(d,f) :- gn(e,f), Allg(a,b,c,d,e).
+gn(f,e) :- ngn(f,a), ngn(f,b), ngn(f,c), ngn(f,d), Alln(a,b,c,d,e).
+gn(e,f) :- ngn(a,f), ngn(b,f), ngn(c,f), ngn(d,f), Allg(a,b,c,d,e).
+
+ngc(f,b) :- gc(f,a), Allc(a,b,c,d,e).
+ngc(b,f) :- gc(a,f), Allg(a,b,c,d,e).
+ngc(f,c) :- gc(f,a), Allc(a,b,c,d,e).
+ngc(c,f) :- gc(a,f), Allg(a,b,c,d,e).
+ngc(f,d) :- gc(f,a), Allc(a,b,c,d,e).
+ngc(d,f) :- gc(a,f), Allg(a,b,c,d,e).
+ngc(f,e) :- gc(f,a), Allc(a,b,c,d,e).
+ngc(e,f) :- gc(a,f), Allg(a,b,c,d,e).
+gc(f,a) :- ngc(f,b), ngc(f,c), ngc(f,d), ngc(f,e), Allc(a,b,c,d,e).
+gc(a,f) :- ngc(b,f), ngc(c,f), ngc(d,f), ngc(e,f), Allg(a,b,c,d,e).
+
+ngc(f,a) :- gc(f,b), Allc(a,b,c,d,e).
+ngc(a,f) :- gc(b,f), Allg(a,b,c,d,e).
+ngc(f,c) :- gc(f,b), Allc(a,b,c,d,e).
+ngc(c,f) :- gc(b,f), Allg(a,b,c,d,e).
+ngc(f,d) :- gc(f,b), Allc(a,b,c,d,e).
+ngc(d,f) :- gc(b,f), Allg(a,b,c,d,e).
+ngc(f,e) :- gc(f,b), Allc(a,b,c,d,e).
+ngc(e,f) :- gc(b,f), Allg(a,b,c,d,e).
+gc(f,b) :- ngc(f,a), ngc(f,c), ngc(f,d), ngc(f,e), Allc(a,b,c,d,e).
+gc(b,f) :- ngc(a,f), ngc(c,f), ngc(d,f), ngc(e,f), Allg(a,b,c,d,e).
+
+ngc(f,a) :- gc(f,c), Allc(a,b,c,d,e).
+ngc(a,f) :- gc(c,f), Allg(a,b,c,d,e).
+ngc(f,b) :- gc(f,c), Allc(a,b,c,d,e).
+ngc(b,f) :- gc(c,f), Allg(a,b,c,d,e).
+ngc(f,d) :- gc(f,c), Allc(a,b,c,d,e).
+ngc(d,f) :- gc(c,f), Allg(a,b,c,d,e).
+ngc(f,e) :- gc(f,c), Allc(a,b,c,d,e).
+ngc(e,f) :- gc(c,f), Allg(a,b,c,d,e).
+gc(f,c) :- ngc(f,a), ngc(f,b), ngc(f,d), ngc(f,e), Allc(a,b,c,d,e).
+gc(c,f) :- ngc(a,f), ngc(b,f), ngc(d,f), ngc(e,f), Allg(a,b,c,d,e).
+
+ngc(f,a) :- gc(f,d), Allc(a,b,c,d,e).
+ngc(a,f) :- gc(d,f), Allg(a,b,c,d,e).
+ngc(f,b) :- gc(f,d), Allc(a,b,c,d,e).
+ngc(b,f) :- gc(d,f), Allg(a,b,c,d,e).
+ngc(f,c) :- gc(f,d), Allc(a,b,c,d,e).
+ngc(c,f) :- gc(d,f), Allg(a,b,c,d,e).
+ngc(f,e) :- gc(f,d), Allc(a,b,c,d,e).
+ngc(e,f) :- gc(d,f), Allg(a,b,c,d,e).
+gc(f,d) :- ngc(f,a), ngc(f,b), ngc(f,c), ngc(f,e), Allc(a,b,c,d,e).
+gc(d,f) :- ngc(a,f), ngc(b,f), ngc(c,f), ngc(e,f), Allg(a,b,c,d,e).
+
+ngc(f,a) :- gc(f,e), Allc(a,b,c,d,e).
+ngc(a,f) :- gc(e,f), Allg(a,b,c,d,e).
+ngc(f,b) :- gc(f,e), Allc(a,b,c,d,e).
+ngc(b,f) :- gc(e,f), Allg(a,b,c,d,e).
+ngc(f,c) :- gc(f,e), Allc(a,b,c,d,e).
+ngc(c,f) :- gc(e,f), Allg(a,b,c,d,e).
+ngc(f,d) :- gc(f,e), Allc(a,b,c,d,e).
+ngc(d,f) :- gc(e,f), Allg(a,b,c,d,e).
+gc(f,e) :- ngc(f,a), ngc(f,b), ngc(f,c), ngc(f,d), Allc(a,b,c,d,e).
+gc(e,f) :- ngc(a,f), ngc(b,f), ngc(c,f), ngc(d,f), Allg(a,b,c,d,e).
+
+ngs(f,b) :- gs(f,a), Alls(a,b,c,d,e).
+ngs(b,f) :- gs(a,f), Allg(a,b,c,d,e).
+ngs(f,c) :- gs(f,a), Alls(a,b,c,d,e).
+ngs(c,f) :- gs(a,f), Allg(a,b,c,d,e).
+ngs(f,d) :- gs(f,a), Alls(a,b,c,d,e).
+ngs(d,f) :- gs(a,f), Allg(a,b,c,d,e).
+ngs(f,e) :- gs(f,a), Alls(a,b,c,d,e).
+ngs(e,f) :- gs(a,f), Allg(a,b,c,d,e).
+gs(f,a) :- ngs(f,b), ngs(f,c), ngs(f,d), ngs(f,e), Alls(a,b,c,d,e).
+gs(a,f) :- ngs(b,f), ngs(c,f), ngs(d,f), ngs(e,f), Allg(a,b,c,d,e).
+
+ngs(f,a) :- gs(f,b), Alls(a,b,c,d,e).
+ngs(a,f) :- gs(b,f), Allg(a,b,c,d,e).
+ngs(f,c) :- gs(f,b), Alls(a,b,c,d,e).
+ngs(c,f) :- gs(b,f), Allg(a,b,c,d,e).
+ngs(f,d) :- gs(f,b), Alls(a,b,c,d,e).
+ngs(d,f) :- gs(b,f), Allg(a,b,c,d,e).
+ngs(f,e) :- gs(f,b), Alls(a,b,c,d,e).
+ngs(e,f) :- gs(b,f), Allg(a,b,c,d,e).
+gs(f,b) :- ngs(f,a), ngs(f,c), ngs(f,d), ngs(f,e), Alls(a,b,c,d,e).
+gs(b,f) :- ngs(a,f), ngs(c,f), ngs(d,f), ngs(e,f), Allg(a,b,c,d,e).
+
+ngs(f,a) :- gs(f,c), Alls(a,b,c,d,e).
+ngs(a,f) :- gs(c,f), Allg(a,b,c,d,e).
+ngs(f,b) :- gs(f,c), Alls(a,b,c,d,e).
+ngs(b,f) :- gs(c,f), Allg(a,b,c,d,e).
+ngs(f,d) :- gs(f,c), Alls(a,b,c,d,e).
+ngs(d,f) :- gs(c,f), Allg(a,b,c,d,e).
+ngs(f,e) :- gs(f,c), Alls(a,b,c,d,e).
+ngs(e,f) :- gs(c,f), Allg(a,b,c,d,e).
+gs(f,c) :- ngs(f,a), ngs(f,b), ngs(f,d), ngs(f,e), Alls(a,b,c,d,e).
+gs(c,f) :- ngs(a,f), ngs(b,f), ngs(d,f), ngs(e,f), Allg(a,b,c,d,e).
+
+ngs(f,a) :- gs(f,d), Alls(a,b,c,d,e).
+ngs(a,f) :- gs(d,f), Allg(a,b,c,d,e).
+ngs(f,b) :- gs(f,d), Alls(a,b,c,d,e).
+ngs(b,f) :- gs(d,f), Allg(a,b,c,d,e).
+ngs(f,c) :- gs(f,d), Alls(a,b,c,d,e).
+ngs(c,f) :- gs(d,f), Allg(a,b,c,d,e).
+ngs(f,e) :- gs(f,d), Alls(a,b,c,d,e).
+ngs(e,f) :- gs(d,f), Allg(a,b,c,d,e).
+gs(f,d) :- ngs(f,a), ngs(f,b), ngs(f,c), ngs(f,e), Alls(a,b,c,d,e).
+gs(d,f) :- ngs(a,f), ngs(b,f), ngs(c,f), ngs(e,f), Allg(a,b,c,d,e).
+
+ngs(f,a) :- gs(f,e), Alls(a,b,c,d,e).
+ngs(a,f) :- gs(e,f), Allg(a,b,c,d,e).
+ngs(f,b) :- gs(f,e), Alls(a,b,c,d,e).
+ngs(b,f) :- gs(e,f), Allg(a,b,c,d,e).
+ngs(f,c) :- gs(f,e), Alls(a,b,c,d,e).
+ngs(c,f) :- gs(e,f), Allg(a,b,c,d,e).
+ngs(f,d) :- gs(f,e), Alls(a,b,c,d,e).
+ngs(d,f) :- gs(e,f), Allg(a,b,c,d,e).
+gs(f,e) :- ngs(f,a), ngs(f,b), ngs(f,c), ngs(f,d), Alls(a,b,c,d,e).
+gs(e,f) :- ngs(a,f), ngs(b,f), ngs(c,f), ngs(d,f), Allg(a,b,c,d,e).
+
+nga(f,b) :- ga(f,a), Alla(a,b,c,d,e).
+nga(b,f) :- ga(a,f), Allg(a,b,c,d,e).
+nga(f,c) :- ga(f,a), Alla(a,b,c,d,e).
+nga(c,f) :- ga(a,f), Allg(a,b,c,d,e).
+nga(f,d) :- ga(f,a), Alla(a,b,c,d,e).
+nga(d,f) :- ga(a,f), Allg(a,b,c,d,e).
+nga(f,e) :- ga(f,a), Alla(a,b,c,d,e).
+nga(e,f) :- ga(a,f), Allg(a,b,c,d,e).
+ga(f,a) :- nga(f,b), nga(f,c), nga(f,d), nga(f,e), Alla(a,b,c,d,e).
+ga(a,f) :- nga(b,f), nga(c,f), nga(d,f), nga(e,f), Allg(a,b,c,d,e).
+
+nga(f,a) :- ga(f,b), Alla(a,b,c,d,e).
+nga(a,f) :- ga(b,f), Allg(a,b,c,d,e).
+nga(f,c) :- ga(f,b), Alla(a,b,c,d,e).
+nga(c,f) :- ga(b,f), Allg(a,b,c,d,e).
+nga(f,d) :- ga(f,b), Alla(a,b,c,d,e).
+nga(d,f) :- ga(b,f), Allg(a,b,c,d,e).
+nga(f,e) :- ga(f,b), Alla(a,b,c,d,e).
+nga(e,f) :- ga(b,f), Allg(a,b,c,d,e).
+ga(f,b) :- nga(f,a), nga(f,c), nga(f,d), nga(f,e), Alla(a,b,c,d,e).
+ga(b,f) :- nga(a,f), nga(c,f), nga(d,f), nga(e,f), Allg(a,b,c,d,e).
+
+nga(f,a) :- ga(f,c), Alla(a,b,c,d,e).
+nga(a,f) :- ga(c,f), Allg(a,b,c,d,e).
+nga(f,b) :- ga(f,c), Alla(a,b,c,d,e).
+nga(b,f) :- ga(c,f), Allg(a,b,c,d,e).
+nga(f,d) :- ga(f,c), Alla(a,b,c,d,e).
+nga(d,f) :- ga(c,f), Allg(a,b,c,d,e).
+nga(f,e) :- ga(f,c), Alla(a,b,c,d,e).
+nga(e,f) :- ga(c,f), Allg(a,b,c,d,e).
+ga(f,c) :- nga(f,a), nga(f,b), nga(f,d), nga(f,e), Alla(a,b,c,d,e).
+ga(c,f) :- nga(a,f), nga(b,f), nga(d,f), nga(e,f), Allg(a,b,c,d,e).
+
+nga(f,a) :- ga(f,d), Alla(a,b,c,d,e).
+nga(a,f) :- ga(d,f), Allg(a,b,c,d,e).
+nga(f,b) :- ga(f,d), Alla(a,b,c,d,e).
+nga(b,f) :- ga(d,f), Allg(a,b,c,d,e).
+nga(f,c) :- ga(f,d), Alla(a,b,c,d,e).
+nga(c,f) :- ga(d,f), Allg(a,b,c,d,e).
+nga(f,e) :- ga(f,d), Alla(a,b,c,d,e).
+nga(e,f) :- ga(d,f), Allg(a,b,c,d,e).
+ga(f,d) :- nga(f,a), nga(f,b), nga(f,c), nga(f,e), Alla(a,b,c,d,e).
+ga(d,f) :- nga(a,f), nga(b,f), nga(c,f), nga(e,f), Allg(a,b,c,d,e).
+
+nga(f,a) :- ga(f,e), Alla(a,b,c,d,e).
+nga(a,f) :- ga(e,f), Allg(a,b,c,d,e).
+nga(f,b) :- ga(f,e), Alla(a,b,c,d,e).
+nga(b,f) :- ga(e,f), Allg(a,b,c,d,e).
+nga(f,c) :- ga(f,e), Alla(a,b,c,d,e).
+nga(c,f) :- ga(e,f), Allg(a,b,c,d,e).
+nga(f,d) :- ga(f,e), Alla(a,b,c,d,e).
+nga(d,f) :- ga(e,f), Allg(a,b,c,d,e).
+ga(f,e) :- nga(f,a), nga(f,b), nga(f,c), nga(f,d), Alla(a,b,c,d,e).
+ga(e,f) :- nga(a,f), nga(b,f), nga(c,f), nga(d,f), Allg(a,b,c,d,e).
+
+ngj(f,b) :- gj(f,a), Allj(a,b,c,d,e).
+ngj(b,f) :- gj(a,f), Allg(a,b,c,d,e).
+ngj(f,c) :- gj(f,a), Allj(a,b,c,d,e).
+ngj(c,f) :- gj(a,f), Allg(a,b,c,d,e).
+ngj(f,d) :- gj(f,a), Allj(a,b,c,d,e).
+ngj(d,f) :- gj(a,f), Allg(a,b,c,d,e).
+ngj(f,e) :- gj(f,a), Allj(a,b,c,d,e).
+ngj(e,f) :- gj(a,f), Allg(a,b,c,d,e).
+gj(f,a) :- ngj(f,b), ngj(f,c), ngj(f,d), ngj(f,e), Allj(a,b,c,d,e).
+gj(a,f) :- ngj(b,f), ngj(c,f), ngj(d,f), ngj(e,f), Allg(a,b,c,d,e).
+
+ngj(f,a) :- gj(f,b), Allj(a,b,c,d,e).
+ngj(a,f) :- gj(b,f), Allg(a,b,c,d,e).
+ngj(f,c) :- gj(f,b), Allj(a,b,c,d,e).
+ngj(c,f) :- gj(b,f), Allg(a,b,c,d,e).
+ngj(f,d) :- gj(f,b), Allj(a,b,c,d,e).
+ngj(d,f) :- gj(b,f), Allg(a,b,c,d,e).
+ngj(f,e) :- gj(f,b), Allj(a,b,c,d,e).
+ngj(e,f) :- gj(b,f), Allg(a,b,c,d,e).
+gj(f,b) :- ngj(f,a), ngj(f,c), ngj(f,d), ngj(f,e), Allj(a,b,c,d,e).
+gj(b,f) :- ngj(a,f), ngj(c,f), ngj(d,f), ngj(e,f), Allg(a,b,c,d,e).
+
+ngj(f,a) :- gj(f,c), Allj(a,b,c,d,e).
+ngj(a,f) :- gj(c,f), Allg(a,b,c,d,e).
+ngj(f,b) :- gj(f,c), Allj(a,b,c,d,e).
+ngj(b,f) :- gj(c,f), Allg(a,b,c,d,e).
+ngj(f,d) :- gj(f,c), Allj(a,b,c,d,e).
+ngj(d,f) :- gj(c,f), Allg(a,b,c,d,e).
+ngj(f,e) :- gj(f,c), Allj(a,b,c,d,e).
+ngj(e,f) :- gj(c,f), Allg(a,b,c,d,e).
+gj(f,c) :- ngj(f,a), ngj(f,b), ngj(f,d), ngj(f,e), Allj(a,b,c,d,e).
+gj(c,f) :- ngj(a,f), ngj(b,f), ngj(d,f), ngj(e,f), Allg(a,b,c,d,e).
+
+ngj(f,a) :- gj(f,d), Allj(a,b,c,d,e).
+ngj(a,f) :- gj(d,f), Allg(a,b,c,d,e).
+ngj(f,b) :- gj(f,d), Allj(a,b,c,d,e).
+ngj(b,f) :- gj(d,f), Allg(a,b,c,d,e).
+ngj(f,c) :- gj(f,d), Allj(a,b,c,d,e).
+ngj(c,f) :- gj(d,f), Allg(a,b,c,d,e).
+ngj(f,e) :- gj(f,d), Allj(a,b,c,d,e).
+ngj(e,f) :- gj(d,f), Allg(a,b,c,d,e).
+gj(f,d) :- ngj(f,a), ngj(f,b), ngj(f,c), ngj(f,e), Allj(a,b,c,d,e).
+gj(d,f) :- ngj(a,f), ngj(b,f), ngj(c,f), ngj(e,f), Allg(a,b,c,d,e).
+
+ngj(f,a) :- gj(f,e), Allj(a,b,c,d,e).
+ngj(a,f) :- gj(e,f), Allg(a,b,c,d,e).
+ngj(f,b) :- gj(f,e), Allj(a,b,c,d,e).
+ngj(b,f) :- gj(e,f), Allg(a,b,c,d,e).
+ngj(f,c) :- gj(f,e), Allj(a,b,c,d,e).
+ngj(c,f) :- gj(e,f), Allg(a,b,c,d,e).
+ngj(f,d) :- gj(f,e), Allj(a,b,c,d,e).
+ngj(d,f) :- gj(e,f), Allg(a,b,c,d,e).
+gj(f,e) :- ngj(f,a), ngj(f,b), ngj(f,c), ngj(f,d), Allj(a,b,c,d,e).
+gj(e,f) :- ngj(a,f), ngj(b,f), ngj(c,f), ngj(d,f), Allg(a,b,c,d,e).
+
+ntn(f,b) :- tn(f,a), Alln(a,b,c,d,e).
+ntn(b,f) :- tn(a,f), Allt(a,b,c,d,e).
+ntn(f,c) :- tn(f,a), Alln(a,b,c,d,e).
+ntn(c,f) :- tn(a,f), Allt(a,b,c,d,e).
+ntn(f,d) :- tn(f,a), Alln(a,b,c,d,e).
+ntn(d,f) :- tn(a,f), Allt(a,b,c,d,e).
+ntn(f,e) :- tn(f,a), Alln(a,b,c,d,e).
+ntn(e,f) :- tn(a,f), Allt(a,b,c,d,e).
+tn(f,a) :- ntn(f,b), ntn(f,c), ntn(f,d), ntn(f,e), Alln(a,b,c,d,e).
+tn(a,f) :- ntn(b,f), ntn(c,f), ntn(d,f), ntn(e,f), Allt(a,b,c,d,e).
+
+ntn(f,a) :- tn(f,b), Alln(a,b,c,d,e).
+ntn(a,f) :- tn(b,f), Allt(a,b,c,d,e).
+ntn(f,c) :- tn(f,b), Alln(a,b,c,d,e).
+ntn(c,f) :- tn(b,f), Allt(a,b,c,d,e).
+ntn(f,d) :- tn(f,b), Alln(a,b,c,d,e).
+ntn(d,f) :- tn(b,f), Allt(a,b,c,d,e).
+ntn(f,e) :- tn(f,b), Alln(a,b,c,d,e).
+ntn(e,f) :- tn(b,f), Allt(a,b,c,d,e).
+tn(f,b) :- ntn(f,a), ntn(f,c), ntn(f,d), ntn(f,e), Alln(a,b,c,d,e).
+tn(b,f) :- ntn(a,f), ntn(c,f), ntn(d,f), ntn(e,f), Allt(a,b,c,d,e).
+
+ntn(f,a) :- tn(f,c), Alln(a,b,c,d,e).
+ntn(a,f) :- tn(c,f), Allt(a,b,c,d,e).
+ntn(f,b) :- tn(f,c), Alln(a,b,c,d,e).
+ntn(b,f) :- tn(c,f), Allt(a,b,c,d,e).
+ntn(f,d) :- tn(f,c), Alln(a,b,c,d,e).
+ntn(d,f) :- tn(c,f), Allt(a,b,c,d,e).
+ntn(f,e) :- tn(f,c), Alln(a,b,c,d,e).
+ntn(e,f) :- tn(c,f), Allt(a,b,c,d,e).
+tn(f,c) :- ntn(f,a), ntn(f,b), ntn(f,d), ntn(f,e), Alln(a,b,c,d,e).
+tn(c,f) :- ntn(a,f), ntn(b,f), ntn(d,f), ntn(e,f), Allt(a,b,c,d,e).
+
+ntn(f,a) :- tn(f,d), Alln(a,b,c,d,e).
+ntn(a,f) :- tn(d,f), Allt(a,b,c,d,e).
+ntn(f,b) :- tn(f,d), Alln(a,b,c,d,e).
+ntn(b,f) :- tn(d,f), Allt(a,b,c,d,e).
+ntn(f,c) :- tn(f,d), Alln(a,b,c,d,e).
+ntn(c,f) :- tn(d,f), Allt(a,b,c,d,e).
+ntn(f,e) :- tn(f,d), Alln(a,b,c,d,e).
+ntn(e,f) :- tn(d,f), Allt(a,b,c,d,e).
+tn(f,d) :- ntn(f,a), ntn(f,b), ntn(f,c), ntn(f,e), Alln(a,b,c,d,e).
+tn(d,f) :- ntn(a,f), ntn(b,f), ntn(c,f), ntn(e,f), Allt(a,b,c,d,e).
+
+ntn(f,a) :- tn(f,e), Alln(a,b,c,d,e).
+ntn(a,f) :- tn(e,f), Allt(a,b,c,d,e).
+ntn(f,b) :- tn(f,e), Alln(a,b,c,d,e).
+ntn(b,f) :- tn(e,f), Allt(a,b,c,d,e).
+ntn(f,c) :- tn(f,e), Alln(a,b,c,d,e).
+ntn(c,f) :- tn(e,f), Allt(a,b,c,d,e).
+ntn(f,d) :- tn(f,e), Alln(a,b,c,d,e).
+ntn(d,f) :- tn(e,f), Allt(a,b,c,d,e).
+tn(f,e) :- ntn(f,a), ntn(f,b), ntn(f,c), ntn(f,d), Alln(a,b,c,d,e).
+tn(e,f) :- ntn(a,f), ntn(b,f), ntn(c,f), ntn(d,f), Allt(a,b,c,d,e).
+
+ntc(f,b) :- tc(f,a), Allc(a,b,c,d,e).
+ntc(b,f) :- tc(a,f), Allt(a,b,c,d,e).
+ntc(f,c) :- tc(f,a), Allc(a,b,c,d,e).
+ntc(c,f) :- tc(a,f), Allt(a,b,c,d,e).
+ntc(f,d) :- tc(f,a), Allc(a,b,c,d,e).
+ntc(d,f) :- tc(a,f), Allt(a,b,c,d,e).
+ntc(f,e) :- tc(f,a), Allc(a,b,c,d,e).
+ntc(e,f) :- tc(a,f), Allt(a,b,c,d,e).
+tc(f,a) :- ntc(f,b), ntc(f,c), ntc(f,d), ntc(f,e), Allc(a,b,c,d,e).
+tc(a,f) :- ntc(b,f), ntc(c,f), ntc(d,f), ntc(e,f), Allt(a,b,c,d,e).
+
+ntc(f,a) :- tc(f,b), Allc(a,b,c,d,e).
+ntc(a,f) :- tc(b,f), Allt(a,b,c,d,e).
+ntc(f,c) :- tc(f,b), Allc(a,b,c,d,e).
+ntc(c,f) :- tc(b,f), Allt(a,b,c,d,e).
+ntc(f,d) :- tc(f,b), Allc(a,b,c,d,e).
+ntc(d,f) :- tc(b,f), Allt(a,b,c,d,e).
+ntc(f,e) :- tc(f,b), Allc(a,b,c,d,e).
+ntc(e,f) :- tc(b,f), Allt(a,b,c,d,e).
+tc(f,b) :- ntc(f,a), ntc(f,c), ntc(f,d), ntc(f,e), Allc(a,b,c,d,e).
+tc(b,f) :- ntc(a,f), ntc(c,f), ntc(d,f), ntc(e,f), Allt(a,b,c,d,e).
+
+ntc(f,a) :- tc(f,c), Allc(a,b,c,d,e).
+ntc(a,f) :- tc(c,f), Allt(a,b,c,d,e).
+ntc(f,b) :- tc(f,c), Allc(a,b,c,d,e).
+ntc(b,f) :- tc(c,f), Allt(a,b,c,d,e).
+ntc(f,d) :- tc(f,c), Allc(a,b,c,d,e).
+ntc(d,f) :- tc(c,f), Allt(a,b,c,d,e).
+ntc(f,e) :- tc(f,c), Allc(a,b,c,d,e).
+ntc(e,f) :- tc(c,f), Allt(a,b,c,d,e).
+tc(f,c) :- ntc(f,a), ntc(f,b), ntc(f,d), ntc(f,e), Allc(a,b,c,d,e).
+tc(c,f) :- ntc(a,f), ntc(b,f), ntc(d,f), ntc(e,f), Allt(a,b,c,d,e).
+
+ntc(f,a) :- tc(f,d), Allc(a,b,c,d,e).
+ntc(a,f) :- tc(d,f), Allt(a,b,c,d,e).
+ntc(f,b) :- tc(f,d), Allc(a,b,c,d,e).
+ntc(b,f) :- tc(d,f), Allt(a,b,c,d,e).
+ntc(f,c) :- tc(f,d), Allc(a,b,c,d,e).
+ntc(c,f) :- tc(d,f), Allt(a,b,c,d,e).
+ntc(f,e) :- tc(f,d), Allc(a,b,c,d,e).
+ntc(e,f) :- tc(d,f), Allt(a,b,c,d,e).
+tc(f,d) :- ntc(f,a), ntc(f,b), ntc(f,c), ntc(f,e), Allc(a,b,c,d,e).
+tc(d,f) :- ntc(a,f), ntc(b,f), ntc(c,f), ntc(e,f), Allt(a,b,c,d,e).
+
+ntc(f,a) :- tc(f,e), Allc(a,b,c,d,e).
+ntc(a,f) :- tc(e,f), Allt(a,b,c,d,e).
+ntc(f,b) :- tc(f,e), Allc(a,b,c,d,e).
+ntc(b,f) :- tc(e,f), Allt(a,b,c,d,e).
+ntc(f,c) :- tc(f,e), Allc(a,b,c,d,e).
+ntc(c,f) :- tc(e,f), Allt(a,b,c,d,e).
+ntc(f,d) :- tc(f,e), Allc(a,b,c,d,e).
+ntc(d,f) :- tc(e,f), Allt(a,b,c,d,e).
+tc(f,e) :- ntc(f,a), ntc(f,b), ntc(f,c), ntc(f,d), Allc(a,b,c,d,e).
+tc(e,f) :- ntc(a,f), ntc(b,f), ntc(c,f), ntc(d,f), Allt(a,b,c,d,e).
+
+nts(f,b) :- ts(f,a), Alls(a,b,c,d,e).
+nts(b,f) :- ts(a,f), Allt(a,b,c,d,e).
+nts(f,c) :- ts(f,a), Alls(a,b,c,d,e).
+nts(c,f) :- ts(a,f), Allt(a,b,c,d,e).
+nts(f,d) :- ts(f,a), Alls(a,b,c,d,e).
+nts(d,f) :- ts(a,f), Allt(a,b,c,d,e).
+nts(f,e) :- ts(f,a), Alls(a,b,c,d,e).
+nts(e,f) :- ts(a,f), Allt(a,b,c,d,e).
+ts(f,a) :- nts(f,b), nts(f,c), nts(f,d), nts(f,e), Alls(a,b,c,d,e).
+ts(a,f) :- nts(b,f), nts(c,f), nts(d,f), nts(e,f), Allt(a,b,c,d,e).
+
+nts(f,a) :- ts(f,b), Alls(a,b,c,d,e).
+nts(a,f) :- ts(b,f), Allt(a,b,c,d,e).
+nts(f,c) :- ts(f,b), Alls(a,b,c,d,e).
+nts(c,f) :- ts(b,f), Allt(a,b,c,d,e).
+nts(f,d) :- ts(f,b), Alls(a,b,c,d,e).
+nts(d,f) :- ts(b,f), Allt(a,b,c,d,e).
+nts(f,e) :- ts(f,b), Alls(a,b,c,d,e).
+nts(e,f) :- ts(b,f), Allt(a,b,c,d,e).
+ts(f,b) :- nts(f,a), nts(f,c), nts(f,d), nts(f,e), Alls(a,b,c,d,e).
+ts(b,f) :- nts(a,f), nts(c,f), nts(d,f), nts(e,f), Allt(a,b,c,d,e).
+
+nts(f,a) :- ts(f,c), Alls(a,b,c,d,e).
+nts(a,f) :- ts(c,f), Allt(a,b,c,d,e).
+nts(f,b) :- ts(f,c), Alls(a,b,c,d,e).
+nts(b,f) :- ts(c,f), Allt(a,b,c,d,e).
+nts(f,d) :- ts(f,c), Alls(a,b,c,d,e).
+nts(d,f) :- ts(c,f), Allt(a,b,c,d,e).
+nts(f,e) :- ts(f,c), Alls(a,b,c,d,e).
+nts(e,f) :- ts(c,f), Allt(a,b,c,d,e).
+ts(f,c) :- nts(f,a), nts(f,b), nts(f,d), nts(f,e), Alls(a,b,c,d,e).
+ts(c,f) :- nts(a,f), nts(b,f), nts(d,f), nts(e,f), Allt(a,b,c,d,e).
+
+nts(f,a) :- ts(f,d), Alls(a,b,c,d,e).
+nts(a,f) :- ts(d,f), Allt(a,b,c,d,e).
+nts(f,b) :- ts(f,d), Alls(a,b,c,d,e).
+nts(b,f) :- ts(d,f), Allt(a,b,c,d,e).
+nts(f,c) :- ts(f,d), Alls(a,b,c,d,e).
+nts(c,f) :- ts(d,f), Allt(a,b,c,d,e).
+nts(f,e) :- ts(f,d), Alls(a,b,c,d,e).
+nts(e,f) :- ts(d,f), Allt(a,b,c,d,e).
+ts(f,d) :- nts(f,a), nts(f,b), nts(f,c), nts(f,e), Alls(a,b,c,d,e).
+ts(d,f) :- nts(a,f), nts(b,f), nts(c,f), nts(e,f), Allt(a,b,c,d,e).
+
+nts(f,a) :- ts(f,e), Alls(a,b,c,d,e).
+nts(a,f) :- ts(e,f), Allt(a,b,c,d,e).
+nts(f,b) :- ts(f,e), Alls(a,b,c,d,e).
+nts(b,f) :- ts(e,f), Allt(a,b,c,d,e).
+nts(f,c) :- ts(f,e), Alls(a,b,c,d,e).
+nts(c,f) :- ts(e,f), Allt(a,b,c,d,e).
+nts(f,d) :- ts(f,e), Alls(a,b,c,d,e).
+nts(d,f) :- ts(e,f), Allt(a,b,c,d,e).
+ts(f,e) :- nts(f,a), nts(f,b), nts(f,c), nts(f,d), Alls(a,b,c,d,e).
+ts(e,f) :- nts(a,f), nts(b,f), nts(c,f), nts(d,f), Allt(a,b,c,d,e).
+
+nta(f,b) :- ta(f,a), Alla(a,b,c,d,e).
+nta(b,f) :- ta(a,f), Allt(a,b,c,d,e).
+nta(f,c) :- ta(f,a), Alla(a,b,c,d,e).
+nta(c,f) :- ta(a,f), Allt(a,b,c,d,e).
+nta(f,d) :- ta(f,a), Alla(a,b,c,d,e).
+nta(d,f) :- ta(a,f), Allt(a,b,c,d,e).
+nta(f,e) :- ta(f,a), Alla(a,b,c,d,e).
+nta(e,f) :- ta(a,f), Allt(a,b,c,d,e).
+ta(f,a) :- nta(f,b), nta(f,c), nta(f,d), nta(f,e), Alla(a,b,c,d,e).
+ta(a,f) :- nta(b,f), nta(c,f), nta(d,f), nta(e,f), Allt(a,b,c,d,e).
+
+nta(f,a) :- ta(f,b), Alla(a,b,c,d,e).
+nta(a,f) :- ta(b,f), Allt(a,b,c,d,e).
+nta(f,c) :- ta(f,b), Alla(a,b,c,d,e).
+nta(c,f) :- ta(b,f), Allt(a,b,c,d,e).
+nta(f,d) :- ta(f,b), Alla(a,b,c,d,e).
+nta(d,f) :- ta(b,f), Allt(a,b,c,d,e).
+nta(f,e) :- ta(f,b), Alla(a,b,c,d,e).
+nta(e,f) :- ta(b,f), Allt(a,b,c,d,e).
+ta(f,b) :- nta(f,a), nta(f,c), nta(f,d), nta(f,e), Alla(a,b,c,d,e).
+ta(b,f) :- nta(a,f), nta(c,f), nta(d,f), nta(e,f), Allt(a,b,c,d,e).
+
+nta(f,a) :- ta(f,c), Alla(a,b,c,d,e).
+nta(a,f) :- ta(c,f), Allt(a,b,c,d,e).
+nta(f,b) :- ta(f,c), Alla(a,b,c,d,e).
+nta(b,f) :- ta(c,f), Allt(a,b,c,d,e).
+nta(f,d) :- ta(f,c), Alla(a,b,c,d,e).
+nta(d,f) :- ta(c,f), Allt(a,b,c,d,e).
+nta(f,e) :- ta(f,c), Alla(a,b,c,d,e).
+nta(e,f) :- ta(c,f), Allt(a,b,c,d,e).
+ta(f,c) :- nta(f,a), nta(f,b), nta(f,d), nta(f,e), Alla(a,b,c,d,e).
+ta(c,f) :- nta(a,f), nta(b,f), nta(d,f), nta(e,f), Allt(a,b,c,d,e).
+
+nta(f,a) :- ta(f,d), Alla(a,b,c,d,e).
+nta(a,f) :- ta(d,f), Allt(a,b,c,d,e).
+nta(f,b) :- ta(f,d), Alla(a,b,c,d,e).
+nta(b,f) :- ta(d,f), Allt(a,b,c,d,e).
+nta(f,c) :- ta(f,d), Alla(a,b,c,d,e).
+nta(c,f) :- ta(d,f), Allt(a,b,c,d,e).
+nta(f,e) :- ta(f,d), Alla(a,b,c,d,e).
+nta(e,f) :- ta(d,f), Allt(a,b,c,d,e).
+ta(f,d) :- nta(f,a), nta(f,b), nta(f,c), nta(f,e), Alla(a,b,c,d,e).
+ta(d,f) :- nta(a,f), nta(b,f), nta(c,f), nta(e,f), Allt(a,b,c,d,e).
+
+nta(f,a) :- ta(f,e), Alla(a,b,c,d,e).
+nta(a,f) :- ta(e,f), Allt(a,b,c,d,e).
+nta(f,b) :- ta(f,e), Alla(a,b,c,d,e).
+nta(b,f) :- ta(e,f), Allt(a,b,c,d,e).
+nta(f,c) :- ta(f,e), Alla(a,b,c,d,e).
+nta(c,f) :- ta(e,f), Allt(a,b,c,d,e).
+nta(f,d) :- ta(f,e), Alla(a,b,c,d,e).
+nta(d,f) :- ta(e,f), Allt(a,b,c,d,e).
+ta(f,e) :- nta(f,a), nta(f,b), nta(f,c), nta(f,d), Alla(a,b,c,d,e).
+ta(e,f) :- nta(a,f), nta(b,f), nta(c,f), nta(d,f), Allt(a,b,c,d,e).
+
+ntj(f,b) :- tj(f,a), Allj(a,b,c,d,e).
+ntj(b,f) :- tj(a,f), Allt(a,b,c,d,e).
+ntj(f,c) :- tj(f,a), Allj(a,b,c,d,e).
+ntj(c,f) :- tj(a,f), Allt(a,b,c,d,e).
+ntj(f,d) :- tj(f,a), Allj(a,b,c,d,e).
+ntj(d,f) :- tj(a,f), Allt(a,b,c,d,e).
+ntj(f,e) :- tj(f,a), Allj(a,b,c,d,e).
+ntj(e,f) :- tj(a,f), Allt(a,b,c,d,e).
+tj(f,a) :- ntj(f,b), ntj(f,c), ntj(f,d), ntj(f,e), Allj(a,b,c,d,e).
+tj(a,f) :- ntj(b,f), ntj(c,f), ntj(d,f), ntj(e,f), Allt(a,b,c,d,e).
+
+ntj(f,a) :- tj(f,b), Allj(a,b,c,d,e).
+ntj(a,f) :- tj(b,f), Allt(a,b,c,d,e).
+ntj(f,c) :- tj(f,b), Allj(a,b,c,d,e).
+ntj(c,f) :- tj(b,f), Allt(a,b,c,d,e).
+ntj(f,d) :- tj(f,b), Allj(a,b,c,d,e).
+ntj(d,f) :- tj(b,f), Allt(a,b,c,d,e).
+ntj(f,e) :- tj(f,b), Allj(a,b,c,d,e).
+ntj(e,f) :- tj(b,f), Allt(a,b,c,d,e).
+tj(f,b) :- ntj(f,a), ntj(f,c), ntj(f,d), ntj(f,e), Allj(a,b,c,d,e).
+tj(b,f) :- ntj(a,f), ntj(c,f), ntj(d,f), ntj(e,f), Allt(a,b,c,d,e).
+
+ntj(f,a) :- tj(f,c), Allj(a,b,c,d,e).
+ntj(a,f) :- tj(c,f), Allt(a,b,c,d,e).
+ntj(f,b) :- tj(f,c), Allj(a,b,c,d,e).
+ntj(b,f) :- tj(c,f), Allt(a,b,c,d,e).
+ntj(f,d) :- tj(f,c), Allj(a,b,c,d,e).
+ntj(d,f) :- tj(c,f), Allt(a,b,c,d,e).
+ntj(f,e) :- tj(f,c), Allj(a,b,c,d,e).
+ntj(e,f) :- tj(c,f), Allt(a,b,c,d,e).
+tj(f,c) :- ntj(f,a), ntj(f,b), ntj(f,d), ntj(f,e), Allj(a,b,c,d,e).
+tj(c,f) :- ntj(a,f), ntj(b,f), ntj(d,f), ntj(e,f), Allt(a,b,c,d,e).
+
+ntj(f,a) :- tj(f,d), Allj(a,b,c,d,e).
+ntj(a,f) :- tj(d,f), Allt(a,b,c,d,e).
+ntj(f,b) :- tj(f,d), Allj(a,b,c,d,e).
+ntj(b,f) :- tj(d,f), Allt(a,b,c,d,e).
+ntj(f,c) :- tj(f,d), Allj(a,b,c,d,e).
+ntj(c,f) :- tj(d,f), Allt(a,b,c,d,e).
+ntj(f,e) :- tj(f,d), Allj(a,b,c,d,e).
+ntj(e,f) :- tj(d,f), Allt(a,b,c,d,e).
+tj(f,d) :- ntj(f,a), ntj(f,b), ntj(f,c), ntj(f,e), Allj(a,b,c,d,e).
+tj(d,f) :- ntj(a,f), ntj(b,f), ntj(c,f), ntj(e,f), Allt(a,b,c,d,e).
+
+ntj(f,a) :- tj(f,e), Allj(a,b,c,d,e).
+ntj(a,f) :- tj(e,f), Allt(a,b,c,d,e).
+ntj(f,b) :- tj(f,e), Allj(a,b,c,d,e).
+ntj(b,f) :- tj(e,f), Allt(a,b,c,d,e).
+ntj(f,c) :- tj(f,e), Allj(a,b,c,d,e).
+ntj(c,f) :- tj(e,f), Allt(a,b,c,d,e).
+ntj(f,d) :- tj(f,e), Allj(a,b,c,d,e).
+ntj(d,f) :- tj(e,f), Allt(a,b,c,d,e).
+tj(f,e) :- ntj(f,a), ntj(f,b), ntj(f,c), ntj(f,d), Allj(a,b,c,d,e).
+tj(e,f) :- ntj(a,f), ntj(b,f), ntj(c,f), ntj(d,f), Allt(a,b,c,d,e).
+
+nnc(f,b) :- nc(f,a), Allc(a,b,c,d,e).
+nnc(b,f) :- nc(a,f), Alln(a,b,c,d,e).
+nnc(f,c) :- nc(f,a), Allc(a,b,c,d,e).
+nnc(c,f) :- nc(a,f), Alln(a,b,c,d,e).
+nnc(f,d) :- nc(f,a), Allc(a,b,c,d,e).
+nnc(d,f) :- nc(a,f), Alln(a,b,c,d,e).
+nnc(f,e) :- nc(f,a), Allc(a,b,c,d,e).
+nnc(e,f) :- nc(a,f), Alln(a,b,c,d,e).
+nc(f,a) :- nnc(f,b), nnc(f,c), nnc(f,d), nnc(f,e), Allc(a,b,c,d,e).
+nc(a,f) :- nnc(b,f), nnc(c,f), nnc(d,f), nnc(e,f), Alln(a,b,c,d,e).
+
+nnc(f,a) :- nc(f,b), Allc(a,b,c,d,e).
+nnc(a,f) :- nc(b,f), Alln(a,b,c,d,e).
+nnc(f,c) :- nc(f,b), Allc(a,b,c,d,e).
+nnc(c,f) :- nc(b,f), Alln(a,b,c,d,e).
+nnc(f,d) :- nc(f,b), Allc(a,b,c,d,e).
+nnc(d,f) :- nc(b,f), Alln(a,b,c,d,e).
+nnc(f,e) :- nc(f,b), Allc(a,b,c,d,e).
+nnc(e,f) :- nc(b,f), Alln(a,b,c,d,e).
+nc(f,b) :- nnc(f,a), nnc(f,c), nnc(f,d), nnc(f,e), Allc(a,b,c,d,e).
+nc(b,f) :- nnc(a,f), nnc(c,f), nnc(d,f), nnc(e,f), Alln(a,b,c,d,e).
+
+nnc(f,a) :- nc(f,c), Allc(a,b,c,d,e).
+nnc(a,f) :- nc(c,f), Alln(a,b,c,d,e).
+nnc(f,b) :- nc(f,c), Allc(a,b,c,d,e).
+nnc(b,f) :- nc(c,f), Alln(a,b,c,d,e).
+nnc(f,d) :- nc(f,c), Allc(a,b,c,d,e).
+nnc(d,f) :- nc(c,f), Alln(a,b,c,d,e).
+nnc(f,e) :- nc(f,c), Allc(a,b,c,d,e).
+nnc(e,f) :- nc(c,f), Alln(a,b,c,d,e).
+nc(f,c) :- nnc(f,a), nnc(f,b), nnc(f,d), nnc(f,e), Allc(a,b,c,d,e).
+nc(c,f) :- nnc(a,f), nnc(b,f), nnc(d,f), nnc(e,f), Alln(a,b,c,d,e).
+
+nnc(f,a) :- nc(f,d), Allc(a,b,c,d,e).
+nnc(a,f) :- nc(d,f), Alln(a,b,c,d,e).
+nnc(f,b) :- nc(f,d), Allc(a,b,c,d,e).
+nnc(b,f) :- nc(d,f), Alln(a,b,c,d,e).
+nnc(f,c) :- nc(f,d), Allc(a,b,c,d,e).
+nnc(c,f) :- nc(d,f), Alln(a,b,c,d,e).
+nnc(f,e) :- nc(f,d), Allc(a,b,c,d,e).
+nnc(e,f) :- nc(d,f), Alln(a,b,c,d,e).
+nc(f,d) :- nnc(f,a), nnc(f,b), nnc(f,c), nnc(f,e), Allc(a,b,c,d,e).
+nc(d,f) :- nnc(a,f), nnc(b,f), nnc(c,f), nnc(e,f), Alln(a,b,c,d,e).
+
+nnc(f,a) :- nc(f,e), Allc(a,b,c,d,e).
+nnc(a,f) :- nc(e,f), Alln(a,b,c,d,e).
+nnc(f,b) :- nc(f,e), Allc(a,b,c,d,e).
+nnc(b,f) :- nc(e,f), Alln(a,b,c,d,e).
+nnc(f,c) :- nc(f,e), Allc(a,b,c,d,e).
+nnc(c,f) :- nc(e,f), Alln(a,b,c,d,e).
+nnc(f,d) :- nc(f,e), Allc(a,b,c,d,e).
+nnc(d,f) :- nc(e,f), Alln(a,b,c,d,e).
+nc(f,e) :- nnc(f,a), nnc(f,b), nnc(f,c), nnc(f,d), Allc(a,b,c,d,e).
+nc(e,f) :- nnc(a,f), nnc(b,f), nnc(c,f), nnc(d,f), Alln(a,b,c,d,e).
+
+nns(f,b) :- ns(f,a), Alls(a,b,c,d,e).
+nns(b,f) :- ns(a,f), Alln(a,b,c,d,e).
+nns(f,c) :- ns(f,a), Alls(a,b,c,d,e).
+nns(c,f) :- ns(a,f), Alln(a,b,c,d,e).
+nns(f,d) :- ns(f,a), Alls(a,b,c,d,e).
+nns(d,f) :- ns(a,f), Alln(a,b,c,d,e).
+nns(f,e) :- ns(f,a), Alls(a,b,c,d,e).
+nns(e,f) :- ns(a,f), Alln(a,b,c,d,e).
+ns(f,a) :- nns(f,b), nns(f,c), nns(f,d), nns(f,e), Alls(a,b,c,d,e).
+ns(a,f) :- nns(b,f), nns(c,f), nns(d,f), nns(e,f), Alln(a,b,c,d,e).
+
+nns(f,a) :- ns(f,b), Alls(a,b,c,d,e).
+nns(a,f) :- ns(b,f), Alln(a,b,c,d,e).
+nns(f,c) :- ns(f,b), Alls(a,b,c,d,e).
+nns(c,f) :- ns(b,f), Alln(a,b,c,d,e).
+nns(f,d) :- ns(f,b), Alls(a,b,c,d,e).
+nns(d,f) :- ns(b,f), Alln(a,b,c,d,e).
+nns(f,e) :- ns(f,b), Alls(a,b,c,d,e).
+nns(e,f) :- ns(b,f), Alln(a,b,c,d,e).
+ns(f,b) :- nns(f,a), nns(f,c), nns(f,d), nns(f,e), Alls(a,b,c,d,e).
+ns(b,f) :- nns(a,f), nns(c,f), nns(d,f), nns(e,f), Alln(a,b,c,d,e).
+
+nns(f,a) :- ns(f,c), Alls(a,b,c,d,e).
+nns(a,f) :- ns(c,f), Alln(a,b,c,d,e).
+nns(f,b) :- ns(f,c), Alls(a,b,c,d,e).
+nns(b,f) :- ns(c,f), Alln(a,b,c,d,e).
+nns(f,d) :- ns(f,c), Alls(a,b,c,d,e).
+nns(d,f) :- ns(c,f), Alln(a,b,c,d,e).
+nns(f,e) :- ns(f,c), Alls(a,b,c,d,e).
+nns(e,f) :- ns(c,f), Alln(a,b,c,d,e).
+ns(f,c) :- nns(f,a), nns(f,b), nns(f,d), nns(f,e), Alls(a,b,c,d,e).
+ns(c,f) :- nns(a,f), nns(b,f), nns(d,f), nns(e,f), Alln(a,b,c,d,e).
+
+nns(f,a) :- ns(f,d), Alls(a,b,c,d,e).
+nns(a,f) :- ns(d,f), Alln(a,b,c,d,e).
+nns(f,b) :- ns(f,d), Alls(a,b,c,d,e).
+nns(b,f) :- ns(d,f), Alln(a,b,c,d,e).
+nns(f,c) :- ns(f,d), Alls(a,b,c,d,e).
+nns(c,f) :- ns(d,f), Alln(a,b,c,d,e).
+nns(f,e) :- ns(f,d), Alls(a,b,c,d,e).
+nns(e,f) :- ns(d,f), Alln(a,b,c,d,e).
+ns(f,d) :- nns(f,a), nns(f,b), nns(f,c), nns(f,e), Alls(a,b,c,d,e).
+ns(d,f) :- nns(a,f), nns(b,f), nns(c,f), nns(e,f), Alln(a,b,c,d,e).
+
+nns(f,a) :- ns(f,e), Alls(a,b,c,d,e).
+nns(a,f) :- ns(e,f), Alln(a,b,c,d,e).
+nns(f,b) :- ns(f,e), Alls(a,b,c,d,e).
+nns(b,f) :- ns(e,f), Alln(a,b,c,d,e).
+nns(f,c) :- ns(f,e), Alls(a,b,c,d,e).
+nns(c,f) :- ns(e,f), Alln(a,b,c,d,e).
+nns(f,d) :- ns(f,e), Alls(a,b,c,d,e).
+nns(d,f) :- ns(e,f), Alln(a,b,c,d,e).
+ns(f,e) :- nns(f,a), nns(f,b), nns(f,c), nns(f,d), Alls(a,b,c,d,e).
+ns(e,f) :- nns(a,f), nns(b,f), nns(c,f), nns(d,f), Alln(a,b,c,d,e).
+
+nna(f,b) :- na(f,a), Alla(a,b,c,d,e).
+nna(b,f) :- na(a,f), Alln(a,b,c,d,e).
+nna(f,c) :- na(f,a), Alla(a,b,c,d,e).
+nna(c,f) :- na(a,f), Alln(a,b,c,d,e).
+nna(f,d) :- na(f,a), Alla(a,b,c,d,e).
+nna(d,f) :- na(a,f), Alln(a,b,c,d,e).
+nna(f,e) :- na(f,a), Alla(a,b,c,d,e).
+nna(e,f) :- na(a,f), Alln(a,b,c,d,e).
+na(f,a) :- nna(f,b), nna(f,c), nna(f,d), nna(f,e), Alla(a,b,c,d,e).
+na(a,f) :- nna(b,f), nna(c,f), nna(d,f), nna(e,f), Alln(a,b,c,d,e).
+
+nna(f,a) :- na(f,b), Alla(a,b,c,d,e).
+nna(a,f) :- na(b,f), Alln(a,b,c,d,e).
+nna(f,c) :- na(f,b), Alla(a,b,c,d,e).
+nna(c,f) :- na(b,f), Alln(a,b,c,d,e).
+nna(f,d) :- na(f,b), Alla(a,b,c,d,e).
+nna(d,f) :- na(b,f), Alln(a,b,c,d,e).
+nna(f,e) :- na(f,b), Alla(a,b,c,d,e).
+nna(e,f) :- na(b,f), Alln(a,b,c,d,e).
+na(f,b) :- nna(f,a), nna(f,c), nna(f,d), nna(f,e), Alla(a,b,c,d,e).
+na(b,f) :- nna(a,f), nna(c,f), nna(d,f), nna(e,f), Alln(a,b,c,d,e).
+
+nna(f,a) :- na(f,c), Alla(a,b,c,d,e).
+nna(a,f) :- na(c,f), Alln(a,b,c,d,e).
+nna(f,b) :- na(f,c), Alla(a,b,c,d,e).
+nna(b,f) :- na(c,f), Alln(a,b,c,d,e).
+nna(f,d) :- na(f,c), Alla(a,b,c,d,e).
+nna(d,f) :- na(c,f), Alln(a,b,c,d,e).
+nna(f,e) :- na(f,c), Alla(a,b,c,d,e).
+nna(e,f) :- na(c,f), Alln(a,b,c,d,e).
+na(f,c) :- nna(f,a), nna(f,b), nna(f,d), nna(f,e), Alla(a,b,c,d,e).
+na(c,f) :- nna(a,f), nna(b,f), nna(d,f), nna(e,f), Alln(a,b,c,d,e).
+
+nna(f,a) :- na(f,d), Alla(a,b,c,d,e).
+nna(a,f) :- na(d,f), Alln(a,b,c,d,e).
+nna(f,b) :- na(f,d), Alla(a,b,c,d,e).
+nna(b,f) :- na(d,f), Alln(a,b,c,d,e).
+nna(f,c) :- na(f,d), Alla(a,b,c,d,e).
+nna(c,f) :- na(d,f), Alln(a,b,c,d,e).
+nna(f,e) :- na(f,d), Alla(a,b,c,d,e).
+nna(e,f) :- na(d,f), Alln(a,b,c,d,e).
+na(f,d) :- nna(f,a), nna(f,b), nna(f,c), nna(f,e), Alla(a,b,c,d,e).
+na(d,f) :- nna(a,f), nna(b,f), nna(c,f), nna(e,f), Alln(a,b,c,d,e).
+
+nna(f,a) :- na(f,e), Alla(a,b,c,d,e).
+nna(a,f) :- na(e,f), Alln(a,b,c,d,e).
+nna(f,b) :- na(f,e), Alla(a,b,c,d,e).
+nna(b,f) :- na(e,f), Alln(a,b,c,d,e).
+nna(f,c) :- na(f,e), Alla(a,b,c,d,e).
+nna(c,f) :- na(e,f), Alln(a,b,c,d,e).
+nna(f,d) :- na(f,e), Alla(a,b,c,d,e).
+nna(d,f) :- na(e,f), Alln(a,b,c,d,e).
+na(f,e) :- nna(f,a), nna(f,b), nna(f,c), nna(f,d), Alla(a,b,c,d,e).
+na(e,f) :- nna(a,f), nna(b,f), nna(c,f), nna(d,f), Alln(a,b,c,d,e).
+
+nnj(f,b) :- nj(f,a), Allj(a,b,c,d,e).
+nnj(b,f) :- nj(a,f), Alln(a,b,c,d,e).
+nnj(f,c) :- nj(f,a), Allj(a,b,c,d,e).
+nnj(c,f) :- nj(a,f), Alln(a,b,c,d,e).
+nnj(f,d) :- nj(f,a), Allj(a,b,c,d,e).
+nnj(d,f) :- nj(a,f), Alln(a,b,c,d,e).
+nnj(f,e) :- nj(f,a), Allj(a,b,c,d,e).
+nnj(e,f) :- nj(a,f), Alln(a,b,c,d,e).
+nj(f,a) :- nnj(f,b), nnj(f,c), nnj(f,d), nnj(f,e), Allj(a,b,c,d,e).
+nj(a,f) :- nnj(b,f), nnj(c,f), nnj(d,f), nnj(e,f), Alln(a,b,c,d,e).
+
+nnj(f,a) :- nj(f,b), Allj(a,b,c,d,e).
+nnj(a,f) :- nj(b,f), Alln(a,b,c,d,e).
+nnj(f,c) :- nj(f,b), Allj(a,b,c,d,e).
+nnj(c,f) :- nj(b,f), Alln(a,b,c,d,e).
+nnj(f,d) :- nj(f,b), Allj(a,b,c,d,e).
+nnj(d,f) :- nj(b,f), Alln(a,b,c,d,e).
+nnj(f,e) :- nj(f,b), Allj(a,b,c,d,e).
+nnj(e,f) :- nj(b,f), Alln(a,b,c,d,e).
+nj(f,b) :- nnj(f,a), nnj(f,c), nnj(f,d), nnj(f,e), Allj(a,b,c,d,e).
+nj(b,f) :- nnj(a,f), nnj(c,f), nnj(d,f), nnj(e,f), Alln(a,b,c,d,e).
+
+nnj(f,a) :- nj(f,c), Allj(a,b,c,d,e).
+nnj(a,f) :- nj(c,f), Alln(a,b,c,d,e).
+nnj(f,b) :- nj(f,c), Allj(a,b,c,d,e).
+nnj(b,f) :- nj(c,f), Alln(a,b,c,d,e).
+nnj(f,d) :- nj(f,c), Allj(a,b,c,d,e).
+nnj(d,f) :- nj(c,f), Alln(a,b,c,d,e).
+nnj(f,e) :- nj(f,c), Allj(a,b,c,d,e).
+nnj(e,f) :- nj(c,f), Alln(a,b,c,d,e).
+nj(f,c) :- nnj(f,a), nnj(f,b), nnj(f,d), nnj(f,e), Allj(a,b,c,d,e).
+nj(c,f) :- nnj(a,f), nnj(b,f), nnj(d,f), nnj(e,f), Alln(a,b,c,d,e).
+
+nnj(f,a) :- nj(f,d), Allj(a,b,c,d,e).
+nnj(a,f) :- nj(d,f), Alln(a,b,c,d,e).
+nnj(f,b) :- nj(f,d), Allj(a,b,c,d,e).
+nnj(b,f) :- nj(d,f), Alln(a,b,c,d,e).
+nnj(f,c) :- nj(f,d), Allj(a,b,c,d,e).
+nnj(c,f) :- nj(d,f), Alln(a,b,c,d,e).
+nnj(f,e) :- nj(f,d), Allj(a,b,c,d,e).
+nnj(e,f) :- nj(d,f), Alln(a,b,c,d,e).
+nj(f,d) :- nnj(f,a), nnj(f,b), nnj(f,c), nnj(f,e), Allj(a,b,c,d,e).
+nj(d,f) :- nnj(a,f), nnj(b,f), nnj(c,f), nnj(e,f), Alln(a,b,c,d,e).
+
+nnj(f,a) :- nj(f,e), Allj(a,b,c,d,e).
+nnj(a,f) :- nj(e,f), Alln(a,b,c,d,e).
+nnj(f,b) :- nj(f,e), Allj(a,b,c,d,e).
+nnj(b,f) :- nj(e,f), Alln(a,b,c,d,e).
+nnj(f,c) :- nj(f,e), Allj(a,b,c,d,e).
+nnj(c,f) :- nj(e,f), Alln(a,b,c,d,e).
+nnj(f,d) :- nj(f,e), Allj(a,b,c,d,e).
+nnj(d,f) :- nj(e,f), Alln(a,b,c,d,e).
+nj(f,e) :- nnj(f,a), nnj(f,b), nnj(f,c), nnj(f,d), Allj(a,b,c,d,e).
+nj(e,f) :- nnj(a,f), nnj(b,f), nnj(c,f), nnj(d,f), Alln(a,b,c,d,e).
+
+ncs(f,b) :- cs(f,a), Alls(a,b,c,d,e).
+ncs(b,f) :- cs(a,f), Allc(a,b,c,d,e).
+ncs(f,c) :- cs(f,a), Alls(a,b,c,d,e).
+ncs(c,f) :- cs(a,f), Allc(a,b,c,d,e).
+ncs(f,d) :- cs(f,a), Alls(a,b,c,d,e).
+ncs(d,f) :- cs(a,f), Allc(a,b,c,d,e).
+ncs(f,e) :- cs(f,a), Alls(a,b,c,d,e).
+ncs(e,f) :- cs(a,f), Allc(a,b,c,d,e).
+cs(f,a) :- ncs(f,b), ncs(f,c), ncs(f,d), ncs(f,e), Alls(a,b,c,d,e).
+cs(a,f) :- ncs(b,f), ncs(c,f), ncs(d,f), ncs(e,f), Allc(a,b,c,d,e).
+
+ncs(f,a) :- cs(f,b), Alls(a,b,c,d,e).
+ncs(a,f) :- cs(b,f), Allc(a,b,c,d,e).
+ncs(f,c) :- cs(f,b), Alls(a,b,c,d,e).
+ncs(c,f) :- cs(b,f), Allc(a,b,c,d,e).
+ncs(f,d) :- cs(f,b), Alls(a,b,c,d,e).
+ncs(d,f) :- cs(b,f), Allc(a,b,c,d,e).
+ncs(f,e) :- cs(f,b), Alls(a,b,c,d,e).
+ncs(e,f) :- cs(b,f), Allc(a,b,c,d,e).
+cs(f,b) :- ncs(f,a), ncs(f,c), ncs(f,d), ncs(f,e), Alls(a,b,c,d,e).
+cs(b,f) :- ncs(a,f), ncs(c,f), ncs(d,f), ncs(e,f), Allc(a,b,c,d,e).
+
+ncs(f,a) :- cs(f,c), Alls(a,b,c,d,e).
+ncs(a,f) :- cs(c,f), Allc(a,b,c,d,e).
+ncs(f,b) :- cs(f,c), Alls(a,b,c,d,e).
+ncs(b,f) :- cs(c,f), Allc(a,b,c,d,e).
+ncs(f,d) :- cs(f,c), Alls(a,b,c,d,e).
+ncs(d,f) :- cs(c,f), Allc(a,b,c,d,e).
+ncs(f,e) :- cs(f,c), Alls(a,b,c,d,e).
+ncs(e,f) :- cs(c,f), Allc(a,b,c,d,e).
+cs(f,c) :- ncs(f,a), ncs(f,b), ncs(f,d), ncs(f,e), Alls(a,b,c,d,e).
+cs(c,f) :- ncs(a,f), ncs(b,f), ncs(d,f), ncs(e,f), Allc(a,b,c,d,e).
+
+ncs(f,a) :- cs(f,d), Alls(a,b,c,d,e).
+ncs(a,f) :- cs(d,f), Allc(a,b,c,d,e).
+ncs(f,b) :- cs(f,d), Alls(a,b,c,d,e).
+ncs(b,f) :- cs(d,f), Allc(a,b,c,d,e).
+ncs(f,c) :- cs(f,d), Alls(a,b,c,d,e).
+ncs(c,f) :- cs(d,f), Allc(a,b,c,d,e).
+ncs(f,e) :- cs(f,d), Alls(a,b,c,d,e).
+ncs(e,f) :- cs(d,f), Allc(a,b,c,d,e).
+cs(f,d) :- ncs(f,a), ncs(f,b), ncs(f,c), ncs(f,e), Alls(a,b,c,d,e).
+cs(d,f) :- ncs(a,f), ncs(b,f), ncs(c,f), ncs(e,f), Allc(a,b,c,d,e).
+
+ncs(f,a) :- cs(f,e), Alls(a,b,c,d,e).
+ncs(a,f) :- cs(e,f), Allc(a,b,c,d,e).
+ncs(f,b) :- cs(f,e), Alls(a,b,c,d,e).
+ncs(b,f) :- cs(e,f), Allc(a,b,c,d,e).
+ncs(f,c) :- cs(f,e), Alls(a,b,c,d,e).
+ncs(c,f) :- cs(e,f), Allc(a,b,c,d,e).
+ncs(f,d) :- cs(f,e), Alls(a,b,c,d,e).
+ncs(d,f) :- cs(e,f), Allc(a,b,c,d,e).
+cs(f,e) :- ncs(f,a), ncs(f,b), ncs(f,c), ncs(f,d), Alls(a,b,c,d,e).
+cs(e,f) :- ncs(a,f), ncs(b,f), ncs(c,f), ncs(d,f), Allc(a,b,c,d,e).
+
+nca(f,b) :- ca(f,a), Alla(a,b,c,d,e).
+nca(b,f) :- ca(a,f), Allc(a,b,c,d,e).
+nca(f,c) :- ca(f,a), Alla(a,b,c,d,e).
+nca(c,f) :- ca(a,f), Allc(a,b,c,d,e).
+nca(f,d) :- ca(f,a), Alla(a,b,c,d,e).
+nca(d,f) :- ca(a,f), Allc(a,b,c,d,e).
+nca(f,e) :- ca(f,a), Alla(a,b,c,d,e).
+nca(e,f) :- ca(a,f), Allc(a,b,c,d,e).
+ca(f,a) :- nca(f,b), nca(f,c), nca(f,d), nca(f,e), Alla(a,b,c,d,e).
+ca(a,f) :- nca(b,f), nca(c,f), nca(d,f), nca(e,f), Allc(a,b,c,d,e).
+
+nca(f,a) :- ca(f,b), Alla(a,b,c,d,e).
+nca(a,f) :- ca(b,f), Allc(a,b,c,d,e).
+nca(f,c) :- ca(f,b), Alla(a,b,c,d,e).
+nca(c,f) :- ca(b,f), Allc(a,b,c,d,e).
+nca(f,d) :- ca(f,b), Alla(a,b,c,d,e).
+nca(d,f) :- ca(b,f), Allc(a,b,c,d,e).
+nca(f,e) :- ca(f,b), Alla(a,b,c,d,e).
+nca(e,f) :- ca(b,f), Allc(a,b,c,d,e).
+ca(f,b) :- nca(f,a), nca(f,c), nca(f,d), nca(f,e), Alla(a,b,c,d,e).
+ca(b,f) :- nca(a,f), nca(c,f), nca(d,f), nca(e,f), Allc(a,b,c,d,e).
+
+nca(f,a) :- ca(f,c), Alla(a,b,c,d,e).
+nca(a,f) :- ca(c,f), Allc(a,b,c,d,e).
+nca(f,b) :- ca(f,c), Alla(a,b,c,d,e).
+nca(b,f) :- ca(c,f), Allc(a,b,c,d,e).
+nca(f,d) :- ca(f,c), Alla(a,b,c,d,e).
+nca(d,f) :- ca(c,f), Allc(a,b,c,d,e).
+nca(f,e) :- ca(f,c), Alla(a,b,c,d,e).
+nca(e,f) :- ca(c,f), Allc(a,b,c,d,e).
+ca(f,c) :- nca(f,a), nca(f,b), nca(f,d), nca(f,e), Alla(a,b,c,d,e).
+ca(c,f) :- nca(a,f), nca(b,f), nca(d,f), nca(e,f), Allc(a,b,c,d,e).
+
+nca(f,a) :- ca(f,d), Alla(a,b,c,d,e).
+nca(a,f) :- ca(d,f), Allc(a,b,c,d,e).
+nca(f,b) :- ca(f,d), Alla(a,b,c,d,e).
+nca(b,f) :- ca(d,f), Allc(a,b,c,d,e).
+nca(f,c) :- ca(f,d), Alla(a,b,c,d,e).
+nca(c,f) :- ca(d,f), Allc(a,b,c,d,e).
+nca(f,e) :- ca(f,d), Alla(a,b,c,d,e).
+nca(e,f) :- ca(d,f), Allc(a,b,c,d,e).
+ca(f,d) :- nca(f,a), nca(f,b), nca(f,c), nca(f,e), Alla(a,b,c,d,e).
+ca(d,f) :- nca(a,f), nca(b,f), nca(c,f), nca(e,f), Allc(a,b,c,d,e).
+
+nca(f,a) :- ca(f,e), Alla(a,b,c,d,e).
+nca(a,f) :- ca(e,f), Allc(a,b,c,d,e).
+nca(f,b) :- ca(f,e), Alla(a,b,c,d,e).
+nca(b,f) :- ca(e,f), Allc(a,b,c,d,e).
+nca(f,c) :- ca(f,e), Alla(a,b,c,d,e).
+nca(c,f) :- ca(e,f), Allc(a,b,c,d,e).
+nca(f,d) :- ca(f,e), Alla(a,b,c,d,e).
+nca(d,f) :- ca(e,f), Allc(a,b,c,d,e).
+ca(f,e) :- nca(f,a), nca(f,b), nca(f,c), nca(f,d), Alla(a,b,c,d,e).
+ca(e,f) :- nca(a,f), nca(b,f), nca(c,f), nca(d,f), Allc(a,b,c,d,e).
+
+ncj(f,b) :- cj(f,a), Allj(a,b,c,d,e).
+ncj(b,f) :- cj(a,f), Allc(a,b,c,d,e).
+ncj(f,c) :- cj(f,a), Allj(a,b,c,d,e).
+ncj(c,f) :- cj(a,f), Allc(a,b,c,d,e).
+ncj(f,d) :- cj(f,a), Allj(a,b,c,d,e).
+ncj(d,f) :- cj(a,f), Allc(a,b,c,d,e).
+ncj(f,e) :- cj(f,a), Allj(a,b,c,d,e).
+ncj(e,f) :- cj(a,f), Allc(a,b,c,d,e).
+cj(f,a) :- ncj(f,b), ncj(f,c), ncj(f,d), ncj(f,e), Allj(a,b,c,d,e).
+cj(a,f) :- ncj(b,f), ncj(c,f), ncj(d,f), ncj(e,f), Allc(a,b,c,d,e).
+
+ncj(f,a) :- cj(f,b), Allj(a,b,c,d,e).
+ncj(a,f) :- cj(b,f), Allc(a,b,c,d,e).
+ncj(f,c) :- cj(f,b), Allj(a,b,c,d,e).
+ncj(c,f) :- cj(b,f), Allc(a,b,c,d,e).
+ncj(f,d) :- cj(f,b), Allj(a,b,c,d,e).
+ncj(d,f) :- cj(b,f), Allc(a,b,c,d,e).
+ncj(f,e) :- cj(f,b), Allj(a,b,c,d,e).
+ncj(e,f) :- cj(b,f), Allc(a,b,c,d,e).
+cj(f,b) :- ncj(f,a), ncj(f,c), ncj(f,d), ncj(f,e), Allj(a,b,c,d,e).
+cj(b,f) :- ncj(a,f), ncj(c,f), ncj(d,f), ncj(e,f), Allc(a,b,c,d,e).
+
+ncj(f,a) :- cj(f,c), Allj(a,b,c,d,e).
+ncj(a,f) :- cj(c,f), Allc(a,b,c,d,e).
+ncj(f,b) :- cj(f,c), Allj(a,b,c,d,e).
+ncj(b,f) :- cj(c,f), Allc(a,b,c,d,e).
+ncj(f,d) :- cj(f,c), Allj(a,b,c,d,e).
+ncj(d,f) :- cj(c,f), Allc(a,b,c,d,e).
+ncj(f,e) :- cj(f,c), Allj(a,b,c,d,e).
+ncj(e,f) :- cj(c,f), Allc(a,b,c,d,e).
+cj(f,c) :- ncj(f,a), ncj(f,b), ncj(f,d), ncj(f,e), Allj(a,b,c,d,e).
+cj(c,f) :- ncj(a,f), ncj(b,f), ncj(d,f), ncj(e,f), Allc(a,b,c,d,e).
+
+ncj(f,a) :- cj(f,d), Allj(a,b,c,d,e).
+ncj(a,f) :- cj(d,f), Allc(a,b,c,d,e).
+ncj(f,b) :- cj(f,d), Allj(a,b,c,d,e).
+ncj(b,f) :- cj(d,f), Allc(a,b,c,d,e).
+ncj(f,c) :- cj(f,d), Allj(a,b,c,d,e).
+ncj(c,f) :- cj(d,f), Allc(a,b,c,d,e).
+ncj(f,e) :- cj(f,d), Allj(a,b,c,d,e).
+ncj(e,f) :- cj(d,f), Allc(a,b,c,d,e).
+cj(f,d) :- ncj(f,a), ncj(f,b), ncj(f,c), ncj(f,e), Allj(a,b,c,d,e).
+cj(d,f) :- ncj(a,f), ncj(b,f), ncj(c,f), ncj(e,f), Allc(a,b,c,d,e).
+
+ncj(f,a) :- cj(f,e), Allj(a,b,c,d,e).
+ncj(a,f) :- cj(e,f), Allc(a,b,c,d,e).
+ncj(f,b) :- cj(f,e), Allj(a,b,c,d,e).
+ncj(b,f) :- cj(e,f), Allc(a,b,c,d,e).
+ncj(f,c) :- cj(f,e), Allj(a,b,c,d,e).
+ncj(c,f) :- cj(e,f), Allc(a,b,c,d,e).
+ncj(f,d) :- cj(f,e), Allj(a,b,c,d,e).
+ncj(d,f) :- cj(e,f), Allc(a,b,c,d,e).
+cj(f,e) :- ncj(f,a), ncj(f,b), ncj(f,c), ncj(f,d), Allj(a,b,c,d,e).
+cj(e,f) :- ncj(a,f), ncj(b,f), ncj(c,f), ncj(d,f), Allc(a,b,c,d,e).
+
+nsa(f,b) :- sa(f,a), Alla(a,b,c,d,e).
+nsa(b,f) :- sa(a,f), Alls(a,b,c,d,e).
+nsa(f,c) :- sa(f,a), Alla(a,b,c,d,e).
+nsa(c,f) :- sa(a,f), Alls(a,b,c,d,e).
+nsa(f,d) :- sa(f,a), Alla(a,b,c,d,e).
+nsa(d,f) :- sa(a,f), Alls(a,b,c,d,e).
+nsa(f,e) :- sa(f,a), Alla(a,b,c,d,e).
+nsa(e,f) :- sa(a,f), Alls(a,b,c,d,e).
+sa(f,a) :- nsa(f,b), nsa(f,c), nsa(f,d), nsa(f,e), Alla(a,b,c,d,e).
+sa(a,f) :- nsa(b,f), nsa(c,f), nsa(d,f), nsa(e,f), Alls(a,b,c,d,e).
+
+nsa(f,a) :- sa(f,b), Alla(a,b,c,d,e).
+nsa(a,f) :- sa(b,f), Alls(a,b,c,d,e).
+nsa(f,c) :- sa(f,b), Alla(a,b,c,d,e).
+nsa(c,f) :- sa(b,f), Alls(a,b,c,d,e).
+nsa(f,d) :- sa(f,b), Alla(a,b,c,d,e).
+nsa(d,f) :- sa(b,f), Alls(a,b,c,d,e).
+nsa(f,e) :- sa(f,b), Alla(a,b,c,d,e).
+nsa(e,f) :- sa(b,f), Alls(a,b,c,d,e).
+sa(f,b) :- nsa(f,a), nsa(f,c), nsa(f,d), nsa(f,e), Alla(a,b,c,d,e).
+sa(b,f) :- nsa(a,f), nsa(c,f), nsa(d,f), nsa(e,f), Alls(a,b,c,d,e).
+
+nsa(f,a) :- sa(f,c), Alla(a,b,c,d,e).
+nsa(a,f) :- sa(c,f), Alls(a,b,c,d,e).
+nsa(f,b) :- sa(f,c), Alla(a,b,c,d,e).
+nsa(b,f) :- sa(c,f), Alls(a,b,c,d,e).
+nsa(f,d) :- sa(f,c), Alla(a,b,c,d,e).
+nsa(d,f) :- sa(c,f), Alls(a,b,c,d,e).
+nsa(f,e) :- sa(f,c), Alla(a,b,c,d,e).
+nsa(e,f) :- sa(c,f), Alls(a,b,c,d,e).
+sa(f,c) :- nsa(f,a), nsa(f,b), nsa(f,d), nsa(f,e), Alla(a,b,c,d,e).
+sa(c,f) :- nsa(a,f), nsa(b,f), nsa(d,f), nsa(e,f), Alls(a,b,c,d,e).
+
+nsa(f,a) :- sa(f,d), Alla(a,b,c,d,e).
+nsa(a,f) :- sa(d,f), Alls(a,b,c,d,e).
+nsa(f,b) :- sa(f,d), Alla(a,b,c,d,e).
+nsa(b,f) :- sa(d,f), Alls(a,b,c,d,e).
+nsa(f,c) :- sa(f,d), Alla(a,b,c,d,e).
+nsa(c,f) :- sa(d,f), Alls(a,b,c,d,e).
+nsa(f,e) :- sa(f,d), Alla(a,b,c,d,e).
+nsa(e,f) :- sa(d,f), Alls(a,b,c,d,e).
+sa(f,d) :- nsa(f,a), nsa(f,b), nsa(f,c), nsa(f,e), Alla(a,b,c,d,e).
+sa(d,f) :- nsa(a,f), nsa(b,f), nsa(c,f), nsa(e,f), Alls(a,b,c,d,e).
+
+nsa(f,a) :- sa(f,e), Alla(a,b,c,d,e).
+nsa(a,f) :- sa(e,f), Alls(a,b,c,d,e).
+nsa(f,b) :- sa(f,e), Alla(a,b,c,d,e).
+nsa(b,f) :- sa(e,f), Alls(a,b,c,d,e).
+nsa(f,c) :- sa(f,e), Alla(a,b,c,d,e).
+nsa(c,f) :- sa(e,f), Alls(a,b,c,d,e).
+nsa(f,d) :- sa(f,e), Alla(a,b,c,d,e).
+nsa(d,f) :- sa(e,f), Alls(a,b,c,d,e).
+sa(f,e) :- nsa(f,a), nsa(f,b), nsa(f,c), nsa(f,d), Alla(a,b,c,d,e).
+sa(e,f) :- nsa(a,f), nsa(b,f), nsa(c,f), nsa(d,f), Alls(a,b,c,d,e).
+
+nsj(f,b) :- sj(f,a), Allj(a,b,c,d,e).
+nsj(b,f) :- sj(a,f), Alls(a,b,c,d,e).
+nsj(f,c) :- sj(f,a), Allj(a,b,c,d,e).
+nsj(c,f) :- sj(a,f), Alls(a,b,c,d,e).
+nsj(f,d) :- sj(f,a), Allj(a,b,c,d,e).
+nsj(d,f) :- sj(a,f), Alls(a,b,c,d,e).
+nsj(f,e) :- sj(f,a), Allj(a,b,c,d,e).
+nsj(e,f) :- sj(a,f), Alls(a,b,c,d,e).
+sj(f,a) :- nsj(f,b), nsj(f,c), nsj(f,d), nsj(f,e), Allj(a,b,c,d,e).
+sj(a,f) :- nsj(b,f), nsj(c,f), nsj(d,f), nsj(e,f), Alls(a,b,c,d,e).
+
+nsj(f,a) :- sj(f,b), Allj(a,b,c,d,e).
+nsj(a,f) :- sj(b,f), Alls(a,b,c,d,e).
+nsj(f,c) :- sj(f,b), Allj(a,b,c,d,e).
+nsj(c,f) :- sj(b,f), Alls(a,b,c,d,e).
+nsj(f,d) :- sj(f,b), Allj(a,b,c,d,e).
+nsj(d,f) :- sj(b,f), Alls(a,b,c,d,e).
+nsj(f,e) :- sj(f,b), Allj(a,b,c,d,e).
+nsj(e,f) :- sj(b,f), Alls(a,b,c,d,e).
+sj(f,b) :- nsj(f,a), nsj(f,c), nsj(f,d), nsj(f,e), Allj(a,b,c,d,e).
+sj(b,f) :- nsj(a,f), nsj(c,f), nsj(d,f), nsj(e,f), Alls(a,b,c,d,e).
+
+nsj(f,a) :- sj(f,c), Allj(a,b,c,d,e).
+nsj(a,f) :- sj(c,f), Alls(a,b,c,d,e).
+nsj(f,b) :- sj(f,c), Allj(a,b,c,d,e).
+nsj(b,f) :- sj(c,f), Alls(a,b,c,d,e).
+nsj(f,d) :- sj(f,c), Allj(a,b,c,d,e).
+nsj(d,f) :- sj(c,f), Alls(a,b,c,d,e).
+nsj(f,e) :- sj(f,c), Allj(a,b,c,d,e).
+nsj(e,f) :- sj(c,f), Alls(a,b,c,d,e).
+sj(f,c) :- nsj(f,a), nsj(f,b), nsj(f,d), nsj(f,e), Allj(a,b,c,d,e).
+sj(c,f) :- nsj(a,f), nsj(b,f), nsj(d,f), nsj(e,f), Alls(a,b,c,d,e).
+
+nsj(f,a) :- sj(f,d), Allj(a,b,c,d,e).
+nsj(a,f) :- sj(d,f), Alls(a,b,c,d,e).
+nsj(f,b) :- sj(f,d), Allj(a,b,c,d,e).
+nsj(b,f) :- sj(d,f), Alls(a,b,c,d,e).
+nsj(f,c) :- sj(f,d), Allj(a,b,c,d,e).
+nsj(c,f) :- sj(d,f), Alls(a,b,c,d,e).
+nsj(f,e) :- sj(f,d), Allj(a,b,c,d,e).
+nsj(e,f) :- sj(d,f), Alls(a,b,c,d,e).
+sj(f,d) :- nsj(f,a), nsj(f,b), nsj(f,c), nsj(f,e), Allj(a,b,c,d,e).
+sj(d,f) :- nsj(a,f), nsj(b,f), nsj(c,f), nsj(e,f), Alls(a,b,c,d,e).
+
+nsj(f,a) :- sj(f,e), Allj(a,b,c,d,e).
+nsj(a,f) :- sj(e,f), Alls(a,b,c,d,e).
+nsj(f,b) :- sj(f,e), Allj(a,b,c,d,e).
+nsj(b,f) :- sj(e,f), Alls(a,b,c,d,e).
+nsj(f,c) :- sj(f,e), Allj(a,b,c,d,e).
+nsj(c,f) :- sj(e,f), Alls(a,b,c,d,e).
+nsj(f,d) :- sj(f,e), Allj(a,b,c,d,e).
+nsj(d,f) :- sj(e,f), Alls(a,b,c,d,e).
+sj(f,e) :- nsj(f,a), nsj(f,b), nsj(f,c), nsj(f,d), Allj(a,b,c,d,e).
+sj(e,f) :- nsj(a,f), nsj(b,f), nsj(c,f), nsj(d,f), Alls(a,b,c,d,e).
+
+naj(f,b) :- aj(f,a), Allj(a,b,c,d,e).
+naj(b,f) :- aj(a,f), Alla(a,b,c,d,e).
+naj(f,c) :- aj(f,a), Allj(a,b,c,d,e).
+naj(c,f) :- aj(a,f), Alla(a,b,c,d,e).
+naj(f,d) :- aj(f,a), Allj(a,b,c,d,e).
+naj(d,f) :- aj(a,f), Alla(a,b,c,d,e).
+naj(f,e) :- aj(f,a), Allj(a,b,c,d,e).
+naj(e,f) :- aj(a,f), Alla(a,b,c,d,e).
+aj(f,a) :- naj(f,b), naj(f,c), naj(f,d), naj(f,e), Allj(a,b,c,d,e).
+aj(a,f) :- naj(b,f), naj(c,f), naj(d,f), naj(e,f), Alla(a,b,c,d,e).
+
+naj(f,a) :- aj(f,b), Allj(a,b,c,d,e).
+naj(a,f) :- aj(b,f), Alla(a,b,c,d,e).
+naj(f,c) :- aj(f,b), Allj(a,b,c,d,e).
+naj(c,f) :- aj(b,f), Alla(a,b,c,d,e).
+naj(f,d) :- aj(f,b), Allj(a,b,c,d,e).
+naj(d,f) :- aj(b,f), Alla(a,b,c,d,e).
+naj(f,e) :- aj(f,b), Allj(a,b,c,d,e).
+naj(e,f) :- aj(b,f), Alla(a,b,c,d,e).
+aj(f,b) :- naj(f,a), naj(f,c), naj(f,d), naj(f,e), Allj(a,b,c,d,e).
+aj(b,f) :- naj(a,f), naj(c,f), naj(d,f), naj(e,f), Alla(a,b,c,d,e).
+
+naj(f,a) :- aj(f,c), Allj(a,b,c,d,e).
+naj(a,f) :- aj(c,f), Alla(a,b,c,d,e).
+naj(f,b) :- aj(f,c), Allj(a,b,c,d,e).
+naj(b,f) :- aj(c,f), Alla(a,b,c,d,e).
+naj(f,d) :- aj(f,c), Allj(a,b,c,d,e).
+naj(d,f) :- aj(c,f), Alla(a,b,c,d,e).
+naj(f,e) :- aj(f,c), Allj(a,b,c,d,e).
+naj(e,f) :- aj(c,f), Alla(a,b,c,d,e).
+aj(f,c) :- naj(f,a), naj(f,b), naj(f,d), naj(f,e), Allj(a,b,c,d,e).
+aj(c,f) :- naj(a,f), naj(b,f), naj(d,f), naj(e,f), Alla(a,b,c,d,e).
+
+naj(f,a) :- aj(f,d), Allj(a,b,c,d,e).
+naj(a,f) :- aj(d,f), Alla(a,b,c,d,e).
+naj(f,b) :- aj(f,d), Allj(a,b,c,d,e).
+naj(b,f) :- aj(d,f), Alla(a,b,c,d,e).
+naj(f,c) :- aj(f,d), Allj(a,b,c,d,e).
+naj(c,f) :- aj(d,f), Alla(a,b,c,d,e).
+naj(f,e) :- aj(f,d), Allj(a,b,c,d,e).
+naj(e,f) :- aj(d,f), Alla(a,b,c,d,e).
+aj(f,d) :- naj(f,a), naj(f,b), naj(f,c), naj(f,e), Allj(a,b,c,d,e).
+aj(d,f) :- naj(a,f), naj(b,f), naj(c,f), naj(e,f), Alla(a,b,c,d,e).
+
+naj(f,a) :- aj(f,e), Allj(a,b,c,d,e).
+naj(a,f) :- aj(e,f), Alla(a,b,c,d,e).
+naj(f,b) :- aj(f,e), Allj(a,b,c,d,e).
+naj(b,f) :- aj(e,f), Alla(a,b,c,d,e).
+naj(f,c) :- aj(f,e), Allj(a,b,c,d,e).
+naj(c,f) :- aj(e,f), Alla(a,b,c,d,e).
+naj(f,d) :- aj(f,e), Allj(a,b,c,d,e).
+naj(d,f) :- aj(e,f), Alla(a,b,c,d,e).
+aj(f,e) :- naj(f,a), naj(f,b), naj(f,c), naj(f,d), Allj(a,b,c,d,e).
+aj(e,f) :- naj(a,f), naj(b,f), naj(c,f), naj(d,f), Alla(a,b,c,d,e).
+
+ngj(c,E) :- gj(b,'apple'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,E) :- gj(b,'apple'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,E) :- ngj(c,'apple'), ngj(d,'apple'), ngj(e,'apple'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,E) :- gj(c,'apple'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,E) :- ngj(d,'apple'), ngj(e,'apple'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,E) :- ngj(e,'apple'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,A) :- ngj(a,'strawberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,A) :- gj(c,'strawberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,A) :- ngj(a,'strawberry'), ngj(b,'strawberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,A) :- gj(d,'strawberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,A) :- gj(d,'strawberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,A) :- ngj(a,'strawberry'), ngj(b,'strawberry'), ngj(c,'strawberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngs(c,B) :- gj(b,'strawberry'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(d,B) :- gj(b,'strawberry'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(b,B) :- ngj(c,'strawberry'), ngj(d,'strawberry'), ngj(e,'strawberry'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(d,B) :- gj(c,'strawberry'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(c,B) :- ngj(d,'strawberry'), ngj(e,'strawberry'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(d,B) :- ngj(e,'strawberry'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngj(b,E) :- ngs(a,'art'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,E) :- gs(c,'art'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,E) :- ngs(a,'art'), ngs(b,'art'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,E) :- gs(d,'art'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,E) :- gs(d,'art'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,E) :- ngs(a,'art'), ngs(b,'art'), ngs(c,'art'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+gc(b,E) :- gn(a,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+gn(b,E) :- gc(a,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+gc(d,E) :- gn(e,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+gn(d,E) :- gc(e,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(a,E) :- ngn(b,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(a,E) :- ngc(b,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(e,E) :- ngn(d,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(e,E) :- ngc(d,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(b,E) :- ngn(a,'riley') , ngn(c,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(b,E) :- ngc(a,'roman'), ngc(c,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(d,E) :- gn(b,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(d,E) :- gc(b,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(e,E) :- gn(b,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(e,E) :- gc(b,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(a,E) :- gn(c,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(a,E) :- gc(c,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(c,E) :- ngn(b,'riley') , ngn(d,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(c,E) :- ngc(b,'roman'), ngc(d,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(e,E) :- gn(c,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(e,E) :- gc(c,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(a,E) :- gn(d,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(a,E) :- gc(d,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(b,E) :- gn(d,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(b,E) :- gc(d,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(d,E) :- ngn(c,'riley') , ngn(e,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngn(d,E) :- ngc(c,'roman'), ngc(e,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ga(a,B) :- ga(b,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(a,B) :- nga(b,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ga(b,C) :- ga(a,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(b,C) :- nga(a,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ga(b,B) :- ga(c,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(b,B) :- nga(c,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ga(c,C) :- ga(b,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(c,C) :- nga(b,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ga(c,B) :- ga(d,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(c,B) :- nga(d,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ga(d,C) :- ga(c,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(d,C) :- nga(c,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ga(d,B) :- ga(e,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(d,B) :- nga(e,'12'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ga(e,C) :- ga(d,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(e,C) :- nga(d,'11'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngt(c,A) :- gt(b,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,A) :- gt(b,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,A) :- ngt(c,'red'), ngt(d,'red'), ngt(e,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,A) :- gt(c,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,A) :- ngt(d,'red'), ngt(e,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,A) :- ngt(e,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,D) :- ngt(a,'black'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,D) :- gt(c,'black'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,D) :- ngt(a,'black'), ngt(b,'black'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,D) :- gt(d,'black'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,D) :- gt(d,'black'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,D) :- ngt(a,'black'), ngt(b,'black'), ngt(c,'black'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngs(c,E) :- gt(b,'black'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(d,E) :- gt(b,'black'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(b,E) :- ngt(c,'black'), ngt(d,'black'), ngt(e,'black'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(d,E) :- gt(c,'black'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(c,E) :- ngt(d,'black'), ngt(e,'black'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(d,E) :- ngt(e,'black'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngt(b,A) :- ngs(a,'science'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,A) :- gs(c,'science'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,A) :- ngs(a,'science'), ngs(b,'science'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,A) :- gs(d,'science'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,A) :- gs(d,'science'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,A) :- ngs(a,'science'), ngs(b,'science'), ngs(c,'science'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,D) :- gt(b,'white'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,D) :- gt(b,'white'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,D) :- ngt(c,'white'), ngt(d,'white'), ngt(e,'white'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,D) :- gt(c,'white'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,D) :- ngt(d,'white'), ngt(e,'white'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,D) :- ngt(e,'white'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,E) :- ngt(a,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,E) :- gt(c,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,E) :- ngt(a,'red'), ngt(b,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(b,E) :- gt(d,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(c,E) :- gt(d,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+ngt(d,E) :- ngt(a,'red'), ngt(b,'red'), ngt(c,'red'), Allg(a,b,c,d,e), Allt(A,B,C,D,E).
+gs(b,A) :- ga(a,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ga(b,C) :- gs(a,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+gs(d,A) :- ga(e,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ga(d,C) :- gs(e,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(a,A) :- nga(b,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(a,C) :- ngs(b,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(e,A) :- nga(d,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(e,C) :- ngs(d,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(b,A) :- nga(a,'12') , nga(c,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(b,C) :- ngs(a,'architecture'), ngs(c,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(d,A) :- ga(b,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(d,C) :- gs(b,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(e,A) :- ga(b,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(e,C) :- gs(b,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(a,A) :- ga(c,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(a,C) :- gs(c,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(c,A) :- nga(b,'12') , nga(d,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(c,C) :- ngs(b,'architecture'), ngs(d,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(e,A) :- ga(c,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(e,C) :- gs(c,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(a,A) :- ga(d,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(a,C) :- gs(d,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(b,A) :- ga(d,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(b,C) :- gs(d,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngs(d,A) :- nga(c,'12') , nga(e,'12'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+nga(d,C) :- ngs(c,'architecture'), ngs(e,'architecture'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+gc(a,E) :- gn(b,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(a,E) :- ngn(b,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+gn(b,E) :- gc(a,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(b,E) :- ngc(a,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+gc(b,E) :- gn(c,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,E) :- ngn(c,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+gn(c,E) :- gc(b,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(c,E) :- ngc(b,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+gc(c,E) :- gn(d,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,E) :- ngn(d,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+gn(d,E) :- gc(c,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(d,E) :- ngc(c,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+gc(d,E) :- gn(e,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,E) :- ngn(e,'riley'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+gn(e,E) :- gc(d,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(e,E) :- ngc(d,'roman'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngj(c,B) :- gj(b,'grapefruit'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,B) :- gj(b,'grapefruit'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,B) :- ngj(c,'grapefruit'), ngj(d,'grapefruit'), ngj(e,'grapefruit'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,B) :- gj(c,'grapefruit'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,B) :- ngj(d,'grapefruit'), ngj(e,'grapefruit'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,B) :- ngj(e,'grapefruit'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,C) :- ngj(a,'cranberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,C) :- gj(c,'cranberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,C) :- ngj(a,'cranberry'), ngj(b,'cranberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,C) :- gj(d,'cranberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,C) :- gj(d,'cranberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,C) :- ngj(a,'cranberry'), ngj(b,'cranberry'), ngj(c,'cranberry'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+nga(c,D) :- gj(b,'cranberry'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(d,D) :- gj(b,'cranberry'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(b,D) :- ngj(c,'cranberry'), ngj(d,'cranberry'), ngj(e,'cranberry'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(d,D) :- gj(c,'cranberry'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(c,D) :- ngj(d,'cranberry'), ngj(e,'cranberry'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+nga(d,D) :- ngj(e,'cranberry'), Allg(a,b,c,d,e), Alla(A,B,C,D,E).
+ngj(b,B) :- nga(a,'13'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,B) :- ga(c,'13'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,B) :- nga(a,'13'), nga(b,'13'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(b,B) :- ga(d,'13'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(c,B) :- ga(d,'13'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+ngj(d,B) :- nga(a,'13'), nga(b,'13'), nga(c,'13'), Allg(a,b,c,d,e), Allj(A,B,C,D,E).
+gs(a,C) :- gn(b,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(a,C) :- ngn(b,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+gn(b,C) :- gs(a,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(b,C) :- ngs(a,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+gs(b,C) :- gn(c,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(b,C) :- ngn(c,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+gn(c,C) :- gs(b,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(c,C) :- ngs(b,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+gs(c,C) :- gn(d,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(c,C) :- ngn(d,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+gn(d,C) :- gs(c,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(d,C) :- ngs(c,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+gs(d,C) :- gn(e,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+ngs(d,C) :- ngn(e,'lily'), Allg(a,b,c,d,e), Alls(A,B,C,D,E).
+gn(e,C) :- gs(d,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngn(e,C) :- ngs(d,'economy'), Allg(a,b,c,d,e), Alln(A,B,C,D,E).
+ngc(c,A) :- gc(b,'chinese'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,A) :- gc(b,'chinese'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,A) :- ngc(c,'chinese'), ngc(d,'chinese'), ngc(e,'chinese'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,A) :- gc(c,'chinese'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,A) :- ngc(d,'chinese'), ngc(e,'chinese'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,A) :- ngc(e,'chinese'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,B) :- ngc(a,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,B) :- gc(c,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,B) :- ngc(a,'aztec'), ngc(b,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,B) :- gc(d,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,B) :- gc(d,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,B) :- ngc(a,'aztec'), ngc(b,'aztec'), ngc(c,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,E) :- gc(b,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,E) :- gc(b,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,E) :- ngc(c,'aztec'), ngc(d,'aztec'), ngc(e,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,E) :- gc(c,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,E) :- ngc(d,'aztec'), ngc(e,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,E) :- ngc(e,'aztec'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,A) :- ngc(a,'roman'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,A) :- gc(c,'roman'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,A) :- ngc(a,'roman'), ngc(b,'roman'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(b,A) :- gc(d,'roman'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(c,A) :- gc(d,'roman'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+ngc(d,A) :- ngc(a,'roman'), ngc(b,'roman'), ngc(c,'roman'), Allg(a,b,c,d,e), Allc(A,B,C,D,E).
+
+Queries:
+gt(A,B)?
+ngt(A,B)?
+gn(A,B)?
+ngn(A,B)?
+gc(A,B)?
+ngc(A,B)?
+gs(A,B)?
+ngs(A,B)?
+ga(A,B)?
+nga(A,B)?
+gj(A,B)?
+ngj(A,B)?
+tn(A,B)?
+ntn(A,B)?
+tc(A,B)?
+ntc(A,B)?
+ts(A,B)?
+nts(A,B)?
+ta(A,B)?
+nta(A,B)?
+tj(A,B)?
+ntj(A,B)?
+nc(A,B)?
+nnc(A,B)?
+ns(A,B)?
+nns(A,B)?
+na(A,B)?
+nna(A,B)?
+nj(A,B)?
+nnj(A,B)?
+cs(A,B)?
+ncs(A,B)?
+ca(A,B)?
+nca(A,B)?
+cj(A,B)?
+ncj(A,B)?
+sa(A,B)?
+nsa(A,B)?
+sj(A,B)?
+nsj(A,B)?
+aj(A,B)?
+naj(A,B)?

@@ -1,0 +1,411 @@
+Schemes:
+
+gd(A,B)
+ngd(A,B)
+gw(A,B)
+ngw(A,B)
+gr(A,B)
+ngr(A,B)
+Allg(a,b,c,d)
+
+dw(A,B)
+ndw(A,B)
+dr(A,B)
+ndr(A,B)
+Alld(a,b,c,d)
+
+wr(A,B)
+nwr(A,B)
+Allw(a,b,c,d)
+
+Allr(a,b,c,d)
+
+Contradiction(A,B)
+
+Facts:
+Allg('aphrodite','ares','hermes','zeus').
+Alld('love','poetry','thunder','war').
+Allw('tuesday','wednesday','thursday','friday').
+Allr('mars','mercury','jupiter','venus').
+
+ngr('aphrodite','mercury').
+ngd('aphrodite', 'war').
+ngr('hermes','venus').
+ngr('zeus','venus').
+ngw('zeus','tuesday').
+ngw('zeus','friday').
+ngw('hermes','thursday').
+ngw('hermes','friday').
+ngw('aphrodite','wednesday').
+ndw('poetry','tuesday').
+ndw('poetry','friday').
+ndr('thunder','mercury').
+ndw('thunder','tuesday').
+ndr('war','mercury').
+ndr('war','jupiter').
+ndw('war','thursday').
+ndw('war','friday').
+nwr('tuesday','jupiter').
+nwr('tuesday','venus').
+nwr('wednesday','jupiter').
+nwr('wednesday','venus').
+nwr('friday', 'mercury').
+
+#Assumptions
+
+gr('aphrodite', 'venus').
+gw('aphrodite', 'friday').
+
+
+Rules:
+gd(A,C) :- gw(A,B), dw(C,B).
+ngd(A,C) :- ngw(A,B), dw(C,B).
+ngd(A,C) :- gw(A,B), ndw(C,B).
+gd(A,C) :- gr(A,B), dr(C,B).
+ngd(A,C) :- ngr(A,B), dr(C,B).
+ngd(A,C) :- gr(A,B), ndr(C,B).
+
+gw(A,C) :- gd(A,B), dw(B,C).
+ngw(A,C) :- ngd(A,B), dw(B,C).
+ngw(A,C) :- gd(A,B), ndw(B,C).
+gw(A,C) :- gr(A,B), wr(C,B).
+ngw(A,C) :- ngr(A,B), wr(C,B).
+ngw(A,C) :- gr(A,B), nwr(C,B).
+
+gr(A,C) :- gd(A,B), dr(B,C).
+ngr(A,C) :- ngd(A,B), dr(B,C).
+ngr(A,C) :- gd(A,B), ndr(B,C).
+gr(A,C) :- gw(A,B), wr(B,C).
+ngr(A,C) :- ngw(A,B), wr(B,C).
+ngr(A,C) :- gw(A,B), nwr(B,C).
+
+dw(A,C) :- gd(B,A), gw(B,C).
+ndw(A,C) :- ngd(B,A), gw(B,C).
+ndw(A,C) :- gd(B,A), ngw(B,C).
+dw(A,C) :- dr(A,B), wr(C,B).
+ndw(A,C) :- ndr(A,B), wr(C,B).
+ndw(A,C) :- dr(A,B), nwr(C,B).
+
+dr(A,C) :- gd(B,A), gr(B,C).
+ndr(A,C) :- ngd(B,A), gr(B,C).
+ndr(A,C) :- gd(B,A), ngr(B,C).
+dr(A,C) :- dw(A,B), wr(B,C).
+ndr(A,C) :- ndw(A,B), wr(B,C).
+ndr(A,C) :- dw(A,B), nwr(B,C).
+
+wr(A,C) :- gw(B,A), gr(B,C).
+nwr(A,C) :- ngw(B,A), gr(B,C).
+nwr(A,C) :- gw(B,A), ngr(B,C).
+wr(A,C) :- dw(B,A), dr(B,C).
+nwr(A,C) :- ndw(B,A), dr(B,C).
+nwr(A,C) :- dw(B,A), ndr(B,C).
+
+ngd(f,b) :- gd(f,a), Alld(a,b,c,d).
+ngd(b,f) :- gd(a,f), Allg(a,b,c,d).
+ngd(f,c) :- gd(f,a), Alld(a,b,c,d).
+ngd(c,f) :- gd(a,f), Allg(a,b,c,d).
+ngd(f,d) :- gd(f,a), Alld(a,b,c,d).
+ngd(d,f) :- gd(a,f), Allg(a,b,c,d).
+gd(f,a) :- ngd(f,b), ngd(f,c), ngd(f,d), Alld(a,b,c,d).
+gd(a,f) :- ngd(b,f), ngd(c,f), ngd(d,f), Allg(a,b,c,d).
+
+ngd(f,a) :- gd(f,b), Alld(a,b,c,d).
+ngd(a,f) :- gd(b,f), Allg(a,b,c,d).
+ngd(f,c) :- gd(f,b), Alld(a,b,c,d).
+ngd(c,f) :- gd(b,f), Allg(a,b,c,d).
+ngd(f,d) :- gd(f,b), Alld(a,b,c,d).
+ngd(d,f) :- gd(b,f), Allg(a,b,c,d).
+gd(f,b) :- ngd(f,a), ngd(f,c), ngd(f,d), Alld(a,b,c,d).
+gd(b,f) :- ngd(a,f), ngd(c,f), ngd(d,f), Allg(a,b,c,d).
+
+ngd(f,a) :- gd(f,c), Alld(a,b,c,d).
+ngd(a,f) :- gd(c,f), Allg(a,b,c,d).
+ngd(f,b) :- gd(f,c), Alld(a,b,c,d).
+ngd(b,f) :- gd(c,f), Allg(a,b,c,d).
+ngd(f,d) :- gd(f,c), Alld(a,b,c,d).
+ngd(d,f) :- gd(c,f), Allg(a,b,c,d).
+gd(f,c) :- ngd(f,a), ngd(f,b), ngd(f,d), Alld(a,b,c,d).
+gd(c,f) :- ngd(a,f), ngd(b,f), ngd(d,f), Allg(a,b,c,d).
+
+ngd(f,a) :- gd(f,d), Alld(a,b,c,d).
+ngd(a,f) :- gd(d,f), Allg(a,b,c,d).
+ngd(f,b) :- gd(f,d), Alld(a,b,c,d).
+ngd(b,f) :- gd(d,f), Allg(a,b,c,d).
+ngd(f,c) :- gd(f,d), Alld(a,b,c,d).
+ngd(c,f) :- gd(d,f), Allg(a,b,c,d).
+gd(f,d) :- ngd(f,a), ngd(f,b), ngd(f,c), Alld(a,b,c,d).
+gd(d,f) :- ngd(a,f), ngd(b,f), ngd(c,f), Allg(a,b,c,d).
+
+ngw(f,b) :- gw(f,a), Allw(a,b,c,d).
+ngw(b,f) :- gw(a,f), Allg(a,b,c,d).
+ngw(f,c) :- gw(f,a), Allw(a,b,c,d).
+ngw(c,f) :- gw(a,f), Allg(a,b,c,d).
+ngw(f,d) :- gw(f,a), Allw(a,b,c,d).
+ngw(d,f) :- gw(a,f), Allg(a,b,c,d).
+gw(f,a) :- ngw(f,b), ngw(f,c), ngw(f,d), Allw(a,b,c,d).
+gw(a,f) :- ngw(b,f), ngw(c,f), ngw(d,f), Allg(a,b,c,d).
+
+ngw(f,a) :- gw(f,b), Allw(a,b,c,d).
+ngw(a,f) :- gw(b,f), Allg(a,b,c,d).
+ngw(f,c) :- gw(f,b), Allw(a,b,c,d).
+ngw(c,f) :- gw(b,f), Allg(a,b,c,d).
+ngw(f,d) :- gw(f,b), Allw(a,b,c,d).
+ngw(d,f) :- gw(b,f), Allg(a,b,c,d).
+gw(f,b) :- ngw(f,a), ngw(f,c), ngw(f,d), Allw(a,b,c,d).
+gw(b,f) :- ngw(a,f), ngw(c,f), ngw(d,f), Allg(a,b,c,d).
+
+ngw(f,a) :- gw(f,c), Allw(a,b,c,d).
+ngw(a,f) :- gw(c,f), Allg(a,b,c,d).
+ngw(f,b) :- gw(f,c), Allw(a,b,c,d).
+ngw(b,f) :- gw(c,f), Allg(a,b,c,d).
+ngw(f,d) :- gw(f,c), Allw(a,b,c,d).
+ngw(d,f) :- gw(c,f), Allg(a,b,c,d).
+gw(f,c) :- ngw(f,a), ngw(f,b), ngw(f,d), Allw(a,b,c,d).
+gw(c,f) :- ngw(a,f), ngw(b,f), ngw(d,f), Allg(a,b,c,d).
+
+ngw(f,a) :- gw(f,d), Allw(a,b,c,d).
+ngw(a,f) :- gw(d,f), Allg(a,b,c,d).
+ngw(f,b) :- gw(f,d), Allw(a,b,c,d).
+ngw(b,f) :- gw(d,f), Allg(a,b,c,d).
+ngw(f,c) :- gw(f,d), Allw(a,b,c,d).
+ngw(c,f) :- gw(d,f), Allg(a,b,c,d).
+gw(f,d) :- ngw(f,a), ngw(f,b), ngw(f,c), Allw(a,b,c,d).
+gw(d,f) :- ngw(a,f), ngw(b,f), ngw(c,f), Allg(a,b,c,d).
+
+ngr(f,b) :- gr(f,a), Allr(a,b,c,d).
+ngr(b,f) :- gr(a,f), Allg(a,b,c,d).
+ngr(f,c) :- gr(f,a), Allr(a,b,c,d).
+ngr(c,f) :- gr(a,f), Allg(a,b,c,d).
+ngr(f,d) :- gr(f,a), Allr(a,b,c,d).
+ngr(d,f) :- gr(a,f), Allg(a,b,c,d).
+gr(f,a) :- ngr(f,b), ngr(f,c), ngr(f,d), Allr(a,b,c,d).
+gr(a,f) :- ngr(b,f), ngr(c,f), ngr(d,f), Allg(a,b,c,d).
+
+ngr(f,a) :- gr(f,b), Allr(a,b,c,d).
+ngr(a,f) :- gr(b,f), Allg(a,b,c,d).
+ngr(f,c) :- gr(f,b), Allr(a,b,c,d).
+ngr(c,f) :- gr(b,f), Allg(a,b,c,d).
+ngr(f,d) :- gr(f,b), Allr(a,b,c,d).
+ngr(d,f) :- gr(b,f), Allg(a,b,c,d).
+gr(f,b) :- ngr(f,a), ngr(f,c), ngr(f,d), Allr(a,b,c,d).
+gr(b,f) :- ngr(a,f), ngr(c,f), ngr(d,f), Allg(a,b,c,d).
+
+ngr(f,a) :- gr(f,c), Allr(a,b,c,d).
+ngr(a,f) :- gr(c,f), Allg(a,b,c,d).
+ngr(f,b) :- gr(f,c), Allr(a,b,c,d).
+ngr(b,f) :- gr(c,f), Allg(a,b,c,d).
+ngr(f,d) :- gr(f,c), Allr(a,b,c,d).
+ngr(d,f) :- gr(c,f), Allg(a,b,c,d).
+gr(f,c) :- ngr(f,a), ngr(f,b), ngr(f,d), Allr(a,b,c,d).
+gr(c,f) :- ngr(a,f), ngr(b,f), ngr(d,f), Allg(a,b,c,d).
+
+ngr(f,a) :- gr(f,d), Allr(a,b,c,d).
+ngr(a,f) :- gr(d,f), Allg(a,b,c,d).
+ngr(f,b) :- gr(f,d), Allr(a,b,c,d).
+ngr(b,f) :- gr(d,f), Allg(a,b,c,d).
+ngr(f,c) :- gr(f,d), Allr(a,b,c,d).
+ngr(c,f) :- gr(d,f), Allg(a,b,c,d).
+gr(f,d) :- ngr(f,a), ngr(f,b), ngr(f,c), Allr(a,b,c,d).
+gr(d,f) :- ngr(a,f), ngr(b,f), ngr(c,f), Allg(a,b,c,d).
+
+ndw(f,b) :- dw(f,a), Allw(a,b,c,d).
+ndw(b,f) :- dw(a,f), Alld(a,b,c,d).
+ndw(f,c) :- dw(f,a), Allw(a,b,c,d).
+ndw(c,f) :- dw(a,f), Alld(a,b,c,d).
+ndw(f,d) :- dw(f,a), Allw(a,b,c,d).
+ndw(d,f) :- dw(a,f), Alld(a,b,c,d).
+dw(f,a) :- ndw(f,b), ndw(f,c), ndw(f,d), Allw(a,b,c,d).
+dw(a,f) :- ndw(b,f), ndw(c,f), ndw(d,f), Alld(a,b,c,d).
+
+ndw(f,a) :- dw(f,b), Allw(a,b,c,d).
+ndw(a,f) :- dw(b,f), Alld(a,b,c,d).
+ndw(f,c) :- dw(f,b), Allw(a,b,c,d).
+ndw(c,f) :- dw(b,f), Alld(a,b,c,d).
+ndw(f,d) :- dw(f,b), Allw(a,b,c,d).
+ndw(d,f) :- dw(b,f), Alld(a,b,c,d).
+dw(f,b) :- ndw(f,a), ndw(f,c), ndw(f,d), Allw(a,b,c,d).
+dw(b,f) :- ndw(a,f), ndw(c,f), ndw(d,f), Alld(a,b,c,d).
+
+ndw(f,a) :- dw(f,c), Allw(a,b,c,d).
+ndw(a,f) :- dw(c,f), Alld(a,b,c,d).
+ndw(f,b) :- dw(f,c), Allw(a,b,c,d).
+ndw(b,f) :- dw(c,f), Alld(a,b,c,d).
+ndw(f,d) :- dw(f,c), Allw(a,b,c,d).
+ndw(d,f) :- dw(c,f), Alld(a,b,c,d).
+dw(f,c) :- ndw(f,a), ndw(f,b), ndw(f,d), Allw(a,b,c,d).
+dw(c,f) :- ndw(a,f), ndw(b,f), ndw(d,f), Alld(a,b,c,d).
+
+ndw(f,a) :- dw(f,d), Allw(a,b,c,d).
+ndw(a,f) :- dw(d,f), Alld(a,b,c,d).
+ndw(f,b) :- dw(f,d), Allw(a,b,c,d).
+ndw(b,f) :- dw(d,f), Alld(a,b,c,d).
+ndw(f,c) :- dw(f,d), Allw(a,b,c,d).
+ndw(c,f) :- dw(d,f), Alld(a,b,c,d).
+dw(f,d) :- ndw(f,a), ndw(f,b), ndw(f,c), Allw(a,b,c,d).
+dw(d,f) :- ndw(a,f), ndw(b,f), ndw(c,f), Alld(a,b,c,d).
+
+ndr(f,b) :- dr(f,a), Allr(a,b,c,d).
+ndr(b,f) :- dr(a,f), Alld(a,b,c,d).
+ndr(f,c) :- dr(f,a), Allr(a,b,c,d).
+ndr(c,f) :- dr(a,f), Alld(a,b,c,d).
+ndr(f,d) :- dr(f,a), Allr(a,b,c,d).
+ndr(d,f) :- dr(a,f), Alld(a,b,c,d).
+dr(f,a) :- ndr(f,b), ndr(f,c), ndr(f,d), Allr(a,b,c,d).
+dr(a,f) :- ndr(b,f), ndr(c,f), ndr(d,f), Alld(a,b,c,d).
+
+ndr(f,a) :- dr(f,b), Allr(a,b,c,d).
+ndr(a,f) :- dr(b,f), Alld(a,b,c,d).
+ndr(f,c) :- dr(f,b), Allr(a,b,c,d).
+ndr(c,f) :- dr(b,f), Alld(a,b,c,d).
+ndr(f,d) :- dr(f,b), Allr(a,b,c,d).
+ndr(d,f) :- dr(b,f), Alld(a,b,c,d).
+dr(f,b) :- ndr(f,a), ndr(f,c), ndr(f,d), Allr(a,b,c,d).
+dr(b,f) :- ndr(a,f), ndr(c,f), ndr(d,f), Alld(a,b,c,d).
+
+ndr(f,a) :- dr(f,c), Allr(a,b,c,d).
+ndr(a,f) :- dr(c,f), Alld(a,b,c,d).
+ndr(f,b) :- dr(f,c), Allr(a,b,c,d).
+ndr(b,f) :- dr(c,f), Alld(a,b,c,d).
+ndr(f,d) :- dr(f,c), Allr(a,b,c,d).
+ndr(d,f) :- dr(c,f), Alld(a,b,c,d).
+dr(f,c) :- ndr(f,a), ndr(f,b), ndr(f,d), Allr(a,b,c,d).
+dr(c,f) :- ndr(a,f), ndr(b,f), ndr(d,f), Alld(a,b,c,d).
+
+ndr(f,a) :- dr(f,d), Allr(a,b,c,d).
+ndr(a,f) :- dr(d,f), Alld(a,b,c,d).
+ndr(f,b) :- dr(f,d), Allr(a,b,c,d).
+ndr(b,f) :- dr(d,f), Alld(a,b,c,d).
+ndr(f,c) :- dr(f,d), Allr(a,b,c,d).
+ndr(c,f) :- dr(d,f), Alld(a,b,c,d).
+dr(f,d) :- ndr(f,a), ndr(f,b), ndr(f,c), Allr(a,b,c,d).
+dr(d,f) :- ndr(a,f), ndr(b,f), ndr(c,f), Alld(a,b,c,d).
+
+nwr(f,b) :- wr(f,a), Allr(a,b,c,d).
+nwr(b,f) :- wr(a,f), Allw(a,b,c,d).
+nwr(f,c) :- wr(f,a), Allr(a,b,c,d).
+nwr(c,f) :- wr(a,f), Allw(a,b,c,d).
+nwr(f,d) :- wr(f,a), Allr(a,b,c,d).
+nwr(d,f) :- wr(a,f), Allw(a,b,c,d).
+wr(f,a) :- nwr(f,b), nwr(f,c), nwr(f,d), Allr(a,b,c,d).
+wr(a,f) :- nwr(b,f), nwr(c,f), nwr(d,f), Allw(a,b,c,d).
+
+nwr(f,a) :- wr(f,b), Allr(a,b,c,d).
+nwr(a,f) :- wr(b,f), Allw(a,b,c,d).
+nwr(f,c) :- wr(f,b), Allr(a,b,c,d).
+nwr(c,f) :- wr(b,f), Allw(a,b,c,d).
+nwr(f,d) :- wr(f,b), Allr(a,b,c,d).
+nwr(d,f) :- wr(b,f), Allw(a,b,c,d).
+wr(f,b) :- nwr(f,a), nwr(f,c), nwr(f,d), Allr(a,b,c,d).
+wr(b,f) :- nwr(a,f), nwr(c,f), nwr(d,f), Allw(a,b,c,d).
+
+nwr(f,a) :- wr(f,c), Allr(a,b,c,d).
+nwr(a,f) :- wr(c,f), Allw(a,b,c,d).
+nwr(f,b) :- wr(f,c), Allr(a,b,c,d).
+nwr(b,f) :- wr(c,f), Allw(a,b,c,d).
+nwr(f,d) :- wr(f,c), Allr(a,b,c,d).
+nwr(d,f) :- wr(c,f), Allw(a,b,c,d).
+wr(f,c) :- nwr(f,a), nwr(f,b), nwr(f,d), Allr(a,b,c,d).
+wr(c,f) :- nwr(a,f), nwr(b,f), nwr(d,f), Allw(a,b,c,d).
+
+nwr(f,a) :- wr(f,d), Allr(a,b,c,d).
+nwr(a,f) :- wr(d,f), Allw(a,b,c,d).
+nwr(f,b) :- wr(f,d), Allr(a,b,c,d).
+nwr(b,f) :- wr(d,f), Allw(a,b,c,d).
+nwr(f,c) :- wr(f,d), Allr(a,b,c,d).
+nwr(c,f) :- wr(d,f), Allw(a,b,c,d).
+wr(f,d) :- nwr(f,a), nwr(f,b), nwr(f,c), Allr(a,b,c,d).
+wr(d,f) :- nwr(a,f), nwr(b,f), nwr(c,f), Allw(a,b,c,d).
+
+#I added this part
+
+gr(B,c) :- ngd('ares', 'war'), Allg(A,B,C,D), Allr(a,b,c,d).
+ngr(B,c) :- gd('ares', 'war'), Allg(A,B,C,D), Allr(a,b,c,d).
+
+gd(B,d):- ngr('ares', 'jupiter'), Allg(A,B,C,D), Alld(a,b,c,d).
+ngd(B,d):- gr('ares', 'jupiter'), Allg(A,B,C,D), Alld(a,b,c,d).
+
+dw(B,b) :- ngd('aphrodite','poetry'), Alld(A,B,C,D), Allw(a,b,c,d).
+gd(A,b):- dw('poetry','wednesday'), Allg(A,B,C,D), Alld(a,b,c,d).
+
+gw(C,a):- gw('zeus', b), Allg(A,B,C,D), Allw(a,b,c,d).
+gw(C,b):- gw('zeus', c), Allg(A,B,C,D), Allw(a,b,c,d).
+gw(C,c):- gw('zeus', d), Allg(A,B,C,D), Allw(a,b,c,d).
+
+ngw(C,a):- ngw('zeus', b), Allg(A,B,C,D), Allw(a,b,c,d).
+ngw(C,b):- ngw('zeus', c), Allg(A,B,C,D), Allw(a,b,c,d).
+ngw(C,c):- ngw('zeus', d), Allg(A,B,C,D), Allw(a,b,c,d).
+
+gw(D,b):- gw('hermes', a), Allg(A,B,C,D), Allw(a,b,c,d).
+gw(D,c):- gw('hermes', b), Allg(A,B,C,D), Allw(a,b,c,d).
+gw(D,d):- gw('hermes', c), Allg(A,B,C,D), Allw(a,b,c,d).
+
+ngw(D,b):- ngw('hermes', a), Allg(A,B,C,D), Allw(a,b,c,d).
+ngw(D,c):- ngw('hermes', b), Allg(A,B,C,D), Allw(a,b,c,d).
+ngw(D,d):- ngw('hermes', c), Allg(A,B,C,D), Allw(a,b,c,d).
+
+wr(b, D):- gw('zeus', a), Allr(A,B,C,D), Allw(a,b,c,d).
+wr(c, D):- gw('zeus', b), Allr(A,B,C,D), Allw(a,b,c,d).
+wr(d, D):- gw('zeus', c), Allr(A,B,C,D), Allw(a,b,c,d).
+
+nwr(b, D):- ngw('zeus', a), Allr(A,B,C,D), Allw(a,b,c,d).
+nwr(c, D):- ngw('zeus', b), Allr(A,B,C,D), Allw(a,b,c,d).
+nwr(d, D):- ngw('zeus', c), Allr(A,B,C,D), Allw(a,b,c,d).
+
+gw(D, a):- wr(b, 'venus'), Allg(A,B,C,D), Allw(a,b,c,d).
+gw(D, b):- wr(c, 'venus'), Allg(A,B,C,D), Allw(a,b,c,d).
+gw(D, c):- wr(d, 'venus'), Allg(A,B,C,D), Allw(a,b,c,d).
+
+ngw(D, a):- nwr(b, 'venus'), Allg(A,B,C,D), Allw(a,b,c,d).
+ngw(D, b):- nwr(c, 'venus'), Allg(A,B,C,D), Allw(a,b,c,d).
+ngw(D, c):- nwr(d, 'venus'), Allg(A,B,C,D), Allw(a,b,c,d).
+
+wr(c,C):- dw('war', a), Allr(A,B,C,D), Allw(a,b,c,d).
+wr(d,C):- dw('war', b), Allr(A,B,C,D), Allw(a,b,c,d).
+
+nwr(c,C):- ndw('war', a), Allr(A,B,C,D), Allw(a,b,c,d).
+nwr(d,C):- ndw('war', b), Allr(A,B,C,D), Allw(a,b,c,d).
+
+dw(D, b) :- wr(d, 'jupiter'), Alld(A,B,C,D), Allw(a,b,c,d).
+dw(D, a) :- wr(c, 'jupiter'), Alld(A,B,C,D), Allw(a,b,c,d).
+
+ndw(D, b) :- nwr(d, 'jupiter'), Alld(A,B,C,D), Allw(a,b,c,d).
+ndw(D, a) :- nwr(c, 'jupiter'), Alld(A,B,C,D), Allw(a,b,c,d).
+
+wr(a,B):- dw('thunder', b), Allr(A,B,C,D), Allw(a,b,c,d).
+wr(b,B):- dw('thunder', c), Allr(A,B,C,D), Allw(a,b,c,d).
+wr(c,B):- dw('thunder', d), Allr(A,B,C,D), Allw(a,b,c,d).
+
+nwr(a,B):- ndw('thunder', b), Allr(A,B,C,D), Allw(a,b,c,d).
+nwr(b,B):- ndw('thunder', c), Allr(A,B,C,D), Allw(a,b,c,d).
+nwr(c,B):- ndw('thunder', d), Allr(A,B,C,D), Allw(a,b,c,d).
+
+dw(C, b) :- wr(a, 'mercury'), Alld(A,B,C,D), Allw(a,b,c,d).
+dw(C, c) :- wr(b, 'mercury'), Alld(A,B,C,D), Allw(a,b,c,d).
+dw(C, d) :- wr(c, 'mercury'), Alld(A,B,C,D), Allw(a,b,c,d).
+
+ndw(C, b) :- nwr(a, 'mercury'), Alld(A,B,C,D), Allw(a,b,c,d).
+ndw(C, c) :- nwr(b, 'mercury'), Alld(A,B,C,D), Allw(a,b,c,d).
+ndw(C, d) :- nwr(c, 'mercury'), Alld(A,B,C,D), Allw(a,b,c,d).
+
+Contradiction(A,B) :- gd(A,B), ngd(A,B).
+Contradiction(A,B) :- gw(A,B), ngw(A,B).
+Contradiction(A,B) :- gr(A,B), ngr(A,B).
+Contradiction(A,B) :- dw(A,B), ndw(A,B).
+Contradiction(A,B) :- dr(A,B), ndr(A,B).
+Contradiction(A,B) :- wr(A,B), nwr(A,B).
+
+Queries:
+
+gd(A,B)?
+ngd(A,B)?
+gw(A,B)?
+ngw(A,B)?
+gr(A,B)?
+ngr(A,B)?
+dw(A,B)?
+ndw(A,B)?
+dr(A,B)?
+ndr(A,B)?
+wr(A,B)?
+nwr(A,B)?
+Contradiction(A,B)?
